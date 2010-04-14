@@ -55,4 +55,27 @@ class PNTicket extends PNTicketBase
         $this->_objData = $data;
         return $data;
     }
+
+    function insertPostProcess($data = null)
+    {
+        return $this->updateHooks('create');
+    }
+
+    function updatePostProcess($data = null)
+    {
+        return $this->updateHooks('update');
+    }
+
+    function deletePostProcess($data = null)
+    {
+        return $this->updateHooks('delete');
+    }
+
+    private function updateHooks($mode = '') {
+        if (!in_array($mode, array('create', 'update', 'delete'))) {
+            return true;
+        }
+        pnModCallHooks('item', $mode, str_replace('kbase_', '', strtolower($this->_objType)) . $this->getID(), array('module' => 'KnowledgeBase', 'ot' => str_replace('kbase_', '', $this->_objType)));
+        return true;
+    }
 }

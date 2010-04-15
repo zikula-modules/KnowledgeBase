@@ -24,7 +24,7 @@
         <!--[if $category.ticketcount gt 0]-->
             <ul>
             <!--[foreach name="catTicketLoop" item="ticket" from=$category.tickets]-->
-            <!--[if $catTicketLoop.iteration lt 3]--><!--[* display only the first 2 *]-->
+            <!--[if $smarty.foreach.catTicketLoop.iteration lt 3]--><!--[* display only the first 2 *]-->
                 <li><a href="<!--[$ticket.detailurlFormatted]-->" title="<!--[gt text="Details of '%s'" tag1=$ticket.subjectStripped]-->"><!--[$ticket.subject]--></a></li>
             <!--[/if]-->
             <!--[/foreach]-->

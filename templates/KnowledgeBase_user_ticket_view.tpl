@@ -1,6 +1,6 @@
 {* purpose of this template: view template for user area *}
 
-{include file="KnowledgeBase_user_header.htm"}
+{include file="KnowledgeBase_user_header.tpl"}
 
 <div class="z-frontendcontainer">
 
@@ -36,7 +36,7 @@
         </a>
     </dt>
     <dd>{$ticket.content}</dd>
-{*    <dd>{gt text='Category'}: {include file="KnowledgeBase_include_display_category.htm"}</dd>*}
+{*    <dd>{gt text='Category'}: {include file="KnowledgeBase_include_display_category.tpl"}</dd>*}
 
 {*    {modurl modname="KnowledgeBase" type="user" func="display" id=$ticket.ticketid assign="returnurl"}
 {modcallhooks hookobject="item" hookaction="display" module="KnowledgeBase" hookid="ticket`$ticket.ticketid`" returnurl=$returnurl implode=false}
@@ -60,10 +60,10 @@
 {modcallhooks hookobject="category" hookaction="display" module="KnowledgeBaseticket" returnurl=$returnurl}
 </div>
 <div id="kbrightside">
-    {include file="KnowledgeBase_include_rightblocks.htm"}
+    {include file="KnowledgeBase_include_rightblocks.tpl"}
 </div>
 <br style="clear: left" />
 
 </div>
 
-{include file="KnowledgeBase_user_footer.htm"}
+{include file="KnowledgeBase_user_footer.tpl"}

@@ -3,7 +3,7 @@
 <div id="kbasesidebar">
 <h3>{gt text="All categories"}</h3>
 {modapifunc modname="KnowledgeBase" type="user" func="getCategories" full=true assign="categories"}
-{include file="KnowledgeBase_include_categoryTree.htm"}
+{include file="KnowledgeBase_include_categoryTree.tpl"}
 
 <h3>{gt text="Search"}</h3>
 <form action="{modurl modname="KnowledgeBase" type="user" func="view"}" method="get">

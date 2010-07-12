@@ -1,6 +1,6 @@
 {* purpose of this template: display template for user area *}
 
-{include file="KnowledgeBase_user_header.htm"}
+{include file="KnowledgeBase_user_header.tpl"}
 
 {modurl modname="KnowledgeBase" type="user" func="display" id=$ticket.ticketid assign="returnurl"}
 {modcallhooks hookobject="item" hookaction="display" module="KnowledgeBase" hookid="ticket`$ticket.ticketid`" returnurl=$returnurl implode=false}
@@ -25,7 +25,7 @@
 <div class="kbthirdblock">
 <dl>
 {*    <dt>{gt text='Category'}</dt>
-    <dd>{include file="KnowledgeBase_include_display_category.htm"}</dd>*}
+    <dd>{include file="KnowledgeBase_include_display_category.tpl"}</dd>*}
     <dt>{gt text='ID of this page'}</dt>
     <dd>{$ticket.ticketid}</dd>
     <dt>{gt text='Created on'}</dt>
@@ -52,14 +52,14 @@
 </p>
 </div>
 <div id="kbrightside">
-    {include file="KnowledgeBase_include_rightblocks.htm"}
+    {include file="KnowledgeBase_include_rightblocks.tpl"}
 </div>
 <br style="clear: left" />
 
 {$hooks.EZComments}
 </div>
 
-{include file="KnowledgeBase_user_footer.htm"}
+{include file="KnowledgeBase_user_footer.tpl"}
 
 {ajaxheader modname="KnowledgeBase" filename="KnowledgeBase.js"}
 <script type="text/javascript">

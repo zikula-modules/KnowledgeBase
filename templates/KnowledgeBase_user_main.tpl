@@ -1,6 +1,6 @@
 {* purpose of this template: main template for user area *}
 
-{include file="KnowledgeBase_user_header.htm"}
+{include file="KnowledgeBase_user_header.tpl"}
 
 <div class="z-frontendcontainer">
 <div id="kbleftside">
@@ -20,7 +20,7 @@
 
 {foreach from=$categories item="category"}
     <div class="catblock">
-        <h3><a href="{$category.viewurlFormatted}" title="{gt text="See all topics in '%s'" tag1=$category.nameStripped}">{include file="KnowledgeBase_include_display_category_name.htm"}</a> ({$category.ticketcount})</h3>
+        <h3><a href="{$category.viewurlFormatted}" title="{gt text="See all topics in '%s'" tag1=$category.nameStripped}">{include file="KnowledgeBase_include_display_category_name.tpl"}</a> ({$category.ticketcount})</h3>
         {if $category.ticketcount gt 0}
             <ul>
             {foreach name="catTicketLoop" item="ticket" from=$category.tickets}
@@ -38,10 +38,10 @@
     </div>
 {/foreach}
     <br style="clear: left" />
-    {include file="KnowledgeBase_include_centerblocks.htm"}
+    {include file="KnowledgeBase_include_centerblocks.tpl"}
 </div>
 <div id="kbrightside">
-    {include file="KnowledgeBase_include_rightblocks.htm"}
+    {include file="KnowledgeBase_include_rightblocks.tpl"}
 </div>
 <br style="clear: left" />
 
@@ -50,4 +50,4 @@
 
 </div>
 
-{include file="KnowledgeBase_user_footer.htm"}
+{include file="KnowledgeBase_user_footer.tpl"}

@@ -1,6 +1,6 @@
 {* purpose of this template: build the pnForm to edit an instance of user *}
 
-{include file="KnowledgeBase_user_header.htm"}
+{include file="KnowledgeBase_user_header.tpl"}
 
 {if $mode == "edit"}
     {gt text='Edit ticket' assign="templateTitle"}
@@ -109,4 +109,4 @@
 
 </div>
 
-{include file="KnowledgeBase_user_footer.htm"}
+{include file="KnowledgeBase_user_footer.tpl"}

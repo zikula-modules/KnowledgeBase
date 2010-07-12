@@ -14,7 +14,7 @@
 
 /*
  * generated at Wed Apr 07 21:54:26 CEST 2010 by ModuleStudio 0.4.10 (http://modulestudio.de)
- */
+*/
 
 /**
  * This handler class handles the page events of the pnForm called by the KnowledgeBase_admin_edit() function.
@@ -41,7 +41,7 @@
  * @subpackage Base
  * @author       Axel Guckelsberger
  */
-class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
+class KnowledgeBase_Form_Handler_TicketEdit extends Form_Handler
 {
     // store ticket ID in (persistent) member variable
     var $ticketid;
@@ -65,21 +65,12 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
         // no provided id means that we want to create a new object
         $this->ticketid = (int) FormUtil::getPassedValue('id', 0, 'GET');
 
-
-
-        Loader::loadClass('CategoryRegistryUtil');
         $allRegistries = CategoryRegistryUtil::getRegisteredModuleCategories('KnowledgeBase', 'kbase_ticket');
         $categories = array();
 
         $categories['TicketCategoryMain'] = $allRegistries['TicketCategoryMain'];
 
         $render->assign('categories', $categories);
-
-
-
-        $objectType = 'ticket';
-    // load the object class corresponding to $objectType
-    $class = Loader::loadClassFromModule('KnowledgeBase', $objectType);
 
         $this->mode = 'create';
         // if ticketid is not 0, we wish to edit an existing ticket
@@ -88,37 +79,37 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
 
             if (!SecurityUtil::checkPermission('KnowledgeBase:Ticket:', '::', ACCESS_EDIT)) {
                 // set an error message and return false
-                return $render->pnFormRegisterError(LogUtil::registerPermissionError());
+                return $render->registerError(LogUtil::registerPermissionError());
             }
 
-    // intantiate object model and get the object of the specified ID from the database
-    $object = new $class('D', $this->ticketid);
+            // intantiate object model and get the object of the specified ID from the database
+            $object = new KnowledgeBase_DBObject_Ticket('D', $this->ticketid);
 
-    // assign object data fetched from the database during object instantiation
-    // while the result will be saved within the object, we assign it to a local variable for convenience
-    $objectData = $object->get();
+            // assign object data fetched from the database during object instantiation
+            // while the result will be saved within the object, we assign it to a local variable for convenience
+            $objectData = $object->get();
             if (!is_array($objectData) || !isset($objectData['ticketid']) || !is_numeric($objectData['ticketid'])) {
-                return $render->pnFormSetErrorMsg(__('No such ticket found.', $dom));
+                return $render->setErrorMsg(__('No such ticket found.', $dom));
             }
 
             // try to guarantee that only one person at a time can be editing this ticket
             $returnUrl = ModUtil::url('KnowledgeBase', 'user', 'display', array('id' => $this->ticketid));
             ModUtil::apiFunc('PageLock', 'user', 'pageLock',
-                                 array('lockName' => "KnowledgeBaseTicket{$this->ticketid}",
-                                       'returnUrl' => $returnUrl));
+                    array('lockName' => "KnowledgeBaseTicket{$this->ticketid}",
+                    'returnUrl' => $returnUrl));
         }
         else {
             if (!SecurityUtil::checkPermission('KnowledgeBase:Ticket:', '::', ACCESS_ADD)) {
-                return $render->pnFormRegisterError(LogUtil::registerPermissionError());
+                return $render->registerError(LogUtil::registerPermissionError());
             }
 
 
             $objectData = Array(
-        'subject' => '',
-        'content' => '',
-        'views' => 0,
-        'ratesup' => 0,
-        'ratesdown' => 0);
+                    'subject' => '',
+                    'content' => '',
+                    'views' => 0,
+                    'ratesup' => 0,
+                    'ratesdown' => 0);
 
 
             $cat = FormUtil::getPassedValue('cat', 0, 'GET');
@@ -165,24 +156,20 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
 
         if ($args['commandName'] != 'delete' && $args['commandName'] != 'cancel') {
             // do forms validation including checking all validators on the page to validate their input
-            if (!$render->pnFormIsValid()) {
+            if (!$render->isValid()) {
                 return false;
             }
         }
 
-        $objectType = 'ticket';
-    // load the object class corresponding to $objectType
-    $class = Loader::loadClassFromModule('KnowledgeBase', $objectType);
-
         // instantiate the class we just loaded
         // it will be appropriately initialized but contain no data.
-        $ticket = new $class();
+        $ticket = new KnowledgeBase_DBObject_Ticket();
 
         if ($args['commandName'] == 'create') {
             // event handling if user clicks on create
 
             // fetch posted data input values as an associative array
-            $ticketData = $render->pnFormGetValues();
+            $ticketData = $render->getValues();
 
             // ensure that all permalink fields in this area have unique subjecturl fields
             $ticketData['subjecturl'] = $this->createUniquePermalink($ticketData['subject']);
@@ -208,7 +195,7 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
             // event handling if user clicks on update
 
             // fetch posted data input values as an associative array
-            $ticketData = $render->pnFormGetValues();
+            $ticketData = $render->getValues();
 
             // add persisted primary key to fetched values
             $ticketData['ticketid'] = $this->ticketid;
@@ -231,8 +218,7 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
             LogUtil::registerStatus(__('Done! Ticket updated.', $dom));
 
             $returnUrl = ModUtil::url('KnowledgeBase', 'user', 'display', array('id' => $this->ticketid));
-        }
-        elseif ($args['commandName'] == 'delete') {
+        } elseif ($args['commandName'] == 'delete') {
             // event handling if user clicks on delete
 
             // Note: No need to check validation when deleting
@@ -242,7 +228,7 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
             }
 
             // fetch posted data input values as an associative array
-            $ticketData = $render->pnFormGetValues();
+            $ticketData = $render->getValues();
 
             // add persisted primary key to fetched values
             $ticketData['ticketid'] = $this->ticketid;
@@ -285,13 +271,13 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
         if ($returnUrl != null) {
             if ($this->mode == 'edit') {
                 ModUtil::apiFunc('PageLock', 'user', 'releaseLock',
-                                 array('lockName' => "KnowledgeBaseTicket{$this->ticketid}"));
+                        array('lockName' => "KnowledgeBaseTicket{$this->ticketid}"));
             }
 
-            return $render->pnFormRedirect($returnUrl);
+            return $render->redirect($returnUrl);
         }
 
-        // We should in principle not end here at all, since the above command handlers should 
+        // We should in principle not end here at all, since the above command handlers should
         // match all possible commands, but we return "ok" (true) for all cases.
         // You could also return $render->pnFormSetErrorMsg('Unexpected command') or just do a pn_die()
         return true;
@@ -299,11 +285,11 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
 
     function createUniquePermalink($title, $excludeid = 0)
     {
-        $uniqueTitle = KnowledgeBase_createPermalink($title);
+        $uniqueTitle = KnowledgeBase_Util::createPermalink($title);
         $currentYear = date('Y');
         $uniqueCounter = 0;
         while ($this->uniquePermalinkExists($uniqueTitle, $excludeid)) {
-            $uniqueTitle = KnowledgeBase_createPermalink($title . '-' . $currentYear . (($uniqueCounter > 0) ? '-' . $uniqueCounter : ''));
+            $uniqueTitle = KnowledgeBase_Util::createPermalink($title . '-' . $currentYear . (($uniqueCounter > 0) ? '-' . $uniqueCounter : ''));
             $uniqueCounter++;
         }
         return $uniqueTitle;
@@ -326,15 +312,12 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
             return false;
         }
 
-        $objectType = 'ticket';
-        $arrayClass = Loader::loadArrayClassFromModule('KnowledgeBase', $objectType);
-
         // instantiate the object-array
-        $objectArray = new $arrayClass();
+        $objectArray = new KnowledgeBase_DBObject_TicketArray();
 
         $where = $objectArray->_columns['subjecturl'] . ' = \'' . DataUtil::formatForStore($nameurl) . '\'';
         if ($excludeid > 0) {
-            $where .= ' AND ' . $objectArray->_columns[strtolower($objectType) . 'id'] . ' != \'' . (int) DataUtil::formatForStore($excludeid) . '\'';
+            $where .= ' AND ' . $objectArray->_columns[strtolower('ticket') . 'id'] . ' != \'' . (int) DataUtil::formatForStore($excludeid) . '\'';
         }
         return $objectArray->getCount($where);
     }

@@ -62,12 +62,12 @@ class KnowledgeBase_Api_User extends Zikula_Api
 // DEBUG: permission check aspect ends
 
         // instantiate the object-array
-        $objectArray = new KnowledgeBase_DBObject_Ticket();
+        $objectArray = new KnowledgeBase_DBObject_TicketArray();
 
         // parameter for used sorting field
         $sort = ((isset($args['sort']) ? $args['sort'] : FormUtil::getPassedValue('sort', '', 'GET')));
         if (empty($sort) || !in_array($sort, $objectArray->getAllowedSortingFields())) {
-            //$sort = $objectArray->getDefaultSortingField();
+            $sort = $objectArray->getDefaultSortingField();
         }
 
         // parameter for used sort order

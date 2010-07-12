@@ -32,16 +32,13 @@ class KnowledgeBase_Controller_User extends Zikula_Controller
      * @params       TODO
      * @return       Render output
      */
-    function KnowledgeBase_user_main($args)
+    public function main($args)
     {
         // DEBUG: permission check aspect starts
         if (!SecurityUtil::checkPermission('KnowledgeBase::', '::', ACCESS_OVERVIEW)) {
             return LogUtil::registerPermissionError();
         }
         // DEBUG: permission check aspect ends
-
-        // get view instance for this module
-        $this->view->setCaching(false);
 
         $this->view->assign('categories', ModUtil::apiFunc('KnowledgeBase', 'user', 'getCategories', array('full' => false)));
 
@@ -61,7 +58,7 @@ class KnowledgeBase_Controller_User extends Zikula_Controller
      * @param        raw            boolean   optional way to display a template instead of fetching it (needed for standalone output)
      * @return       Render output
      */
-    function KnowledgeBase_user_view($args)
+    public function view($args)
     {
         if (!SecurityUtil::checkPermission('KnowledgeBase::', '::', ACCESS_READ)) {
             return LogUtil::registerPermissionError();
@@ -105,7 +102,7 @@ class KnowledgeBase_Controller_User extends Zikula_Controller
      * @param        raw            boolean   optional way to display a template instead of fetching it (needed for standalone output)
      * @return       Render output
      */
-    function KnowledgeBase_user_display($args)
+    public function display($args)
     {
         if (!SecurityUtil::checkPermission('KnowledgeBase::', '::', ACCESS_READ)) {
             return LogUtil::registerPermissionError();
@@ -140,7 +137,7 @@ class KnowledgeBase_Controller_User extends Zikula_Controller
      * @param        raw            boolean   optional way to display a template instead of fetching it (needed for standalone output)
      * @return       Render output
      */
-    function KnowledgeBase_user_edit($args)
+    public function edit($args)
     {
         if (!SecurityUtil::checkPermission('KnowledgeBase::', '::', ACCESS_EDIT)) {
             return LogUtil::registerPermissionError();
@@ -160,7 +157,7 @@ class KnowledgeBase_Controller_User extends Zikula_Controller
      * @params       TODO
      * @return       Render output
      */
-    function KnowledgeBase_user_assign($args)
+    public function assign($args)
     {
         if (!SecurityUtil::checkPermission('KnowledgeBase::', '::', ACCESS_OVERVIEW)) {
             return LogUtil::registerPermissionError();

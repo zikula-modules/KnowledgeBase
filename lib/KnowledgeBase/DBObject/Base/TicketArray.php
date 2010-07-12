@@ -10,19 +10,10 @@
  * @author Axel Guckelsberger
  * @url https://guite.de
  */
-
-/*
- * generated at Thu Apr 08 22:42:13 CEST 2010 by ModuleStudio 0.4.10 (http://modulestudio.de)
- */
-
-
-
-Loader::loadClass('PNKnowledgeBaseArray', 'modules/KnowledgeBase/classes');
-
 /**
  * This class provides basic functionality of PNTicketArrayBase
  */
-abstract class PNTicketArrayBase extends PNKnowledgeBaseArray
+abstract class KnowledgeBase_DBObject_Base_TicketArray extends KnowledgeBase_DBObject_Base_KnowledgeArray
 {
     /**
      * Constructor, init everything to sane defaults and handle parameters.
@@ -39,10 +30,10 @@ abstract class PNTicketArrayBase extends PNKnowledgeBaseArray
      * @param orderBy     The order-by clause to use when retrieving the object array (optional) (default='')
      * @param assocKey    Key field to use for building an associative array (optional) (default=null)
      */
-    function PNTicketArrayBase($init = null, $where = '', $orderBy = '', $assocKey = null)
+    function __construct($init = null, $where = '', $orderBy = '', $assocKey = null)
     {
         // call base class constructor
-        $this->PNObjectArray();
+        parent::__construct();
 
         // set the tablename this object maps to
         $this->_objType       = 'kbase_ticket';

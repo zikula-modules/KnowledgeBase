@@ -15,14 +15,10 @@
  * generated at Wed Apr 07 21:54:26 CEST 2010 by ModuleStudio 0.4.10 (http://modulestudio.de)
  */
 
-
-
-Loader::loadClass('PNTicketArrayBase', 'modules/KnowledgeBase/classes/Base');
-
 /**
  * This class implements the functionality of PNTicketArrayBase
  */
-class PNTicketArray extends PNTicketArrayBase
+class KnowledgeBase_DBObject_TicketArray extends KnowledgeBase_DBObject_Base_TicketArray
 {
     /**
      * retrieve subdata arrays

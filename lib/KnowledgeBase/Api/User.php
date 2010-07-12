@@ -67,7 +67,7 @@ class KnowledgeBase_Api_User extends Zikula_Api
         // parameter for used sorting field
         $sort = ((isset($args['sort']) ? $args['sort'] : FormUtil::getPassedValue('sort', '', 'GET')));
         if (empty($sort) || !in_array($sort, $objectArray->getAllowedSortingFields())) {
-            $sort = $objectArray->getDefaultSortingField();
+            //$sort = $objectArray->getDefaultSortingField();
         }
 
         // parameter for used sort order

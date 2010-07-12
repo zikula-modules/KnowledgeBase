@@ -11,18 +11,11 @@
  * @url https://guite.de
  */
 
-/*
- * generated at Thu Apr 08 22:42:13 CEST 2010 by ModuleStudio 0.4.10 (http://modulestudio.de)
- */
-
-
-
-Loader::loadClass('PNKnowledgeBase', 'modules/KnowledgeBase/classes');
 
 /**
  * This class provides basic functionality of PNTicketBase
  */
-abstract class PNTicketBase extends PNKnowledgeBase
+abstract class KnowledgeBase_DBObject_Base_Ticket extends KnowledgeBase_DBObject_Base_Knowledge
 {
     /**
      * Constructor, init everything to sane defaults and handle parameters.
@@ -38,10 +31,10 @@ abstract class PNTicketBase extends PNKnowledgeBase
      * @param key         The DB key to use to retrieve the object (optional) (default=null)
      * @param field       The field containing the key value (optional) (default=null)
      */
-    function PNTicketBase($init = null, $key = 0, $field = null)
+    function __construct($init = null, $key = 0, $field = null)
     {
         // call base class constructor
-        $this->PNObject();
+        parent::__construct();
 
         // set the tablename this object maps to
 

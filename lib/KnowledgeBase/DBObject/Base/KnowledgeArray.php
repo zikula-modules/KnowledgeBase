@@ -17,8 +17,8 @@
 
 /**
  * This is a base class encapsulating the generic functionality which is
- * common for all PNObject types in the KnowledgeBase module
+ * common for all PNObjectArray types in the KnowledgeBase module
  */
-class PNKnowledgeBase extends PNObject
+class KnowledgeBase_DBObject_Base_KnowledgeArray extends DBObjectArray
 {
 }

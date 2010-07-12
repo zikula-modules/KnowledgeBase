@@ -56,7 +56,7 @@ function KnowledgeBase_searchapi_options($args)
     }
 // DEBUG: permission check aspect ends
 
-    $render = pnRender::getInstance('KnowledgeBase');
+    $render = Zikula_View::getInstance('KnowledgeBase');
     $render->assign('active', (isset($args['active']) && isset($args['active']['KnowledgeBase'])) || !isset($args['active']));
     return $render->fetch('KnowledgeBase_search.htm');
 }
@@ -78,8 +78,8 @@ function KnowledgeBase_searchapi_search($args)
 
     $dom = ZLanguage::getModuleDomain('KnowledgeBase');
 
-    pnModDBInfoLoad('Search');
-    $tables       = pnDBGetTables();
+    ModUtil::dbInfoLoad('Search');
+    $tables       = DBUtil::getTables();
     $kbasetable   = $tables['kbase_ticket'];
     $kbasecolumn  = $tables['kbase_ticket_column'];
     $searchTable  = $tables['search_result'];
@@ -121,7 +121,7 @@ function KnowledgeBase_searchapi_search($args)
         $sql = $insertSql . '('
                 . '\'' . DataUtil::formatForStore($kbaseItem['subject']) . '\', '
                 . '\'' . DataUtil::formatForStore($kbaseItem['content']) . '\', '
-                . '\'' . DataUtil::formatForStore(pnModURL('KnowledgeBase', 'user', 'display', array('id' => $kbaseItem['ticketid']))) . '\', '
+                . '\'' . DataUtil::formatForStore(ModUtil::url('KnowledgeBase', 'user', 'display', array('id' => $kbaseItem['ticketid']))) . '\', '
                 . '\'' . 'KnowledgeBase' . '\', '
                 . '\'' . DataUtil::formatForStore($kbaseItem['cr_date']) . '\', '
                 . '\'' . DataUtil::formatForStore($sessionId) . '\')';

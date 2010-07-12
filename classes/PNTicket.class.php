@@ -46,10 +46,10 @@ class PNTicket extends PNTicketBase
 
         $data['subjectStripped'] = str_replace('"', '\'', $data['subject']);
 
-        $data['detailurl'] = pnModURL('KnowledgeBase', 'user', 'display', array('id' => $data['ticketid']));
+        $data['detailurl'] = ModUtil::url('KnowledgeBase', 'user', 'display', array('id' => $data['ticketid']));
         $data['detailurlFormatted'] = DataUtil::formatForDisplay($data['detailurl']);
 
-        $data['editurl'] = pnModURL('KnowledgeBase', 'user', 'edit', array('id' => $data['ticketid']));
+        $data['editurl'] = ModUtil::url('KnowledgeBase', 'user', 'edit', array('id' => $data['ticketid']));
         $data['editurlFormatted'] = DataUtil::formatForDisplay($data['editurl']);
 
         $this->_objData = $data;
@@ -75,7 +75,7 @@ class PNTicket extends PNTicketBase
         if (!in_array($mode, array('create', 'update', 'delete'))) {
             return true;
         }
-        pnModCallHooks('item', $mode, str_replace('kbase_', '', strtolower($this->_objType)) . $this->getID(), array('module' => 'KnowledgeBase', 'ot' => str_replace('kbase_', '', $this->_objType)));
+        ModUtil::callHooks('item', $mode, str_replace('kbase_', '', strtolower($this->_objType)) . $this->getID(), array('module' => 'KnowledgeBase', 'ot' => str_replace('kbase_', '', $this->_objType)));
         return true;
     }
 }

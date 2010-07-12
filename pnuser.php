@@ -44,10 +44,10 @@ function KnowledgeBase_user_main($args)
     }
 // DEBUG: permission check aspect ends
 
-    // get pnRender instance for this module
-    $render = pnRender::getInstance('KnowledgeBase', false);
+    // get view instance for this module
+    $render = Zikula_View::getInstance('KnowledgeBase', false);
 
-    $render->assign('categories', pnModAPIFunc('KnowledgeBase', 'user', 'getCategories', array('full' => false)));
+    $render->assign('categories', ModUtil::apiFunc('KnowledgeBase', 'user', 'getCategories', array('full' => false)));
 
     // fetch and return the appropriate template
     return KnowledgeBase_processRenderTemplate($render, 'user', '', 'main', $args);
@@ -75,7 +75,7 @@ function KnowledgeBase_user_view($args)
 
     $objectType = 'ticket';
 
-    list($objectData, $objcount) = pnModAPIFunc('KnowledgeBase', 'user', 'getTickets', array());
+    list($objectData, $objcount) = ModUtil::apiFunc('KnowledgeBase', 'user', 'getTickets', array());
 
     // parameter for used sorting field
     $sort = FormUtil::getPassedValue('sort', '', 'GET');
@@ -85,10 +85,10 @@ function KnowledgeBase_user_view($args)
     if ($sdir != 'asc' && $sdir != 'desc') $sdir = 'asc';
 
     // pagesize is the number of items displayed on a page for pagination
-    $pagesize = (int) ((isset($args['amount']) ? $args['amount'] : 100));//pnModGetVar('KnowledgeBase', 'pagesize', 10);
+    $pagesize = (int) ((isset($args['amount']) ? $args['amount'] : 100));//ModUtil::getVar('KnowledgeBase', 'pagesize', 10);
 
-    // get pnRender instance for this module
-    $render = pnRender::getInstance('KnowledgeBase', false);
+    // get view instance for this module
+    $render = Zikula_View::getInstance('KnowledgeBase', false);
 
     // assign the object-array we loaded above
     $render->assign('objectArray', $objectData);
@@ -127,13 +127,13 @@ function KnowledgeBase_user_display($args)
     // retrieve the ID of the object we wish to view
     $id = (int) FormUtil::getPassedValue('id', 0, 'GET');
     if (!$id) {
-        pn_exit('Invalid ' . $idField . ' [' . DataUtil::formatForDisplay($id) . '] received ...');
+        z_exit('Invalid ' . $idField . ' [' . DataUtil::formatForDisplay($id) . '] received ...');
     }
 
-    $objectData = pnModAPIFunc('KnowledgeBase', 'user', 'getTicket', array('id' => $id));
+    $objectData = ModUtil::apiFunc('KnowledgeBase', 'user', 'getTicket', array('id' => $id));
 
-    // get pnRender instance for this module
-    $render = pnRender::getInstance('KnowledgeBase', false);
+    // get view instance for this module
+    $render = Zikula_View::getInstance('KnowledgeBase', false);
 
     // assign the object we loaded above.
     // since the same code is used the handle the entry of the new object,

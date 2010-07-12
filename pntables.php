@@ -20,12 +20,12 @@
  *
  * This function is called internally by the core whenever the module is
  * loaded. It delivers the table information to the core.
- * It can be loaded explicitly using the pnModDBInfoLoad() API function.
+ * It can be loaded explicitly using the ModUtil::dbInfoLoad() API function.
  *
  * @author       Axel Guckelsberger
  * @return       array       The table information.
  */
-function KnowledgeBase_pntables()
+function KnowledgeBase_tables()
 {
     // Initialise table array
     $tables = array();

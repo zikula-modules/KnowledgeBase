@@ -93,7 +93,7 @@ function KnowledgeBase_delete()
 
 
     // remove all module vars
-    pnModDelVar('KnowledgeBase');
+    ModUtil::delVar('KnowledgeBase');
 
     // Deletion successful
     return true;
@@ -139,12 +139,12 @@ function KnowledgeBase_defaultcategories()
     Loader::loadClassFromModule('Categories', 'CategoryRegistry');
 
     // get the language file
-    $lang = pnUserGetLang();
+    $lang = UserUtil::getLang();
 
 
-    pnModDBInfoLoad('Categories');
+    ModUtil::dbInfoLoad('Categories');
 
-    $pntables = pnDBGetTables();
+    $pntables = DBUtil::getTables();
 
     $catcolumn = $pntables['categories_category_column'];
     $where = '';
@@ -240,7 +240,7 @@ function KnowledgeBase_defaultcategories()
     foreach ($mappingRootCats as $mappingRoot) {
         $rootCat = CategoryUtil::getCategoryByPath($mappingRoot['rootPath']);
 
-        $registry = new PNCategoryRegistry();
+        $registry = new Categories_DBObject_Registry();
         $registry->setDataField('modname', 'KnowledgeBase');
         $tableName = 'kbase_ticket';
         $registry->setDataField('table', $tableName);
@@ -248,7 +248,7 @@ function KnowledgeBase_defaultcategories()
         $registry->setDataField('category_id', $rootCat['id']);
         $registry->insert();
 
-        pnModSetVar('KnowledgeBase', 'baseCat' . $mappingRoot['prop'], $mappingRoot['rootPath']);
+        ModUtil::setVar('KnowledgeBase', 'baseCat' . $mappingRoot['prop'], $mappingRoot['rootPath']);
     }
 
     return true;

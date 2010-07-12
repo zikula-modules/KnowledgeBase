@@ -28,14 +28,14 @@ function KnowledgeBase_userapi_getCategories($args)
     Loader::loadClass('CategoryRegistryUtil');
     Loader::loadClass('CategoryUtil');
 
-    $baseCatPath = pnModGetVar('KnowledgeBase', 'baseCatTicketCategoryMain');
+    $baseCatPath = ModUtil::getVar('KnowledgeBase', 'baseCatTicketCategoryMain');
     $baseCat = CategoryRegistryUtil::getRegisteredModuleCategory('KnowledgeBase', 'kbase_ticket', 'TicketCategoryMain');
     $categories = CategoryUtil::getSubCategories($baseCat, $full);
     foreach ($categories as $k => $cat) {
         $categories[$k]['name'] = $cat['name'];
         $categories[$k]['nameStripped'] = str_replace('"', '\'', DataUtil::formatForDisplay($cat['name']));
         if (!isset($args['skipurlbuilding'])) {
-            $categories[$k]['viewurl'] = pnModURL('KnowledgeBase', 'user', 'view', array('cat' => $cat['id']));
+            $categories[$k]['viewurl'] = ModUtil::url('KnowledgeBase', 'user', 'view', array('cat' => $cat['id']));
             $categories[$k]['viewurlFormatted'] = DataUtil::formatForDisplay($categories[$k]['viewurl']);
         }
 
@@ -44,7 +44,7 @@ function KnowledgeBase_userapi_getCategories($args)
         $categories[$k]['level'] = count($relPathParts);
 
         if (!isset($args['skipticketassignment'])) {
-            list($objectData, $objcount) = pnModAPIFunc('KnowledgeBase', 'user', 'getTickets', array('category' => $cat['id'], 'term' => ''));
+            list($objectData, $objcount) = ModUtil::apiFunc('KnowledgeBase', 'user', 'getTickets', array('category' => $cat['id'], 'term' => ''));
             $categories[$k]['tickets'] = $objectData;
             $categories[$k]['ticketcount'] = $objcount;
         }
@@ -91,7 +91,7 @@ function KnowledgeBase_userapi_getTickets($args)
     $startnum = (int) ((isset($args['pos']) ? $args['pos'] : FormUtil::getPassedValue('pos', 1, 'GET')));
 
     // pagesize is the number of items displayed on a page for pagination
-    $pagesize = (int) ((isset($args['amount']) ? $args['amount'] : 100));//pnModGetVar('KnowledgeBase', 'pagesize', 10);
+    $pagesize = (int) ((isset($args['amount']) ? $args['amount'] : 100));//ModUtil::getVar('KnowledgeBase', 'pagesize', 10);
 
     // convenience vars to make code clearer
     $where = '';
@@ -225,7 +225,7 @@ function KnowledgeBase_userapi_encodeurl($args)
         // for the display function use either the title (if present) or the object's id
         $objectType = 'ticket';
 
-        $tables = pnDBGetTables();
+        $tables = DBUtil::getTables();
 
         if ($args['func'] == 'view') {
             $groupFolder = '';
@@ -233,7 +233,7 @@ function KnowledgeBase_userapi_encodeurl($args)
                 $currentCat = $args['args']['cat'];
                 unset($args['args']['cat']);
 
-                $cats = pnModAPIFunc('KnowledgeBase', 'user', 'getCategories', array('full' => true, 'skipurlbuilding' => true, 'skipticketassignment' => true));
+                $cats = ModUtil::apiFunc('KnowledgeBase', 'user', 'getCategories', array('full' => true, 'skipurlbuilding' => true, 'skipticketassignment' => true));
                 foreach ($cats as $cat) {
                     if ($cat['id'] != $currentCat) {
                         continue;
@@ -340,7 +340,7 @@ function KnowledgeBase_userapi_decodeurl($args)
     // set the correct function name based on our input
     if (empty($args['vars'][2])) {
         // no func and no vars = main
-        pnQueryStringSetVar('func', 'main');
+        System::queryStringSetVar('func', 'main');
         return true;
     } elseif (in_array($args['vars'][2], $funcs)) {
         return false;
@@ -359,17 +359,17 @@ function KnowledgeBase_userapi_decodeurl($args)
         $objectid = $matches[2];
         $extraargs = $matches[3];
 
-        pnQueryStringSetVar('func', 'display');
-        pnQueryStringSetVar('id', $objectid);
+        System::queryStringSetVar('func', 'display');
+        System::queryStringSetVar('id', $objectid);
     }
     elseif (preg_match('~^(\w+)/[^/.]+\.(\d+).pdf(?:/(\w+=.*))?$~', $url, $matches)) {
         $groupFolder = $matches[1];
         $objectid = $matches[2];
         $extraargs = $matches[3];
 
-        pnQueryStringSetVar('func', 'display');
-        pnQueryStringSetVar('id', $objectid);
-        pnQueryStringSetVar('pdf', '1');
+        System::queryStringSetVar('func', 'display');
+        System::queryStringSetVar('id', $objectid);
+        System::queryStringSetVar('pdf', '1');
 
     } elseif (preg_match('~^([^/]+)(?:/(\w+)(?:/[^/.]+\.(\d+|\w\w))?)?(?:/?|/(\w+=.*))$~', $url, $matches)) {
         $groupFolder = $matches[1];
@@ -380,17 +380,17 @@ function KnowledgeBase_userapi_decodeurl($args)
         $groupFolder = explode('_-_', $groupFolder);
         $groupFolder = $groupFolder[count($groupFolder)-1];
 
-        $cats = pnModAPIFunc('KnowledgeBase', 'user', 'getCategories', array('full' => true));
+        $cats = ModUtil::apiFunc('KnowledgeBase', 'user', 'getCategories', array('full' => true));
         foreach ($cats as $cat) {
             if ($groupFolder == DataUtil::formatForURL($cat['name']) || $groupFolder == $cat['name']) {
-                pnQueryStringSetVar('cat', $cat['id']);
+                System::queryStringSetVar('cat', $cat['id']);
                 break;
             }
         }
 
-        pnQueryStringSetVar('func', 'view');
+        System::queryStringSetVar('func', 'view');
     } else {
-        pnQueryStringSetVar('func', 'view');
+        System::queryStringSetVar('func', 'view');
     }
 
     //parse extraargs
@@ -399,7 +399,7 @@ function KnowledgeBase_userapi_decodeurl($args)
         if (is_array($vars)) {
             foreach ($vars as $var) {
                 list($k, $v) = explode('=', $var, 2);
-                pnQueryStringSetVar($k, $v);
+                System::queryStringSetVar($k, $v);
             }
         }
     }
@@ -410,7 +410,7 @@ function KnowledgeBase_userapi_decodeurl($args)
         if (!empty($urlfilter)) {
             $filter = $urlfilter .','.$filter; 
         }
-        pnQueryStringSetVar('filter', $filter);
+        System::queryStringSetVar('filter', $filter);
     }
 
     return true;

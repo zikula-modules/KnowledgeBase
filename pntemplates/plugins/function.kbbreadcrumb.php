@@ -31,7 +31,7 @@ function smarty_function_kbbreadcrumb($params, &$render)
 
     $result = '';
     if ($currentFunc != 'main') {
-        $result = '<a href="' . DataUtil::formatForDisplay(pnModURL('KnowledgeBase', 'user', 'main')) . '" title="' . __('Knowledge Base', $dom) . '">' . __('Knowledge Base', $dom) . '</a>';
+        $result = '<a href="' . DataUtil::formatForDisplay(ModUtil::url('KnowledgeBase', 'user', 'main')) . '" title="' . __('Knowledge Base', $dom) . '">' . __('Knowledge Base', $dom) . '</a>';
     }
     else {
         $result = __('Knowledge Base', $dom);
@@ -49,14 +49,14 @@ function smarty_function_kbbreadcrumb($params, &$render)
         $currentCat = FormUtil::getPassedValue('cat', 0, 'GET');
     }
     elseif ($currentFunc == 'display') {
-        $objectData = pnModAPIFunc('KnowledgeBase', 'user', 'getTicket', array('id' => $ticketID));
+        $objectData = ModUtil::apiFunc('KnowledgeBase', 'user', 'getTicket', array('id' => $ticketID));
         if (is_array($objectData)) {
             $currentCat = $objectData['__CATEGORIES__']['TicketCategoryMain']['id'];
         }
     }
 
     if ($currentCat > 0) {
-        $cats = pnModAPIFunc('KnowledgeBase', 'user', 'getCategories', array('full' => true));
+        $cats = ModUtil::apiFunc('KnowledgeBase', 'user', 'getCategories', array('full' => true));
         $lang = ZLanguage::getLanguageCode();
         foreach ($cats as $cat) {
             if ($cat['id'] != $currentCat) {

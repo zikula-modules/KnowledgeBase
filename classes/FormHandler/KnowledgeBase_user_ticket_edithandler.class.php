@@ -102,8 +102,8 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
             }
 
             // try to guarantee that only one person at a time can be editing this ticket
-            $returnUrl = pnModUrl('KnowledgeBase', 'user', 'display', array('id' => $this->ticketid));
-            pnModAPIFunc('PageLock', 'user', 'pageLock',
+            $returnUrl = ModUtil::url('KnowledgeBase', 'user', 'display', array('id' => $this->ticketid));
+            ModUtil::apiFunc('PageLock', 'user', 'pageLock',
                                  array('lockName' => "KnowledgeBaseTicket{$this->ticketid}",
                                        'returnUrl' => $returnUrl));
         }
@@ -202,7 +202,7 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
 
             LogUtil::registerStatus(__('Done! Ticket created.', $dom));
 
-            $returnUrl = pnModUrl('KnowledgeBase', 'user', 'display', array('id' => $this->ticketid));
+            $returnUrl = ModUtil::url('KnowledgeBase', 'user', 'display', array('id' => $this->ticketid));
         }
         elseif ($args['commandName'] == 'update') {
             // event handling if user clicks on update
@@ -230,7 +230,7 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
 
             LogUtil::registerStatus(__('Done! Ticket updated.', $dom));
 
-            $returnUrl = pnModUrl('KnowledgeBase', 'user', 'display', array('id' => $this->ticketid));
+            $returnUrl = ModUtil::url('KnowledgeBase', 'user', 'display', array('id' => $this->ticketid));
         }
         elseif ($args['commandName'] == 'delete') {
             // event handling if user clicks on delete
@@ -266,25 +266,25 @@ class KnowledgeBase_user_ticket_editHandler extends pnFormHandler
             LogUtil::registerStatus(__('Done! Ticket deleted.', $dom));
 
             // redirect to the list of tickets
-            $returnUrl = pnModUrl('KnowledgeBase', 'user', 'view');
+            $returnUrl = ModUtil::url('KnowledgeBase', 'user', 'view');
         }
         else if ($args['commandName'] == 'cancel') {
             // event handling if user clicks on cancel
 
             if ($this->mode == 'edit') {
                 // redirect to the detail page of the treated ticket
-                $returnUrl = pnModUrl('KnowledgeBase', 'user', 'display', array('id' => $this->ticketid));
+                $returnUrl = ModUtil::url('KnowledgeBase', 'user', 'display', array('id' => $this->ticketid));
             }
             else {
                 // redirect to the list of tickets
-                $returnUrl = pnModUrl('KnowledgeBase', 'user', 'view');
+                $returnUrl = ModUtil::url('KnowledgeBase', 'user', 'view');
             }
         }
 
 
         if ($returnUrl != null) {
             if ($this->mode == 'edit') {
-                pnModAPIFunc('PageLock', 'user', 'releaseLock',
+                ModUtil::apiFunc('PageLock', 'user', 'releaseLock',
                                  array('lockName' => "KnowledgeBaseTicket{$this->ticketid}"));
             }
 

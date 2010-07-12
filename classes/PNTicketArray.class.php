@@ -40,10 +40,10 @@ class PNTicketArray extends PNTicketArrayBase
         foreach ($objArray as $k => $data) {
             $objArray[$k]['subjectStripped'] = str_replace('"', '\'', $data['subject']);
 
-            $objArray[$k]['detailurl'] = pnModURL('KnowledgeBase', 'user', 'display', array('id' => $data['ticketid']));
+            $objArray[$k]['detailurl'] = ModUtil::url('KnowledgeBase', 'user', 'display', array('id' => $data['ticketid']));
             $objArray[$k]['detailurlFormatted'] = DataUtil::formatForDisplay($objArray[$k]['detailurl']);
 
-            $objArray[$k]['editurl'] = pnModURL('KnowledgeBase', 'user', 'edit', array('id' => $data['ticketid']));
+            $objArray[$k]['editurl'] = ModUtil::url('KnowledgeBase', 'user', 'edit', array('id' => $data['ticketid']));
             $objArray[$k]['editurlFormatted'] = DataUtil::formatForDisplay($objArray[$k]['editurl']);
         }
 

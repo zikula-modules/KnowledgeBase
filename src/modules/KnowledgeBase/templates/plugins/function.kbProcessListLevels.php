@@ -24,7 +24,7 @@
  * @param        string      $assign      (optional) The name of the variable to assign the result to
  * @return       string      The recent users language
  */
-function smarty_function_kbProcessListLevels($params, &$render)
+function smarty_function_kbProcessListLevels($params, $render)
 {
     $dom = ZLanguage::getModuleDomain('KnowledgeBase');
     if (!isset($params['level']) || !isset($params['lastlevel'])) {

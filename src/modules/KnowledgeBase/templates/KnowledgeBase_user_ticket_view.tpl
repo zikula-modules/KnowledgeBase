@@ -57,7 +57,7 @@
 </p>
 
 {modurl modname="KnowledgeBase" func="view" startnum=$startnum assign="returnurl"}
-{modcallhooks hookobject="category" hookaction="display" module="KnowledgeBaseticket" returnurl=$returnurl}
+{* modcallhooks hookobject="category" hookaction="display" module="KnowledgeBaseticket" returnurl=$returnurl *}
 </div>
 <div id="kbrightside">
     {include file="KnowledgeBase_include_rightblocks.tpl"}

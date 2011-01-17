@@ -22,7 +22,7 @@
  * @param        object      &$render     Reference to the Smarty object
  * @return       string      The output of the plugin
  */
-function smarty_block_knowledgebaseFormFrame($params, $content, &$render)
+function smarty_block_knowledgebaseFormFrame($params, $content, $render)
 {
     // As with all pnForms plugins, we must remember to register our plugin.
     // In this case we also register a validation summary so we don't have to

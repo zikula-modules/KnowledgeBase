@@ -46,7 +46,7 @@
 <br style="clear: left" />
 
 {modurl modname="KnowledgeBase" func="main" assign="returnurl"}
-{modcallhooks hookobject="category" hookaction="display" module="KnowledgeBaseticket" returnurl=$returnurl}
+{* modcallhooks hookobject="category" hookaction="display" module="KnowledgeBaseticket" returnurl=$returnurl *}
 
 </div>
 

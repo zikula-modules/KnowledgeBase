@@ -26,13 +26,13 @@ class KnowledgeBase_Util
     /**
      * utility function for managing render templates
      */
-    public static function processRenderTemplate(&$render, $type, $objectType, $func, $args=array())
+    public static function processRenderTemplate($view, $type, $objectType, $func, $args=array())
     {
         $template = DataUtil::formatForOS('KnowledgeBase_' . $type);
         if (!empty($objectType)) $template .= '_' . DataUtil::formatForOS(strtolower($objectType));
         $template .= '_' . DataUtil::formatForOS($func);
         $tpl = FormUtil::getPassedValue('tpl', isset($args['tpl']) ? $args['tpl'] : '');
-        if (!empty($tpl) && $render->template_exists($template . '_' . DataUtil::formatForOS($tpl) . '.tpl')) {
+        if (!empty($tpl) && $view->template_exists($template . '_' . DataUtil::formatForOS($tpl) . '.tpl')) {
             $template .= '_' . DataUtil::formatForOS($tpl);
         }
         $template .= '.tpl';
@@ -40,12 +40,12 @@ class KnowledgeBase_Util
         $raw = FormUtil::getPassedValue('raw', (isset($args['raw']) && is_bool($args['raw'])) ? $args['raw'] : false);
         if ($raw == true) {
             // standalone output
-            $render->display($template);
+            $view->display($template);
             return true;
         }
 
         // normal output
-        return $render->fetch($template);
+        return $view->fetch($template);
     }
 
     /**

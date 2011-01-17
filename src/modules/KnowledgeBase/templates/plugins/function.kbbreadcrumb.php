@@ -22,7 +22,7 @@
  * @param        object      &$render     Reference to the Smarty object
  * @return       string      The output of the plugin
  */
-function smarty_function_kbbreadcrumb($params, &$render)
+function smarty_function_kbbreadcrumb($params, $render)
 {
     $currentFunc = FormUtil::getPassedValue('func', 'main', 'GET');
 

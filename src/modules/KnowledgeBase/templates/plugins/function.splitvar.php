@@ -26,7 +26,7 @@
 * @param Smarty
 * @return null
 */
-function smarty_function_splitvar($params, &$smarty)
+function smarty_function_splitvar($params, $smarty)
 {
     if (!isset($params['var'])) {
         $smarty->trigger_error("splitvar: missing var parameter");
@@ -38,7 +38,7 @@ function smarty_function_splitvar($params, &$smarty)
     }
 
     $_delim = (empty($params['delim'])) ? '|' : $params['delim'];
-    $smarty->assign($params['assign'],explode($_delim, $params['var']));
+    $smarty->assign($params['assign'], explode($_delim, $params['var']));
 
     return;
 }

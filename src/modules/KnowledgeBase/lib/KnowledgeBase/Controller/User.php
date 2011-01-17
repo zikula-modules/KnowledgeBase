@@ -144,7 +144,7 @@ class KnowledgeBase_Controller_User extends Zikula_Controller
         }
 
         // create new pnForm reference
-        $this->view = FormUtil::newForm('KnowledgeBase');
+        $this->view = FormUtil::newForm('KnowledgeBase', $this);
 
         // Execute form using supplied template and page event handler
         return $this->view->execute('KnowledgeBase_user_ticket_edit.tpl', new KnowledgeBase_Form_Handler_TicketEdit());

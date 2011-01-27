@@ -1,0 +1,4 @@
+CHANGELOG
+---------
+
+Changes in KnowledgeBase 1.0.0

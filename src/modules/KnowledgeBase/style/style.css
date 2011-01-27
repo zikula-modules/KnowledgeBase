@@ -1,18 +1,89 @@
+
+/* view pages */
+div#z-maincontent.z-module-knowledgebase table tbody tr td {
+    vertical-align: top;
+}
+
+/* display pages */
+div.knowledgebaseRightBox {
+    float: right;
+    margin: 0 1em;
+    padding: .5em;
+    /*border: 1px solid #666;*/
+}
+
+div.knowledgebaseRightBox h3 {
+    color: #333;
+    font-weight: 400;
+    border-bottom: 1px solid #CCC;
+    padding-bottom: 8px;
+}
+
+div.knowledgebaseRightBox p.manageLink {
+    margin-left: 18px;
+}
+
+.knowledgebaseIconNew,
+div.knowledgebaseRightBox p.manageLink a {
+    background: url("../../../images/icons/extrasmall/edit_add.gif") no-repeat scroll 0 50% transparent;
+    display: block;
+    margin: 1em 0;
+    padding: 0 0 0 20px;
+}
+
+/* validation */
+input.required, textarea.required {
+    border: 1px solid #00a8e6;
+}
+input.validation-failed, textarea.validation-failed {
+    border: 1px solid #f30;
+    color : #f30;
+}
+input.validation-passed, textarea.validation-passed {
+    border: 1px solid #0c0;
+    color : #000;
+}
+
+.validation-advice {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #f90;
+    color : #fff;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 div.linktabs {
 margin-bottom: 10px;
 }
 
 div.knowledgebaseRightBox {
-float: right;
-margin: 0 1em;
-padding: .5em;
 border: 1px solid #666;
 }
 
 div.knowledgebaseRightBox p.manageLink {
 margin-left: 18px;
 }
-
+*/
 div#kbleftside {
 width: 72%;
 float: left;

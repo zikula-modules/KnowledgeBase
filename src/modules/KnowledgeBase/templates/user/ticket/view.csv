@@ -1,0 +1,6 @@
+{* purpose of this template: tickets view csv view in user area *}
+{knowledgebaseTemplateHeaders contentType='text/comma-separated-values; charset=iso-8859-15' asAttachment=true filename='Tickets.csv'}
+"{gt text='Subject'}";"{gt text='Content'}";"{gt text='Views'}";"{gt text='Rates up'}";"{gt text='Rates down'}"{foreach item='ticket' from=$items}
+"{$ticket.subject}";"{$ticket.content|replace:"\"":""}";"{$ticket.views|replace:"\"":""}";"{$ticket.ratesUp|replace:"\"":""}";"{$ticket.ratesDown|replace:"\"":""}"
+{/foreach}
+

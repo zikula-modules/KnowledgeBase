@@ -67,11 +67,11 @@ class KnowledgeBase_Model_TicketTable extends KnowledgeBase_Model_Base_TicketTab
      * @param boolean $useJoins         Whether to include joining related objects (optional) (default=true).
      * @return Doctrine_Query query instance to be further processed
      */
-    private function _intBaseQuery($where = '', $orderBy = '', $useJoins = true)
+    protected function _intBaseQuery($where = '', $orderBy = '', $useJoins = true)
     {
         $selection = 'tbl.*' . (($orderBy == 'RAND()') ? ', RANDOM() rand' : '');
         if ($useJoins === true) {
-            $selection = $this->addJoinsToSelection($selection);
+            $selection = parent::addJoinsToSelection($selection);
         }
 
         // create base selection query
@@ -81,11 +81,11 @@ class KnowledgeBase_Model_TicketTable extends KnowledgeBase_Model_Base_TicketTab
 
         // add join information
         if ($useJoins === true) {
-            $this->addJoinsToFrom($q);
+            parent::addJoinsToFrom($q);
         }
 
         if (!empty($where)) {
-            $q->where('tbl.' . $where);
+            $q->where(/*'tbl.' . */$where);
         }
 
         // use FilterUtil to support generic filtering
@@ -112,30 +112,6 @@ class KnowledgeBase_Model_TicketTable extends KnowledgeBase_Model_Base_TicketTab
 
         // process request input filters and add them to the query.
         $fu->enrichQuery($q);
-
-/** TODO apply category filters by using Categorisable behavior
-        // category filters
-        $category = ((isset($args['category']) ? $args['category'] : FormUtil::getPassedValue('cat', 0, 'GET')));
-        if ($category > 0) {
-            $catProp = 'TicketCategoryMain';
-            $catValue = $category;
-            // add category filter including sub categories
-            Loader::loadClass('CategoryUtil');
-
-            if (!is_array($objectArray->_objCategoryFilter)) {
-                $objectArray->_objCategoryFilter = array();
-            }
-
-            $categoryWithSubIDs = array($catValue);
-            $subCats = CategoryUtil::getSubCategories($catValue);
-
-            foreach($subCats as $subCat) {
-                $categoryWithSubIDs[] = $subCat['id'];
-            }
-
-            $objectArray->_objCategoryFilter[$catProp] = $categoryWithSubIDs;
-        }
-*/
 
         // add order by clause
         if (!empty($orderBy)) {

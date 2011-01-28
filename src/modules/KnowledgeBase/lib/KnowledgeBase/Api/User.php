@@ -92,6 +92,26 @@ class KnowledgeBase_Api_User extends KnowledgeBase_Api_Base_User
         $where = '';
         $sortParam = $sort . ' ' . $sdir;
 
+        // category filters
+        $category = ((isset($args['category']) ? $args['category'] : FormUtil::getPassedValue('cat', 0, 'GET')));
+        if ($category > 0) {
+            $catProp = 'TicketCategoryMain';
+            $catValue = $category;
+            // add category filter including sub categories
+
+            $categoryFilter = array();
+
+            $categoryWithSubIDs = array($catValue);
+            $subCats = CategoryUtil::getSubCategories($catValue);
+
+            foreach($subCats as $subCat) {
+                $categoryWithSubIDs[] = $subCat['id'];
+            }
+
+            $categoryFilter[$catProp] = $categoryWithSubIDs;
+            $where = 'tbl.Categories.Category.id IN (' . implode(',', $categoryWithSubIDs) . ')';
+        }
+
         // get() returns the cached object fetched from the DB during object instantiation
         // get() with parameters always performs a new select
         // while the result will be saved in the object, we assign in to a local variable for convenience.

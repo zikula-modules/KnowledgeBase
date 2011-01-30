@@ -149,7 +149,7 @@ class KnowledgeBase_Model_Base_TicketTable extends Doctrine_Table
      * @param boolean $useJoins         Whether to include joining related objects (optional) (default=true).
      * @return Doctrine_Query query instance to be further processed
      */
-    private function _intBaseQuery($where = '', $orderBy = '', $useJoins = true)
+    protected function _intBaseQuery($where = '', $orderBy = '', $useJoins = true)
     {
         $selection = 'tbl.*' . (($orderBy == 'RAND()') ? ', RANDOM() rand' : '');
         if ($useJoins === true) {
@@ -197,7 +197,7 @@ class KnowledgeBase_Model_Base_TicketTable extends Doctrine_Table
      *
      * @param String $selection           Input select string to be enhanced
      */
-    private function addJoinsToSelection($selection)
+    protected function addJoinsToSelection($selection)
     {
         $selection .= '';
         return $selection;
@@ -208,7 +208,7 @@ class KnowledgeBase_Model_Base_TicketTable extends Doctrine_Table
      *
      * @param Doctrine_Query $q           Reference to query to be enriched
      */
-    private function addJoinsToFrom(Doctrine_Query $q)
+    protected function addJoinsToFrom(Doctrine_Query $q)
     {
     }
 }

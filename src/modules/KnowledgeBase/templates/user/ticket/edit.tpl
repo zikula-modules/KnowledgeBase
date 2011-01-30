@@ -54,7 +54,7 @@
         {else}
             {assign var='selectedValue' value='0'}
         {/if}
-            {formcategoryselector id=$property mandatory=true __title='Choose the category' category=$category enableDoctrine=true selectedValue=$selectedValue defaultValue='0' editLink=false}
+            {formcategoryselector group='ticket' id=$property mandatory=true __title='Choose the category' category=$category enableDoctrine=true selectedValue=$selectedValue defaultValue='0' editLink=false}
         {/foreach}
         </div>
     </fieldset>

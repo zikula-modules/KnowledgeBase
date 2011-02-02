@@ -45,12 +45,12 @@ class KnowledgeBase_Model_Base_TicketListener extends Doctrine_Record_Listener
 
         $data = $event->data;
 
-        $data['ticketid'] = ((isset($data['ticketid']) && !empty($data['ticketid'])) ? DataUtil::formatForDisplay($data['ticketid']) : '');
+        $data['ticketid'] = (int) ((isset($data['ticketid']) && !empty($data['ticketid'])) ? DataUtil::formatForDisplay($data['ticketid']) : 0);
         $data['subject'] = ((isset($data['subject']) && !empty($data['subject'])) ? DataUtil::formatForDisplayHTML($data['subject']) : '');
         $data['content'] = ((isset($data['content']) && !empty($data['content'])) ? DataUtil::formatForDisplayHTML($data['content']) : '');
-        $data['views'] = ((isset($data['views']) && !empty($data['views'])) ? DataUtil::formatForDisplay($data['views']) : '');
-        $data['ratesUp'] = ((isset($data['ratesUp']) && !empty($data['ratesUp'])) ? DataUtil::formatForDisplay($data['ratesUp']) : '');
-        $data['ratesDown'] = ((isset($data['ratesDown']) && !empty($data['ratesDown'])) ? DataUtil::formatForDisplay($data['ratesDown']) : '');
+        $data['views'] = (int) ((isset($data['views']) && !empty($data['views'])) ? DataUtil::formatForDisplay($data['views']) : 0);
+        $data['ratesUp'] = (int) ((isset($data['ratesUp']) && !empty($data['ratesUp'])) ? DataUtil::formatForDisplay($data['ratesUp']) : 0);
+        $data['ratesDown'] = (int) ((isset($data['ratesDown']) && !empty($data['ratesDown'])) ? DataUtil::formatForDisplay($data['ratesDown']) : 0);
 
 
         $event->data = $data;

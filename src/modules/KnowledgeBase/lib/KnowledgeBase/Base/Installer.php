@@ -23,7 +23,7 @@ class KnowledgeBase_Base_Installer extends Zikula_Installer
      */
     public function install()
     {
-        // create all tables from according model definitions
+        // Create all tables from according model definitions
         try {
             DoctrineUtil::createTablesFromModels('KnowledgeBase');
         } catch (Exception $e) {
@@ -38,11 +38,11 @@ class KnowledgeBase_Base_Installer extends Zikula_Installer
         // Register persistent event handlers
         $this->registerPersistentEventHandlers();
 
-        // register hook subscriber bundles
+        // Register hook subscriber bundles
         HookUtil::registerHookSubscriberBundles($this->version);
 
 
-        // create the default data for KnowledgeBase
+        // Create the default data for KnowledgeBase
         //$this->defaultdata();
         // TODO: deactivated for now because constraints prevent data creation in random order (see #64)
 
@@ -94,7 +94,7 @@ class KnowledgeBase_Base_Installer extends Zikula_Installer
         $sql = 'DELETE FROM ' . $table . ' WHERE ' . $column['modname'] . ' = \'KnowledgeBase\' AND ' . $column['table'] . ' = \'kbase_ticket\'';
         $res = DBUtil::executeSQL($sql);
 
-            // remove tables
+            // Remove tables
             DoctrineUtil::dropIndex('kbase_ticket', $dbPrefix . '_kbase_ticket_sluggable');
             DoctrineUtil::dropTable('kbase_ticket');
         } catch (Exception $e) {
@@ -105,8 +105,8 @@ class KnowledgeBase_Base_Installer extends Zikula_Installer
         }
 
 
-        // Unregister persistent event handlers
-        $this->unregisterPersistentEventHandlers();
+        // Unregister event handlers
+        EventUtil::unregisterPersistentModuleHandlers('KnowledgeBase');
 
 
         // Deletion successful
@@ -164,7 +164,8 @@ class KnowledgeBase_Base_Installer extends Zikula_Installer
         // themes and views
         EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.init', array('KnowledgeBase_Listeners', 'themeInit'));
         EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.load_config', array('KnowledgeBase_Listeners', 'themeLoadConfig'));
-        EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.prefooter', array('KnowledgeBase_Listeners', 'themePrefooter'));
+        EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.prefooter', array('KnowledgeBase_Listeners', 'themePreFooter'));
+        EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.postfooter', array('KnowledgeBase_Listeners', 'themePostFooter'));
         EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'view.init', array('KnowledgeBase_Listeners', 'viewInit'));
         EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'view.fetch', array('KnowledgeBase_Listeners', 'viewFetch'));
 
@@ -185,60 +186,5 @@ class KnowledgeBase_Base_Installer extends Zikula_Installer
 
         // special purposes and 3rd party api support
         EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'get.pending_content', array('KnowledgeBase_Listeners', 'pendingContentListener'));
-    }
-
-    /**
-     * Unregister persistent event handlers.
-     * These are listeners for external events of the core and other modules.
-     */
-    private function unregisterPersistentEventHandlers()
-    {
-        // core
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'api.method_not_found', array('KnowledgeBase_Listeners', 'coreApiMethodNotFound'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'core.preinit', array('KnowledgeBase_Listeners', 'corePreInit'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'core.init', array('KnowledgeBase_Listeners', 'coreInit'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'core.postinit', array('KnowledgeBase_Listeners', 'corePostInit'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'controller.method_not_found', array('KnowledgeBase_Listeners', 'coreControllerMethodNotFound'));
-
-        // modules
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'installer.module.installed', array('KnowledgeBase_Listeners', 'installerModuleInstalled'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'installer.module.upgraded', array('KnowledgeBase_Listeners', 'installerModuleUpgraded'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'installer.module.uninstalled', array('KnowledgeBase_Listeners', 'installerModuleUninstalled'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'module_dispatch.postloadgeneric', array('KnowledgeBase_Listeners', 'moduleDispatchPostLoadGeneric'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'module_dispatch.preexecute', array('KnowledgeBase_Listeners', 'moduleDispatchPreExecute'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'module_dispatch.postexecute', array('KnowledgeBase_Listeners', 'moduleDispatchPostExecute'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'module_dispatch.custom_classname', array('KnowledgeBase_Listeners', 'moduleDispatchCustomClassname'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'module.mailer.api.sendmessage', array('KnowledgeBase_Listeners', 'moduleMailerApiSendmessage'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'pageutil.addvar_filter', array('KnowledgeBase_Listeners', 'pageutilAddvarFilter'));
-
-        // errors
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'setup.errorreporting', array('KnowledgeBase_Listeners', 'setupErrorReporting'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'system.outputfilter', array('KnowledgeBase_Listeners', 'systemOutputfilter'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'systemerror', array('KnowledgeBase_Listeners', 'systemError'));
-
-        // themes and views
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'theme.init', array('KnowledgeBase_Listeners', 'themeInit'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'theme.load_config', array('KnowledgeBase_Listeners', 'themeLoadConfig'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'theme.prefooter', array('KnowledgeBase_Listeners', 'themePrefooter'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'view.init', array('KnowledgeBase_Listeners', 'viewInit'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'view.fetch', array('KnowledgeBase_Listeners', 'viewFetch'));
-
-        // users and groups
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'user.login', array('KnowledgeBase_Listeners', 'userLogin'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'user.login.failed', array('KnowledgeBase_Listeners', 'userLoginFailed'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'user.logout', array('KnowledgeBase_Listeners', 'userLogout'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'user.logout.failed', array('KnowledgeBase_Listeners', 'userLogoutFailed'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'user.gettheme', array('KnowledgeBase_Listeners', 'userGetTheme'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'user.create', array('KnowledgeBase_Listeners', 'userCreate'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'user.update', array('KnowledgeBase_Listeners', 'userUpdate'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'user.delete', array('KnowledgeBase_Listeners', 'userDelete'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'group.create', array('KnowledgeBase_Listeners', 'groupCreate'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'group.update', array('KnowledgeBase_Listeners', 'groupUpdate'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'group.delete', array('KnowledgeBase_Listeners', 'groupDelete'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'group.adduser', array('KnowledgeBase_Listeners', 'groupAddUser'));
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'group.removeuser', array('KnowledgeBase_Listeners', 'groupRemoveUser'));
-
-        // special purposes and 3rd party api support
-        EventUtil::unregisterPersistentModuleHandler('KnowledgeBase', 'get.pending_content', array('KnowledgeBase_Listeners', 'pendingContentListener'));
     }
 }

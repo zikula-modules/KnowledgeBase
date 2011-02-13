@@ -31,9 +31,9 @@
  *   and reading of data from the database.
  *
  * - <b>handleCommand</b>: this event is fired by various plugins on the page. Typically it is done by the
- *   Form_Plugin_Button plugin to signal that the user activated a button.
+ *   Zikula_Form_Plugin_Button plugin to signal that the user activated a button.
  */
-class KnowledgeBase_Form_Handler_Base_User_Ticket_Edit extends Form_Handler
+class KnowledgeBase_Form_Handler_Base_User_Ticket_Edit extends Zikula_Form_Handler
 {
     /**
      * Persistent member vars
@@ -226,12 +226,12 @@ class KnowledgeBase_Form_Handler_Base_User_Ticket_Edit extends Form_Handler
      * Command event handler.
      *
      * This event handler is called when a command is issued by the user. Commands are typically something
-     * that originates from a {@link Form_Plugin_Button} plugin. The passed args contains different properties
+     * that originates from a {@link Zikula_Form_Plugin_Button} plugin. The passed args contains different properties
      * depending on the command source, but you should at least find a <var>$args['commandName']</var>
      * value indicating the name of the command. The command name is normally specified by the plugin
      * that initiated the command.
-     * @see Form_Plugin_Button
-     * @see Form_Plugin_ImageButton
+     * @see Zikula_Form_Plugin_Button
+     * @see Zikula_Form_Plugin_ImageButton
      */
     public function handleCommand($view, &$args)
     {

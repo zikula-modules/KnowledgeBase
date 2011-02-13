@@ -18,7 +18,7 @@
  *   - assign:   If set, the results are assigned to the corresponding variable instead of printed out.
  *
  * @param  array     $params  All attributes passed to this function from the template.
- * @param  Form_View $view    Reference to the view object.
+ * @param  Zikula_Form_View $view    Reference to the view object.
  *
  * @return string The output of the plugin.
  */

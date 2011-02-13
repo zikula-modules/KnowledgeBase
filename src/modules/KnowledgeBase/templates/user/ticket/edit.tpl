@@ -138,7 +138,7 @@
 
     document.observe('dom:loaded', function() {
 
-        var valid = new Validation('FormForm', {onSubmit: false, immediate: true, focusOnError: false});
+        var valid = new Validation('{{$__formid}}', {onSubmit: false, immediate: true, focusOnError: false});
         {{if $mode ne 'create'}}
             var result = valid.validate();
         {{/if}}

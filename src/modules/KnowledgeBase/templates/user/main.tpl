@@ -12,7 +12,7 @@
 {gt text='Create ticket' assign='createTitle'}
 <p>
     <a href="{modurl modname='KnowledgeBase' type='user' func='edit'}" title="{$createTitle}">
-        {img src='insert_table_row.gif' modname='core' set='icons/extrasmall' __alt='Create'}
+        {img src='insert_table_row.png' modname='core' set='icons/extrasmall' __alt='Create'}
         {$createTitle}
     </a>
 </p>

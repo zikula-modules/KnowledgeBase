@@ -14,11 +14,11 @@
 <h2>{$ticket.subject|notifyfilters:'knowledgebase.filterhook.tickets'}
     {checkpermissionblock component='KnowledgeBase::' instance='.*' level='ACCESS_EDIT'}
         <a href="{modurl modname='KnowledgeBase' type='user' func='edit' ot='ticket' ticketid=$ticket.ticketid}" title="{gt text='Edit'}">
-            {img src='xedit.gif' modname='core' set='icons/extrasmall' __alt='Edit'}
+            {img src='xedit.png' modname='core' set='icons/extrasmall' __alt='Edit'}
             {gt text='Edit'}
         </a>
         <a href="{modurl modname='KnowledgeBase' type='user' func='edit' ot='ticket' astemplate=$ticket.ticketid}" title="{gt text='Reuse for new item'}">
-            {img src='filesaveas.gif' modname='core' set='icons/extrasmall' __alt='Reuse'}
+            {img src='filesaveas.png' modname='core' set='icons/extrasmall' __alt='Reuse'}
             {gt text='Reuse'}
         </a>
     {/checkpermissionblock}
@@ -51,7 +51,7 @@
 <div class="kbthirdblock" id="kbhotornot" style="display: none">
     <h3>{gt text='Hot or not'}</h3>
     <p><span id="amountlikes">{$ticket.ratesUp|default:'0'}</span> {gt text='likes'}, <span id="amountdislikes">{$ticket.ratesDown|default:'0'}</span> {gt text='dislikes'}</p>
-    <p><a href="" id="linklikeit">{img modname='core' set='icons/extrasmall' src='1uparrow.gif' __alt='Like it'} {gt text='This answer was helpful'}</a><br /><a href="" id="linkdislikeit">{img modname='core' set='icons/extrasmall' src='1downarrow.gif' __alt='Dislike it'} {gt text='This answer was not helpful'}</a></p>
+    <p><a href="" id="linklikeit">{img modname='core' set='icons/extrasmall' src='1uparrow.png' __alt='Like it'} {gt text='This answer was helpful'}</a><br /><a href="" id="linkdislikeit">{img modname='core' set='icons/extrasmall' src='1downarrow.png' __alt='Dislike it'} {gt text='This answer was not helpful'}</a></p>
 </div>
 <br style="clear: left" />
 
@@ -61,7 +61,7 @@
 {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
 <p>
     <a href="{modurl modname='KnowledgeBase' type='user' func='view'}" title="{gt text='Back to overview'}">
-        {img src='agt_back.gif' modname='core' set='icons/extrasmall' __alt='Back'}
+        {img src='agt_back.png' modname='core' set='icons/extrasmall' __alt='Back'}
         {gt text='Back to overview'}
     </a>
 </p>

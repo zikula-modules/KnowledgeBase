@@ -24,10 +24,10 @@
     <dt>
     {checkpermissionblock component='KnowledgeBase::' instance='.*' level='ACCESS_EDIT'}
         <a href="{$ticket.editurlFormatted}" title="{gt text='Edit'}">
-            {img src='xedit.gif' modname='core' set='icons/extrasmall' __alt='Edit'}
+            {img src='xedit.png' modname='core' set='icons/extrasmall' __alt='Edit'}
         </a>
         <a href="{modurl modname='KnowledgeBase' type='user' func='edit' ot='ticket' astemplate=$ticket.ticketid}" title="{gt text='Reuse for new item'}">
-            {img src='filesaveas.gif' modname='core' set='icons/extrasmall' __alt='Reuse'}
+            {img src='filesaveas.png' modname='core' set='icons/extrasmall' __alt='Reuse'}
         </a>
     {/checkpermissionblock}
         <a href="{$ticket.detailurlFormatted}" title="{gt text="Details of '%s'" tag1=$ticket.subjectStripped}">
@@ -55,7 +55,7 @@
 
     <p>
         <a href="{modurl modname='KnowledgeBase' type='user' func='main'}" title="{gt text='Back to category list'}">
-            {img src='agt_back.gif' modname='core' set='icons/extrasmall' __alt='Back' __title='Back to category list'}
+            {img src='agt_back.png' modname='core' set='icons/extrasmall' __alt='Back' __title='Back to category list'}
             {gt text='Back to category list'}
         </a>
     </p>

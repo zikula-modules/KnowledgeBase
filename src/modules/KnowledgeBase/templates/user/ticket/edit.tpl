@@ -128,8 +128,8 @@
 
 </div>
 
-{img src='xedit.gif' modname='core' set='icons/extrasmall' assign='editImageArray'}
-{img src='editdelete.gif' modname='core' set='icons/extrasmall' assign='removeImageArray'}
+{img src='xedit.png' modname='core' set='icons/extrasmall' assign='editImageArray'}
+{img src='editdelete.png' modname='core' set='icons/extrasmall' assign='removeImageArray'}
 
 <script type="text/javascript">
 /* <![CDATA[ */

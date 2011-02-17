@@ -1,5 +1,4 @@
 <?php
-<?php
 require_once __DIR__ . '/bootstrap.php';
 
 class ClassLoaderTest extends PHPUnit_Framework_TestCase
@@ -24,12 +23,12 @@ class ClassLoaderTest extends PHPUnit_Framework_TestCase
         $this->assertAttributeEquals('', 'path', $this->classLoader);
         $this->assertAttributeEquals('\\', 'separator', $this->classLoader);
     }
-	// getters
+    // getters
 
     public function testGetPath()
     {
-    	$autoloader = new ClassLoader('', 'testpath');
-    	$this->assertEquals('testpath', $autoloader->getPath());
+        $autoloader = new ClassLoader('', 'testpath');
+        $this->assertEquals('testpath', $autoloader->getPath());
     }
 
     public function testGetSeparator()
@@ -41,7 +40,7 @@ class ClassLoaderTest extends PHPUnit_Framework_TestCase
 
     public function testSetPath()
     {
-    	$this->classLoader->setPath('nottestpath');
+        $this->classLoader->setPath('nottestpath');
         $this->assertAttributeEquals('nottestpath', 'path', $this->classLoader);
     }
 
@@ -55,8 +54,8 @@ class ClassLoaderTest extends PHPUnit_Framework_TestCase
 
     public function testUnregister()
     {
-    	$this->classLoader->unregister();
-    	$this->assertTrue(true);
+        $this->classLoader->unregister();
+        $this->assertTrue(true);
     }
 
 

@@ -15,14 +15,8 @@
 /**
  * This is the Ajax controller class providing navigation and interaction functionality.
  */
-class KnowledgeBase_Controller_Base_Ajax extends Zikula_Controller
+class KnowledgeBase_Controller_Base_Ajax extends Zikula_Controller_Ajax
 {
-    public function _postSetup()
-    {
-        // no need for a view so override it.
-    }
-
-
     /**
      * This is a custom method. Documentation for this will be improved in later versions.
      *

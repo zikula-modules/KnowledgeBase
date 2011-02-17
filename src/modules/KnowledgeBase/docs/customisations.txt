@@ -5,7 +5,6 @@ Knowledge Base - Manual additions and amendments
 
 Implemented classes:
   * lib/KB/Installer.php
-  * lib/KB/Util.php
   * lib/KB/Api/Search.php
   * lib/KB/Api/User.php
   * lib/KB/Controller/Ajax.php
@@ -14,6 +13,7 @@ Implemented classes:
   * lib/KB/Model/TicketListener.php
   * lib/KB/Model/TicketTable.php
   * lib/KB/Form/Handler/User/Ticket/Edit.php
+  * lib/KB/Util/Controller.php
 
 Additional files:
   * javascript/KnowledgeBase.js

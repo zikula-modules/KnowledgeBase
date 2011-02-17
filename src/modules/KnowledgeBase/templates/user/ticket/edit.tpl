@@ -128,13 +128,13 @@
 
 </div>
 
-{img src='xedit.png' modname='core' set='icons/extrasmall' assign='editImageArray'}
-{img src='editdelete.png' modname='core' set='icons/extrasmall' assign='removeImageArray'}
+{icon type='edit' size='extrasmall' assign='editImageArray'}
+{icon type='delete' size='extrasmall' assign='deleteImageArray'}
 
-<script type="text/javascript">
+<script type="text/javascript" charset="utf-8">
 /* <![CDATA[ */
     var editImage = '<img src="{{$editImageArray.src}}" width="16" height="16" alt="" />';
-    var removeImage = '<img src="{{$removeImageArray.src}}" width="16" height="16" alt="" />';
+    var removeImage = '<img src="{{$deleteImageArray.src}}" width="16" height="16" alt="" />';
 
     document.observe('dom:loaded', function() {
 

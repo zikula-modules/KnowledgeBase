@@ -13,12 +13,12 @@
 {pagesetvar name='title' value=$ticket.subject}
 <h2>{$ticket.subject|notifyfilters:'knowledgebase.filterhook.tickets'}
     {checkpermissionblock component='KnowledgeBase::' instance='.*' level='ACCESS_EDIT'}
-        <a href="{modurl modname='KnowledgeBase' type='user' func='edit' ot='ticket' ticketid=$ticket.ticketid}" title="{gt text='Edit'}">
-            {img src='xedit.png' modname='core' set='icons/extrasmall' __alt='Edit'}
+        <a href="{$ticket.editurlFormatted}" title="{gt text='Edit'}">
+            {icon type='edit' size='extrasmall' __alt='Edit'}
             {gt text='Edit'}
         </a>
         <a href="{modurl modname='KnowledgeBase' type='user' func='edit' ot='ticket' astemplate=$ticket.ticketid}" title="{gt text='Reuse for new item'}">
-            {img src='filesaveas.png' modname='core' set='icons/extrasmall' __alt='Reuse'}
+            {icon type='saveas' size='extrasmall' __alt='Reuse'}
             {gt text='Reuse'}
         </a>
     {/checkpermissionblock}
@@ -61,7 +61,7 @@
 {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
 <p>
     <a href="{modurl modname='KnowledgeBase' type='user' func='view'}" title="{gt text='Back to overview'}">
-        {img src='agt_back.png' modname='core' set='icons/extrasmall' __alt='Back'}
+        {icon type='back' size='extrasmall' __alt='Back'}
         {gt text='Back to overview'}
     </a>
 </p>

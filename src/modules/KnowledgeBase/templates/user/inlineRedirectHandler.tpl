@@ -12,7 +12,7 @@
         <script type="text/javascript" src="{getbaseurl}modules/KnowledgeBase/javascript/KnowledgeBase_editFunctions.js"></script>
     </head>
     <body>
-        <script type="text/javascript">
+        <script type="text/javascript" charset="utf-8">
         /* <![CDATA[ */
             // close window from parent document
             document.observe('dom:loaded', function() {

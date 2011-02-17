@@ -26,13 +26,13 @@ class KnowledgeBase_Controller_User extends KnowledgeBase_Controller_Base_User
      */
     public function main($args)
     {
-// DEBUG: permission check aspect starts
+        // DEBUG: permission check aspect starts
         $this->throwForbiddenUnless(SecurityUtil::checkPermission('KnowledgeBase::', '::', ACCESS_OVERVIEW));
-// DEBUG: permission check aspect ends
+        // DEBUG: permission check aspect ends
 
         $this->view->assign('categories', ModUtil::apiFunc('KnowledgeBase', 'user', 'getCategories', array('full' => false)));
 
         // fetch and return the appropriate template
-        return KnowledgeBase_Util::processViewTemplate($this->view, 'user', '', 'main', $args);
+        return KnowledgeBase_Util_View::processTemplate($this->view, 'user', '', 'main', $args);
     }
 }

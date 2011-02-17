@@ -8,9 +8,9 @@
         {$item.subject}
     </a>
     <a id="ticketItem{$item.ticketid}Display" href="{modurl modname='KnowledgeBase' type='user' func='display' ot='ticket' ticketid=$item.ticketid theme='Printer' forcelongurl=true}" title="{gt text='Open quick view window'}" style="display: none">
-        {img src='windows_list.png' modname='core' set='icons/extrasmall' __alt='Quick view'}
+        {icon type='view' size='extrasmall' __alt='Quick view'}
     </a>
-    <script type="text/javascript">
+    <script type="text/javascript" charset="utf-8">
     /* <![CDATA[ */
         document.observe('dom:loaded', function() {
             kbaseInitInlineWindow($('ticketItem{{$item.ticketid}}Display'), '{{$item.subject|replace:"'":""}}');

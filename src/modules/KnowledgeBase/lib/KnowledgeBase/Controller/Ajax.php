@@ -26,11 +26,11 @@ class KnowledgeBase_Controller_Ajax extends KnowledgeBase_Controller_Base_Ajax
      */
     public function like($args)
     {
-    // DEBUG: permission check aspect starts
+        // DEBUG: permission check aspect starts
         $this->throwForbiddenUnless(SecurityUtil::checkPermission('KnowledgeBase::', '::', ACCESS_OVERVIEW));
-    // DEBUG: permission check aspect ends
+        // DEBUG: permission check aspect ends
 
-        $id = (int) FormUtil::getPassedValue('id', 0, 'POST');
+        $id = (int) FormUtil::getPassedValue('id', 0, 'POST', FILTER_VALIDATE_INT);
         if ($id > 0) {
             // increase amount of ratesup
             Doctrine::getTable('KnowledgeBase_Model_Ticket')->incrementRatesUp($data[$idField]);
@@ -48,11 +48,11 @@ class KnowledgeBase_Controller_Ajax extends KnowledgeBase_Controller_Base_Ajax
      */
     public function dislike($args)
     {
-    // DEBUG: permission check aspect starts
+        // DEBUG: permission check aspect starts
         $this->throwForbiddenUnless(SecurityUtil::checkPermission('KnowledgeBase::', '::', ACCESS_OVERVIEW));
-    // DEBUG: permission check aspect ends
+        // DEBUG: permission check aspect ends
 
-        $id = (int) FormUtil::getPassedValue('id', 0, 'POST');
+        $id = (int) FormUtil::getPassedValue('id', 0, 'POST', FILTER_VALIDATE_INT);
         if ($id > 0) {
             // increase amount of ratesdown
             Doctrine::getTable('KnowledgeBase_Model_Ticket')->incrementRatesDown($data[$idField]);

@@ -29,6 +29,6 @@ class KnowledgeBase_Model_TicketListener extends KnowledgeBase_Model_Base_Ticket
     public function postHydrate(Doctrine_Event $event)
     {
         parent::postHydrate($event);
-        $event->data = KnowledgeBase_Util::postProcessTicket($event->data);
+        $event->data = KnowledgeBase_Util_Controller::postProcessTicket($event->data);
     }
 }

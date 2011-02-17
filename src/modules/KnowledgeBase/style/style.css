@@ -23,13 +23,6 @@ div.knowledgebaseRightBox p.manageLink {
     margin-left: 18px;
 }
 
-.knowledgebaseIconNew,
-div.knowledgebaseRightBox p.manageLink a {
-    background: url("../../../images/icons/extrasmall/edit_add.png") no-repeat scroll 0 50% transparent;
-    display: block;
-    margin: 1em 0;
-    padding: 0 0 0 20px;
-}
 
 /* validation */
 input.required, textarea.required {

@@ -68,8 +68,8 @@ class KnowledgeBase_Controller_Base_User extends Zikula_Controller
         // parameter specifying which type of objects we are treating
         $objectType = FormUtil::getPassedValue('ot', 'ticket', 'GET', FILTER_SANITIZE_STRING);
         $utilArgs = array('controller' => 'user', 'action' => 'View');
-        if (!in_array($objectType, KnowledgeBase_Util::getObjectTypes('controllerAction', $utilArgs))) {
-            $objectType = KnowledgeBase_Util::getDefaultObjectType('controllerAction', $utilArgs);
+        if (!in_array($objectType, KnowledgeBase_Util_Controller::getObjectTypes('controllerAction', $utilArgs))) {
+            $objectType = KnowledgeBase_Util_Controller::getDefaultObjectType('controllerAction', $utilArgs);
         }
         // instantiate a new collection corresponding to $objectType
         $objectCollection = KnowledgeBase_Factory::getBusinessCollection($objectType, 'controllerAction', array('controller' => 'user', 'action' => 'View'));
@@ -151,8 +151,8 @@ class KnowledgeBase_Controller_Base_User extends Zikula_Controller
         // parameter specifying which type of objects we are treating
         $objectType = FormUtil::getPassedValue('ot', 'ticket', 'GET');
         $utilArgs = array('controller' => 'user', 'action' => 'Display');
-        if (!in_array($objectType, KnowledgeBase_Util::getObjectTypes('controllerAction', $utilArgs))) {
-            $objectType = KnowledgeBase_Util::getDefaultObjectType('controllerAction', $utilArgs);
+        if (!in_array($objectType, KnowledgeBase_Util_Controller::getObjectTypes('controllerAction', $utilArgs))) {
+            $objectType = KnowledgeBase_Util_Controller::getDefaultObjectType('controllerAction', $utilArgs);
         }
         // instantiate a new entity corresponding to $objectType
         $object = KnowledgeBase_Factory::getBusinessEntity($objectType, 'controllerAction', false, array('controller' => 'user', 'action' => 'Display'));
@@ -217,8 +217,8 @@ class KnowledgeBase_Controller_Base_User extends Zikula_Controller
         // parameter specifying which type of objects we are treating
         $objectType = FormUtil::getPassedValue('ot', 'ticket', 'GET', FILTER_SANITIZE_STRING);
         $utilArgs = array('controller' => 'user', 'action' => 'Edit');
-        if (!in_array($objectType, KnowledgeBase_Util::getObjectTypes('controllerAction', $utilArgs))) {
-            $objectType = KnowledgeBase_Util::getDefaultObjectType('controllerAction', $utilArgs);
+        if (!in_array($objectType, KnowledgeBase_Util_Controller::getObjectTypes('controllerAction', $utilArgs))) {
+            $objectType = KnowledgeBase_Util_Controller::getDefaultObjectType('controllerAction', $utilArgs);
         }
 
         // create new Form reference
@@ -246,8 +246,8 @@ class KnowledgeBase_Controller_Base_User extends Zikula_Controller
         // parameter specifying which type of objects we are treating
         $objectType = FormUtil::getPassedValue('ot', 'ticket', 'GET', FILTER_SANITIZE_STRING);
         $utilArgs = array('controller' => 'user', 'action' => 'Assign');
-        if (!in_array($objectType, KnowledgeBase_Util::getObjectTypes('controllerAction', $utilArgs))) {
-            $objectType = KnowledgeBase_Util::getDefaultObjectType('controllerAction', $utilArgs);
+        if (!in_array($objectType, KnowledgeBase_Util_Controller::getObjectTypes('controllerAction', $utilArgs))) {
+            $objectType = KnowledgeBase_Util_Controller::getDefaultObjectType('controllerAction', $utilArgs);
         }
         /** TODO: custom logic */
     }

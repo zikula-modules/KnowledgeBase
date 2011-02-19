@@ -30,7 +30,7 @@ function smarty_block_knowledgebaseFormFrame($params, $content, $view)
     // do that explicitively in the templates.
 
     // We need to concatenate the output of boths plugins.
-    $result = $view->registerPlugin('Form_Plugin_ValidationSummary', $params);
+    $result = $view->registerPlugin('Zikula_Form_Plugin_ValidationSummary', $params);
     $result .= $view->registerBlock('KnowledgeBase_Form_Plugin_FormFrame', $params, $content);
 
     return $result;

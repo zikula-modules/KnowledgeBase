@@ -42,7 +42,7 @@ class KnowledgeBase_Installer extends KnowledgeBase_Base_Installer
     {
         ModUtil::dbInfoLoad('Categories');
 
-        $tables = pnDBGetTables();
+        $tables = DBUtil::getTables();
 
         $catcolumn = $tables['categories_category_column'];
         $where = '';

@@ -14,7 +14,7 @@
 /**
  * This is the User controller class.
  */
-class KnowledgeBase_Controller_Base_User extends Zikula_Controller
+class KnowledgeBase_Controller_Base_User extends Zikula_AbstractController
 {
     /**
      * Post initialise.

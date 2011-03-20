@@ -14,7 +14,7 @@
 /**
  * This is the Admin controller class.
  */
-class KnowledgeBase_Controller_Base_Admin extends Zikula_Controller
+class KnowledgeBase_Controller_Base_Admin extends Zikula_AbstractController
 {
     /**
      * Post initialise.

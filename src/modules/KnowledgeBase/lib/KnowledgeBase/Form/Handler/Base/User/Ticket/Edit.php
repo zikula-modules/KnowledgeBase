@@ -33,7 +33,7 @@
  * - <b>handleCommand</b>: this event is fired by various plugins on the page. Typically it is done by the
  *   Zikula_Form_Plugin_Button plugin to signal that the user activated a button.
  */
-class KnowledgeBase_Form_Handler_Base_User_Ticket_Edit extends Zikula_Form_Handler
+class KnowledgeBase_Form_Handler_Base_User_Ticket_Edit extends Zikula_Form_AbstractHandler
 {
     /**
      * Persistent member vars

@@ -14,7 +14,7 @@
 /**
  * This is the User api helper class.
  */
-class KnowledgeBase_Api_Base_User extends Zikula_Api
+class KnowledgeBase_Api_Base_User extends Zikula_AbstractApi
 {
     /**
      * get available User panel links

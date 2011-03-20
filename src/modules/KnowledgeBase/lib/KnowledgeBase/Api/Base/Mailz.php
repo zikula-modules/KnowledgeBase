@@ -14,7 +14,7 @@
 /**
  * Mailz api base class
  */
-class KnowledgeBase_Api_Base_Mailz extends Zikula_Api
+class KnowledgeBase_Api_Base_Mailz extends Zikula_AbstractApi
 {
     /**
      * Get mailz plugins with type / title

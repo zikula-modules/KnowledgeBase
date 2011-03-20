@@ -14,7 +14,7 @@
 /**
  * Version information base class.
  */
-class KnowledgeBase_Base_Version extends Zikula_Version
+class KnowledgeBase_Base_Version extends Zikula_AbstractVersion
 {
     public function getMetaData()
     {

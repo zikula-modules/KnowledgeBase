@@ -14,7 +14,7 @@
 /**
  * Installer base class
  */
-class KnowledgeBase_Base_Installer extends Zikula_Installer
+class KnowledgeBase_Base_Installer extends Zikula_AbstractInstaller
 {
     /**
      * Install the KnowledgeBase application.

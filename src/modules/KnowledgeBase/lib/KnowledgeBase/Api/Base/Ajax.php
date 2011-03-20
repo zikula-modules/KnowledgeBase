@@ -14,7 +14,7 @@
 /**
  * This is the Ajax api helper class.
  */
-class KnowledgeBase_Api_Base_Ajax extends Zikula_Api
+class KnowledgeBase_Api_Base_Ajax extends Zikula_AbstractApi
 {
     /**
      * get available Ajax panel links

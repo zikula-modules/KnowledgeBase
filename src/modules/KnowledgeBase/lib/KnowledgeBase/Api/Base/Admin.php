@@ -14,7 +14,7 @@
 /**
  * This is the Admin api helper class.
  */
-class KnowledgeBase_Api_Base_Admin extends Zikula_Api
+class KnowledgeBase_Api_Base_Admin extends Zikula_AbstractApi
 {
     /**
      * get available Admin panel links

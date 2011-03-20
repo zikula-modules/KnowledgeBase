@@ -14,7 +14,7 @@
 /**
  * Generic item list block base class
  */
-class KnowledgeBase_Block_Base_ItemList extends Zikula_Controller_Block
+class KnowledgeBase_Block_Base_ItemList extends Zikula_Controller_AbstractBlock
 {
     /**
      * Initialise the block

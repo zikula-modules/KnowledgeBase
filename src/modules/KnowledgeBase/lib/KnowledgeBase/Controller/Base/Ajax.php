@@ -14,7 +14,7 @@
 /**
  * This is the Ajax controller class.
  */
-class KnowledgeBase_Controller_Base_Ajax extends Zikula_Controller_Ajax
+class KnowledgeBase_Controller_Base_Ajax extends Zikula_Controller_AbstractAjax
 {
 
     /**

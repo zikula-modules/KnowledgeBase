@@ -14,7 +14,7 @@
 /**
  * Mailz api implementation class
  */
-class KnowledgeBase_Api_Search extends Zikula_Api
+class KnowledgeBase_Api_Search extends Zikula_AbstractApi
 {
     public function info()
     {
@@ -37,8 +37,9 @@ class KnowledgeBase_Api_Search extends Zikula_Api
         }
     // DEBUG: permission check aspect ends
 
-        $this->view->assign('active', (isset($args['active']) && isset($args['active']['KnowledgeBase'])) || !isset($args['active']));
-        return $this->view->fetch('knowledgebase_search_options.tpl');
+        $view = Zikula_View::getInstance('KnowledgeBase');
+        $view->assign('active', (isset($args['active']) && isset($args['active']['KnowledgeBase'])) || !isset($args['active']));
+        return $view->fetch('knowledgebase_search_options.tpl');
     }
 
     /**

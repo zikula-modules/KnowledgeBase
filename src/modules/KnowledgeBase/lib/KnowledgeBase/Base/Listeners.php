@@ -21,7 +21,7 @@ class KnowledgeBase_Base_Listeners
     /**
      * Listener for the `api.method_not_found` event.
      *
-     * Called in instances of Zikula_Api from __call().
+     * Called in instances of Zikula_AbstractApi from __call().
      * Receives arguments from __call($method, argument) as $args.
      *     $event['method'] is the method which didn't exist in the main class.
      *     $event['args'] is the arguments that were passed.
@@ -64,7 +64,7 @@ class KnowledgeBase_Base_Listeners
     /**
      * Listener for the `controller.method_not_found` event.
      *
-     * Called in instances of `Zikula_Controller` from `__call()`.
+     * Called in instances of `Zikula_AbstractController` from `__call()`.
      * Receives arguments from `__call($method, argument)` as `$args`.
      *    `$event['method']` is the method which didn't exist in the main class.
      *    `$event['args']` is the arguments that were passed.
@@ -241,7 +241,7 @@ class KnowledgeBase_Base_Listeners
     }
 
     /**
-     * Listener for the `theme.prefooter` event.
+     * Listener for the `theme.prefetch` event.
      *
      * Occurs in `Theme::themefooter()` just after getting the `$maincontent`.
      * The event subject is `$this` (Theme instance) and has $maincontent as the event data
@@ -252,7 +252,7 @@ class KnowledgeBase_Base_Listeners
     }
 
     /**
-     * Listener for the `theme.postfooter` event.
+     * Listener for the `theme.postfetch` event.
      *
      * Occurs in `Theme::themefooter()` just after rendering the theme.
      * The event subject is `$this` (Theme instance) and the event data is the rendered
@@ -273,7 +273,7 @@ class KnowledgeBase_Base_Listeners
     }
 
     /**
-     * Listener for the `view.fetch` event.
+     * Listener for the `view.postfetch` event.
      *
      * Filter of result of a fetch. Receives `Zikula_View` instance as subject, args are
      * `array('template' => $template)`, $data was the result of the fetch to be filtered.

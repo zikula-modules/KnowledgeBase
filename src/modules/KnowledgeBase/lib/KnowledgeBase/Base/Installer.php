@@ -158,10 +158,10 @@ class KnowledgeBase_Base_Installer extends Zikula_AbstractInstaller
         // themes and views
         EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.init', array('KnowledgeBase_Listeners', 'themeInit'));
         EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.load_config', array('KnowledgeBase_Listeners', 'themeLoadConfig'));
-        EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.prefooter', array('KnowledgeBase_Listeners', 'themePreFooter'));
-        EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.postfooter', array('KnowledgeBase_Listeners', 'themePostFooter'));
+        EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.prefetch', array('KnowledgeBase_Listeners', 'themePreFooter'));
+        EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'theme.postfetch', array('KnowledgeBase_Listeners', 'themePostFooter'));
         EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'view.init', array('KnowledgeBase_Listeners', 'viewInit'));
-        EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'view.fetch', array('KnowledgeBase_Listeners', 'viewFetch'));
+        EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'view.postfetch', array('KnowledgeBase_Listeners', 'viewFetch'));
 
         // users and groups
         EventUtil::registerPersistentModuleHandler('KnowledgeBase', 'user.login', array('KnowledgeBase_Listeners', 'userLogin'));

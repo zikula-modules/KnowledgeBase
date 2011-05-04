@@ -58,7 +58,7 @@ class KnowledgeBase_Base_Version extends Zikula_AbstractVersion
     protected function setupHookBundles()
     {
 
-        $bundle = new Zikula_Version_HookSubscriberBundle('modulehook_area.knowledgebase.tickets', __('Tickets'));
+        $bundle = new Zikula_HookManager_SubscriberBundle($this->name, 'modulehook_area.knowledgebase.tickets', 'ui', __('Tickets'));
         // Display hook for view/display templates.
         $bundle->addType('ui.view', 'knowledgebase.hook.tickets.ui.view');
         // Display hook for create/edit forms.

@@ -37,7 +37,7 @@ class KnowledgeBase_Base_Installer extends Zikula_AbstractInstaller
         $this->registerPersistentEventHandlers();
 
         // register hook subscriber bundles
-        HookUtil::registerHookSubscriberBundles($this->version);
+        HookUtil::registerSubscriberBundles($this->version->getHookSubscriberBundles());
 
         // create the default data for KnowledgeBase
         //$this->defaultdata();

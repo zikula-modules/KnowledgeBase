@@ -149,7 +149,7 @@ class KnowledgeBase_Base_Listeners
      * In order to override a pre-existing controller/api method, use this event type to override the class name that is loaded.
      * This allows to override the methods using inheritance.
      * Receives no subject, args of `array('modname' => $modname, 'modinfo' => $modinfo, 'type' => $type, 'api' => $api)`
-     * and 'event data' of `$className`. This can be altered by setting `$event->setData()` followed by `$event->setNotified()`.
+     * and 'event data' of `$className`. This can be altered by setting `$event->setData()` followed by `$event->stop()`.
      */
     public static function moduleDispatchCustomClassname(Zikula_Event $event)
     {
@@ -160,7 +160,7 @@ class KnowledgeBase_Base_Listeners
      *
      * Invoked from `Mailer_Api_User#sendmessage`.
      * Subject is `Mailer_Api_User` with `$args`.
-     * This is a notifyUntil event so the event must `$event->setNotified()` and set any
+     * This is a notifyUntil event so the event must `$event->stop()` and set any
      * return data into `$event->data`, or `$event->setData()`.
      */
     public static function moduleMailerApiSendmessage(Zikula_Event $event)
@@ -193,7 +193,7 @@ class KnowledgeBase_Base_Listeners
      *
      * Invoked during `System::init()`.
      * Used to activate `set_error_handler()`.
-     * Event must `setNotified()`.
+     * Event must `stop()`.
      */
     public static function setupErrorReporting(Zikula_Event $event)
     {
@@ -337,7 +337,7 @@ class KnowledgeBase_Base_Listeners
     /**
      * Listener for the `user.gettheme` event.
      *
-     * This is invoked with notifyUntil so you should execute `$event->setNotified()` in the event handler.
+     * This is invoked with notifyUntil so you should execute `$event->stop()` in the event handler.
      * Receives `$event['name']` the chosen theme name, it can modify the name.
      */
     public static function userGetTheme(Zikula_Event $event)

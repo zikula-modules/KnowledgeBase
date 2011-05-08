@@ -275,7 +275,8 @@ class KnowledgeBase_Form_Handler_Base_User_Ticket_Edit extends Zikula_Form_Abstr
             // event handling if user clicks on create
 
             // Let any hooks perform additional validation actions
-            $this->notifyHooks('knowledgebase.hook.tickets.validate.edit', null, null);
+            $validators = $this->notifyHooks(new Zikula_ValidationHook('knowledgebase.hook.tickets.validate.edit', new Zikula_Hook_ValidationProviders))->getValidators();
+            // TODO: validation incomplete
 
             // save ticket
             $ticket->save();
@@ -292,12 +293,14 @@ class KnowledgeBase_Form_Handler_Base_User_Ticket_Edit extends Zikula_Form_Abstr
             LogUtil::registerStatus($this->__('Done! Ticket created.'));
 
             // Let any hooks know that we have created an item
-            $this->notifyHooks('knowledgebase.hook.tickets.process.edit', $ticket, $this->ticketid);
+            $url = new Zikula_ModUrl('KnowledgeBase', 'user', 'view', ZLanguage::getLanguageCode(), array('id' => $this->ticketid));
+            $this->notifyHooks(new Zikula_ProcessHook('knowledgebase.hook.tickets.process.edit', $this->ticketid, $url));
         } else if ($args['commandName'] == 'update') {
             // event handling if user clicks on update
 
             // Let any hooks perform additional validation actions
-            $this->notifyHooks('knowledgebase.hook.tickets.validate.edit', $ticket, $this->ticketid);
+            $this->notifyHooks(new Zikula_ValidationHook('knowledgebase.hook.tickets.validate.edit', new Zikula_Hook_ValidationProviders))->getValidators();
+            // TODO validation incomplete
 
             // save ticket
             $updateResult = $ticket->save();
@@ -311,12 +314,13 @@ class KnowledgeBase_Form_Handler_Base_User_Ticket_Edit extends Zikula_Form_Abstr
             LogUtil::registerStatus($this->__('Done! Ticket updated.'));
 
             // Let any hooks know that we have updated an item
-            $this->notifyHooks('knowledgebase.hook.tickets.process.edit', $ticket, $this->ticketid);
+            $url = new Zikula_ModUrl('KnowledgeBase', 'user', 'view', ZLanguage::getLanguageCode(), array('id' => $this->ticketid));
+            $this->notifyHooks(new Zikula_ProcessHook('knowledgebase.hook.tickets.process.edit', $this->ticketid, $url));
         } else if ($args['commandName'] == 'delete') {
             // event handling if user clicks on delete
 
             // Let any hooks perform additional validation actions
-            $this->notifyHooks('knowledgebase.hook.tickets.validate.delete', $ticket, $this->ticketid);
+            $this->notifyHooks(new Zikula_ProcessHook('knowledgebase.hook.tickets.validate.delete', $this->ticketid));
 
             // delete ticket
             if ($ticket->delete() === false) {
@@ -326,7 +330,7 @@ class KnowledgeBase_Form_Handler_Base_User_Ticket_Edit extends Zikula_Form_Abstr
             LogUtil::registerStatus($this->__('Done! Ticket deleted.'));
 
             // Let any hooks know that we have deleted an item
-            $this->notifyHooks('knowledgebase.hook.tickets.process.delete', $ticket, $this->ticketid);
+            $this->notifyHooks(new Zikula_ProcessHook('knowledgebase.hook.tickets.process.delete', $this->ticketid));
         } else if ($args['commandName'] == 'cancel') {
             // event handling if user clicks on cancel
             }

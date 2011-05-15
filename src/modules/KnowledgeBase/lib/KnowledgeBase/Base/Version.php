@@ -58,7 +58,7 @@ class KnowledgeBase_Base_Version extends Zikula_AbstractVersion
     protected function setupHookBundles()
     {
 
-        $bundle = new Zikula_HookManager_SubscriberBundle($this->name, 'modulehook_area.knowledgebase.tickets', 'ui', __('Tickets'));
+        $bundle = new Zikula_HookManager_SubscriberBundle($this->name, 'subscriber_area.ui.knowledgebase.tickets', 'ui', __('Tickets'));
         // Display hook for view/display templates.
         $bundle->addType('ui.view', 'knowledgebase.hook.tickets.ui.view');
         // Display hook for create/edit forms.
@@ -73,8 +73,11 @@ class KnowledgeBase_Base_Version extends Zikula_AbstractVersion
         $bundle->addType('process.edit', 'knowledgebase.hook.tickets.process.edit');
         // Perform the final delete actions for a ui form.
         $bundle->addType('process.delete', 'knowledgebase.hook.tickets.process.delete');
+        $this->registerHookSubscriberBundle($bundle);
+
+        $bundle = new Zikula_HookManager_SubscriberBundle($this->name, 'subscriber_area.filter.knowledgebase.tickets', 'ui', __('Tickets'));
         // A filter applied to the given area.
-        $bundle->addType('ui.filter', 'knowledgebase.filterhook.tickets');
+        $bundle->addType('ui.filter', 'knowledgebase.hook.tickets.ui.filter');
         $this->registerHookSubscriberBundle($bundle);
 
     }

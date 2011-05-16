@@ -3,7 +3,7 @@
 {include file='user/header.tpl'}
 
 {modurl modname='KnowledgeBase' type='user' func='display' ot='ticket' ticketid=$ticket.ticketid assign='returnurl'}
-{notifydisplayhooks eventname='knowledgebase.hook.tickets.ui.view' id=$ticket.ticketid assign='hooks'}
+{notifydisplayhooks eventname='knowledgebase.ui_hooks.tickets.display_view' id=$ticket.ticketid assign='hooks'}
 
 <div class="z-frontendcontainer">
 

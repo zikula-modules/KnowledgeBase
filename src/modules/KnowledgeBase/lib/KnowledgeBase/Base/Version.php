@@ -58,26 +58,26 @@ class KnowledgeBase_Base_Version extends Zikula_AbstractVersion
     protected function setupHookBundles()
     {
 
-        $bundle = new Zikula_HookManager_SubscriberBundle($this->name, 'subscriber_area.ui.knowledgebase.tickets', 'ui', __('Tickets'));
+        $bundle = new Zikula_HookManager_SubscriberBundle($this->name, 'subscriber.ui_hooks.knowledgebase.tickets', 'ui', __('Tickets'));
         // Display hook for view/display templates.
-        $bundle->addType('ui.view', 'knowledgebase.hook.tickets.ui.view');
+        $bundle->addEvent('display_view', 'knowledgebase.ui_hooks.tickets.display_view');
         // Display hook for create/edit forms.
-        $bundle->addType('ui.edit', 'knowledgebase.hook.tickets.ui.edit');
-        // Display hook for delete dialogues (generally not used).
-        $bundle->addType('ui.delete', 'knowledgebase.hook.tickets.ui.delete');
+        $bundle->addEvent('form_edit', 'knowledgebase.ui_hooks.tickets.form_edit');
+        // Display hook for delete dialogues
+        $bundle->addEvent('form_delete', 'knowledgebase.ui_hooks.tickets.form_delete');
         // Validate input from an ui create/edit form.
-        $bundle->addType('validate.edit', 'knowledgebase.hook.tickets.validate.edit');
+        $bundle->addEvent('validate_edit', 'knowledgebase.ui_hooks.tickets.validate_edit');
         // Validate input from an ui create/edit form (generally not used).
-        $bundle->addType('validate.delete', 'knowledgebase.hook.tickets.validate.delete');
+        $bundle->addEvent('validate_delete', 'knowledgebase.ui_hooks.tickets.validate_delete');
         // Perform the final update actions for a ui create/edit form.
-        $bundle->addType('process.edit', 'knowledgebase.hook.tickets.process.edit');
+        $bundle->addEvent('process_edit', 'knowledgebase.ui_hooks.tickets.process_edit');
         // Perform the final delete actions for a ui form.
-        $bundle->addType('process.delete', 'knowledgebase.hook.tickets.process.delete');
+        $bundle->addEvent('process_delete', 'knowledgebase.ui_hooks.tickets.process_delete');
         $this->registerHookSubscriberBundle($bundle);
 
-        $bundle = new Zikula_HookManager_SubscriberBundle($this->name, 'subscriber_area.filter.knowledgebase.tickets', 'ui', __('Tickets'));
+        $bundle = new Zikula_HookManager_SubscriberBundle($this->name, 'subscriber.knowledgebase.filter_hooks.tickets', 'ui', __('Tickets'));
         // A filter applied to the given area.
-        $bundle->addType('ui.filter', 'knowledgebase.hook.tickets.ui.filter');
+        $bundle->addEvent('ui.filter', 'knowledgebase.filter_hook.tickets.filter');
         $this->registerHookSubscriberBundle($bundle);
 
     }

@@ -83,9 +83,9 @@
     {/if}
 
     {if $mode eq 'create'}
-        {notifydisplayhooks eventname='knowledgebase.hook.tickets.ui.edit' id=null assign='hooks'}
+        {notifydisplayhooks eventname='knowledgebase.ui_hooks.tickets.form_edit' id=null assign='hooks'}
     {else}
-        {notifydisplayhooks eventname='knowledgebase.hook.tickets.ui.edit' id=$ticket.ticketid assign='hooks'}
+        {notifydisplayhooks eventname='knowledgebase.ui_hooks.tickets.form_edit' id=$ticket.ticketid assign='hooks'}
     {/if}
     {if is_array($hooks) && isset($hooks[0])}
         <fieldset>

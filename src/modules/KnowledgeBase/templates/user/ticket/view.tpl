@@ -39,7 +39,7 @@
 
     {modurl modname='KnowledgeBase' func='view' ot='ticket' pos=$currentPage assign='returnurl'}
     {*modcallhooks hookobject='category' hookaction='display' module='KnowledgeBaseticket' returnurl=$returnurl*}
-    {*notifydisplayhooks eventname='knowledgebase.hook.tickets.ui.view' assign='hooks'}
+    {*notifydisplayhooks eventname='knowledgebase.ui_hooks.tickets.display_view' assign='hooks'}
     {foreach from=$hooks key='hookname' item='hook'}
     {if $hookname eq 'Ratings'}
         {$hook}

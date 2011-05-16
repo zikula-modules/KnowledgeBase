@@ -46,7 +46,7 @@
 <br style="clear: left" />
 
     {modurl modname='KnowledgeBase' func='main' assign='returnurl'}
-    {notifydisplayhooks eventname='knowledgebase.hook.tickets.ui.view' assign='hooks'}
+    {notifydisplayhooks eventname='knowledgebase.ui_hooks.tickets.display_view' assign='hooks'}
     {foreach from=$hooks key='hookname' item='hook'}
         {$hook}
     {/foreach}

@@ -28,7 +28,8 @@ class KnowledgeBase_Base_Version extends Zikula_AbstractVersion
         //! url version of name, should be in lowercase without space
         $meta['url'] = $this->__('KnowledgeBase');
         // minimum core requirement
-        $meta['core_min'] = '1.3.0'; // requires minimum 1.3.0 or later
+        $meta['core_min'] = '1.3.0'; // Fixed to 1.3.x range
+        $meta['core_max'] = '1.3.99'; // Fixed to 1.3.x range
 
         // define special capabilities of this module
         $meta['capabilities'] = array(

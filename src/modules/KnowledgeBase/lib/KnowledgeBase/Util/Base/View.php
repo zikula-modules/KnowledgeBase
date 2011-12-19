@@ -152,7 +152,7 @@ class KnowledgeBase_Util_Base_View
         // create name of the pdf output file
         $fileTitle = KnowledgeBase_Util_Controller::formatPermalink(System::getVar('sitename'))
                    . '-'
-                   . KnowledgeBase_Util_Controller::formatPermalink(PageUtil::getVar('title'));
+                   . KnowledgeBase_Util_Controller::formatPermalink(PageUtil::getVar('title'))
                    . '-' . date('Ymd') . '.pdf';
 
 //if ($_GET['dbg'] == 1) die($output);

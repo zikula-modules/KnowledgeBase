@@ -1,9 +1,10 @@
 {* purpose of this template: footer for admin area *}
 
-{if !isset($smarty.get.theme) || $smarty.get.theme ne "Printer"}
-<p style="text-align: center">
-    Powered by <a href="http://modulestudio.de" title="Get the MOST out of Zikula!">ModuleStudio 0.5.2</a>
+{if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
+<p class="z-center">
+    Powered by <a href="http://modulestudio.de" title="Get the MOST out of Zikula!">ModuleStudio 0.5.4</a>
 </p>
+{adminfooter}
 {elseif isset($smarty.get.func) && $smarty.get.func eq 'edit'}
 {pageaddvar name='stylesheet' value='styles/core.css'}
 {pageaddvar name='stylesheet' value='modules/KnowledgeBase/style/style.css'}
@@ -16,6 +17,6 @@
     }
 </style>
 {/capture}
-{pageaddvar name='rawtext' value=$pageStyles}
+{pageaddvar name='header' value=$pageStyles}
 {/if}
 

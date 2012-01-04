@@ -1,4 +1,4 @@
 {* purpose of this template: tickets display xml view in user area *}
 {knowledgebaseTemplateHeaders contentType='text/xml'}<?xml version="1.0" encoding="{charset}" ?>
 {getbaseurl assign='baseurl'}
-{include file='src/modules/KnowledgeBase/user/ticket/include.xml' item=$ticket]-->
+{include file='user/ticket/include.xml' item=$ticket}

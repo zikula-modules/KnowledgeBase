@@ -31,12 +31,12 @@
                 {foreach item='displayname' key='langcode' from=$category.display_name}
                     {if $langcode eq $currentLang}
                         {assign var='nameFound' value=true}
-                        {$displayname|pnvarprepfordisplay}
+                        {$displayname|safetext}
                     {/if}
                 {/foreach}
             {/if}
             {if !$category.display_name || $nameFound eq false}
-                {$category.name|pnvarprepfordisplay}
+                {$category.name|safetext}
             {/if}
             </a>&nbsp;({$category.ticketcount})
 

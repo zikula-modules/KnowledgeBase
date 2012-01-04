@@ -1,19 +1,21 @@
 {* Purpose of this template: edit view of generic item list content type *}
 
-<div class="z-adminformrow">
+<div class="z-formrow">
     {formlabel for='KnowledgeBase_objecttype' __text='Object type'}
-    {knowledgebaseSelectorObjectTypes assign="allObjectTypes"}
+    {knowledgebaseSelectorObjectTypes assign='allObjectTypes'}
     {formdropdownlist id='KnowledgeBase_objecttype' dataField='objectType' group='data' mandatory=true items=$allObjectTypes}
 </div>
 
 <div class="z-formrow">
     {formlabel __text='Sorting'}
-    {formradiobutton id='KnowledgeBase_srandom' value='random' dataField='sorting' group='data' mandatory=true}
-    {formlabel for='KnowledgeBase_srandom' __text='Random'}
-    {formradiobutton id='KnowledgeBase_snewest' value='newest' dataField='sorting' group='data' mandatory=true}
-    {formlabel for='KnowledgeBase_snewest' __text='Newest'}
-    {formradiobutton id='KnowledgeBase_sdefault' value='default' dataField='sorting' group='data' mandatory=true}
-    {formlabel for='KnowledgeBase_sdefault' __text='Default'}
+    <div>
+        {formradiobutton id='KnowledgeBase_srandom' value='random' dataField='sorting' group='data' mandatory=true}
+        {formlabel for='KnowledgeBase_srandom' __text='Random'}
+        {formradiobutton id='KnowledgeBase_snewest' value='newest' dataField='sorting' group='data' mandatory=true}
+        {formlabel for='KnowledgeBase_snewest' __text='Newest'}
+        {formradiobutton id='KnowledgeBase_sdefault' value='default' dataField='sorting' group='data' mandatory=true}
+        {formlabel for='KnowledgeBase_sdefault' __text='Default'}
+    </div>
 </div>
 
 <div class="z-formrow">
@@ -23,7 +25,7 @@
 
 <div class="z-formrow">
     {formlabel for='KnowledgeBase_template' __text='Template File'}
-    {knowledgebaseSelectorTemplates assign="allTemplates"}
+    {knowledgebaseSelectorTemplates assign='allTemplates'}
     {formdropdownlist id='KnowledgeBase_template' dataField='template' group='data' mandatory=true items=$allTemplates}
 </div>
 

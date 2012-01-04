@@ -1,26 +1,13 @@
+
+
 CUSTOMISATIONS
 --------------
 
 Knowledge Base - Manual additions and amendments
 
-Implemented classes:
-  * lib/KB/Installer.php
-  * lib/KB/Api/Search.php
-  * lib/KB/Api/User.php
-  * lib/KB/Controller/Ajax.php
-  * lib/KB/Controller/Base/User.php (small hack in display function to increment views)
-  * lib/KB/Controller/User.php
-  * lib/KB/Model/TicketListener.php
-  * lib/KB/Model/TicketTable.php
-  * lib/KB/Form/Handler/User/Ticket/Edit.php
-  * lib/KB/Util/Controller.php
+CORE HACKS
 
-Additional files:
-  * javascript/KnowledgeBase.js
-  * templates/user/include/*
-  * templates/knowledgebase_search_options.tpl
-
-Modified files:
+Changed files:
   * style/style.css
   * templates/user/footer.tpl
   * templates/user/header.tpl
@@ -28,3 +15,18 @@ Modified files:
   * templates/user/ticket/display.tpl
   * templates/user/ticket/edit.tpl
   * templates/user/ticket/view.tpl
+
+Implemented classes:
+  * lib/KnowledgeBase/Installer.php
+  * lib/KnowledgeBase/Api/Search.php
+  * lib/KnowledgeBase/Api/User.php
+  * lib/KnowledgeBase/Controller/Ajax.php
+  * lib/KnowledgeBase/Controller/Base/User.php (small hack in display function for manual API call to increment view counter)
+  * lib/KnowledgeBase/Controller/User.php
+  * lib/KnowledgeBase/Entity/Repository/Ticket.php
+
+Additional files:
+  * javascript/KnowledgeBase.js
+  * lib/KnowledgeBase/Api/Manual.php
+  * templates/user/include/*
+  * templates/knowledgebase_search_options.tpl

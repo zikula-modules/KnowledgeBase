@@ -7,7 +7,7 @@ function onKbTicketDisplay()
         Event.stop(event);
         if (reqRunning === false) {
             reqRunning = true;
-            var myAjax = new Ajax.Request(document.location.pnbaseURL + 'ajax.php', {
+            var myAjax = new Ajax.Request(Zikula.Config.baseURL + 'ajax.php', {
                 method: 'post',
                 parameters: 'module=KnowledgeBase&func=like' + '&id=' + kbTid,
                 onComplete: function(req) {
@@ -28,7 +28,7 @@ function onKbTicketDisplay()
         Event.stop(event);
         if (reqRunning === false) {
             reqRunning = true;
-            var myAjax = new Ajax.Request(document.location.pnbaseURL + 'ajax.php', {
+            var myAjax = new Ajax.Request(Zikula.Config.baseURL + 'ajax.php', {
                 method: 'post',
                 parameters: 'module=KnowledgeBase&func=dislike' + '&id=' + kbTid,
                 onComplete: function(req) {

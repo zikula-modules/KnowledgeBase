@@ -1,7 +1,7 @@
 {* purpose of this template: build the Form to edit an instance of ticket *}
-
 {include file='user/header.tpl'}
 {pageaddvar name='javascript' value='modules/KnowledgeBase/javascript/KnowledgeBase_editFunctions.js'}
+{pageaddvar name='javascript' value='modules/KnowledgeBase/javascript/KnowledgeBase_validation.js'}
 
 {if $mode eq 'edit'}
     {gt text='Edit ticket' assign='templateTitle'}
@@ -10,52 +10,28 @@
 {else}
     {gt text='Edit ticket' assign='templateTitle'}
 {/if}
-
-<div class="z-frontendcontainer">
-
+<div class="knowledgebase-ticket knowledgebase-edit">
 {pagesetvar name='title' value=$templateTitle}
-<h2>{$templateTitle}</h2>
-<br />
+<div class="z-frontendcontainer">
+    <h2>{$templateTitle}</h2>
 {form cssClass='z-form'}
-
     {* add validation summary and a <div> element for styling the form *}
     {knowledgebaseFormFrame}
-    {*formvalidationsummary*}
-    {*formerrormessage id='error'*}
-
     {formsetinitialfocus inputId='subject'}
 
     <fieldset>
         <legend>{gt text='Content'}</legend>
         <div class="z-formrow">
-            {formlabel for='subject' __text='Subject' mandatorysym='1' class='knowledgebaseFormTooltips' title='This is the subject of this ticket, explaining the problem.'}
-            {formtextinput group='ticket' id='subject' mandatory=true readOnly=false __title='Input the subject of the ticket' textMode='singleline' maxLength=255 cssClass='required'}
+            {gt text='This is the subject of this ticket, explaining the problem.' assign='toolTip'}
+            {formlabel for='subject' __text='Subject' mandatorysym='1' class='knowledgebaseFormTooltips' title=$toolTip}
+            {formtextinput group='ticket' id='subject' mandatory=true readOnly=false __title='Enter the subject of the ticket' textMode='singleline' maxLength=255 cssClass='required'}
             {knowledgebaseValidationError id='subject' class='required'}
         </div>
         <div class="z-formrow">
-            {formlabel for='content' __text='Content' mandatorysym='1' class='knowledgebaseFormTooltips' title='This content field describes the solution and/or instructions for the problem.'}
-            {formtextinput group='ticket' id='content' mandatory=true __title='Input the content of the ticket' textMode='multiline' rows='6' cols='50' cssClass='required'}
+            {gt text='This content field describes the solution and/or instructions for the problem.' assign='toolTip'}
+            {formlabel for='content' __text='Content' mandatorysym='1' class='knowledgebaseFormTooltips' title=$toolTip}
+            {formtextinput group='ticket' id='content' mandatory=true __title='Enter the content of the ticket' textMode='multiline' rows='6' cols='50' cssClass='required'}
             {knowledgebaseValidationError id='content' class='required'}
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend>{gt text='Category']--></legend>
-
-        <div class="z-formrow">
-            {formlabel for='category' __text='Category'}
-        {foreach key='property' item='category' from=$categoryItems}
-        {if isset($ticket.Categories)}
-            {array_field_isset array=$ticket.Categories field=$property assign='catExists'}
-            {if $catExists}
-                {assign var='selectedValue' value=$ticket.Categories.$property}
-            {else}
-                {assign var='selectedValue' value='0'}
-            {/if}
-        {else}
-            {assign var='selectedValue' value='0'}
-        {/if}
-            {formcategoryselector group='ticket' id=$property mandatory=true __title='Choose the category' category=$category enableDoctrine=true selectedValue=$selectedValue defaultValue='0' editLink=false}
-        {/foreach}
         </div>
     </fieldset>
 {if $mode ne 'create'}
@@ -64,28 +40,33 @@
 
         <div class="z-formrow">
             {formlabel for='views' __text='Views'}
-            {formintinput group='ticket' id='views' mandatory=false __title='Input the views of the ticket' maxLength=11 cssClass='validate-digits'}
+            {formintinput group='ticket' id='views' mandatory=false __title='Enter the views of the ticket' maxLength=11 cssClass='validate-digits'}
             {knowledgebaseValidationError id='views' class='validate-digits'}
         </div>
         <div class="z-formrow">
             {formlabel for='ratesUp' __text='Rates up'}
-            {formintinput group='ticket' id='ratesUp' mandatory=false __title='Input the rates up of the ticket' maxLength=4 cssClass='validate-digits'}
+            {formintinput group='ticket' id='ratesUp' mandatory=false __title='Enter the rates up of the ticket' maxLength=4 cssClass='validate-digits'}
             {knowledgebaseValidationError id='ratesUp' class='validate-digits'}
         </div>
         <div class="z-formrow">
             {formlabel for='ratesDown' __text='Rates down'}
-            {formintinput group='ticket' id='ratesDown' mandatory=false __title='Input the rates down of the ticket' maxLength=4 cssClass='validate-digits'}
+            {formintinput group='ticket' id='ratesDown' mandatory=false __title='Enter the rates down of the ticket' maxLength=4 cssClass='validate-digits'}
             {knowledgebaseValidationError id='ratesDown' class='validate-digits'}
         </div>
     </fieldset>
 
-        {include file='user/include_metadata_edit.tpl'}
     {/if}
 
+    {include file='user/include_categories_edit.tpl' obj=$ticket groupName='ticketObj'}
+    {if $mode ne 'create'}
+        {include file='user/include_standardfields_edit.tpl' obj=$ticket}
+    {/if}
+
+    {* include display hooks *}
     {if $mode eq 'create'}
         {notifydisplayhooks eventname='knowledgebase.ui_hooks.tickets.form_edit' id=null assign='hooks'}
     {else}
-        {notifydisplayhooks eventname='knowledgebase.ui_hooks.tickets.form_edit' id=$ticket.ticketid assign='hooks'}
+        {notifydisplayhooks eventname='knowledgebase.ui_hooks.tickets.form_edit' id=$ticket.id assign='hooks'}
     {/if}
     {if is_array($hooks) && isset($hooks[0])}
         <fieldset>
@@ -98,6 +79,7 @@
         </fieldset>
     {/if}
 
+    {* include return control *}
     {if $mode eq 'create'}
         <fieldset>
             <legend>{gt text='Return control'}</legend>
@@ -108,13 +90,13 @@
         </fieldset>
     {/if}
 
-    {gt text='Really delete this ticket?' assign="deleteConfirmMsg"}
-
+    {* include possible submit actions *}
     <div class="z-buttons z-formbuttons">
     {if $mode eq 'edit'}
         {formbutton id='btnUpdate' commandName='update' __text='Update ticket' class='z-bt-save'}
       {if !$inlineUsage}
-        {formbutton id='btnDelete' commandName='delete' __text='Delete ticket' class='z-bt-delete' confirmMessage=$deleteConfirmMsg}
+        {gt text='Really delete this ticket?' assign='deleteConfirmMsg'}
+        {formbutton id='btnDelete' commandName='delete' __text='Delete ticket' class='z-bt-delete z-btred' confirmMessage=$deleteConfirmMsg}
       {/if}
     {elseif $mode eq 'create'}
         {formbutton id='btnCreate' commandName='create' __text='Create ticket' class='z-bt-ok'}
@@ -127,6 +109,8 @@
 {/form}
 
 </div>
+</div>
+{include file='user/footer.tpl'}
 
 {icon type='edit' size='extrasmall' assign='editImageArray'}
 {icon type='delete' size='extrasmall' assign='deleteImageArray'}
@@ -138,6 +122,9 @@
 
     document.observe('dom:loaded', function() {
 
+        kbaseAddCommonValidationRules('ticket', '{{if $mode eq 'create'}}{{else}}{{$ticket.id}}{{/if}}');
+
+        // observe button events instead of form submit
         var valid = new Validation('{{$__formid}}', {onSubmit: false, immediate: true, focusOnError: false});
         {{if $mode ne 'create'}}
             var result = valid.validate();
@@ -161,5 +148,3 @@
 
 /* ]]> */
 </script>
-
-{include file='user/footer.tpl'}

@@ -3,7 +3,7 @@
 {assign var='nameFound' value=false}
 {if $category.display_name}
 {foreach item='displayname' key='langcode' from=$category.display_name}
-{if $langcode eq $currentLang}{assign var='nameFound' value=true}{$displayname|pnvarprepfordisplay}{/if}
+{if $langcode eq $currentLang}{assign var='nameFound' value=true}{$displayname|safetext}{/if}
 {/foreach}
 {/if}
-{if !$category.display_name || $nameFound eq false}{$category.name|pnvarprepfordisplay}{/if}
+{if !$category.display_name || $nameFound eq false}{$category.name|safetext}{/if}

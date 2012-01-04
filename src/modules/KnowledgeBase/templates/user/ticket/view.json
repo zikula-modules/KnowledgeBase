@@ -1,0 +1,8 @@
+{* purpose of this template: tickets view json view in user area *}
+{knowledgebaseTemplateHeaders contentType='application/json'}
+[
+{foreach item='item' from=$items name='tickets'}
+    {if not $smarty.foreach.tickets.first},{/if}
+    {$item->toJson()}
+{/foreach}
+]

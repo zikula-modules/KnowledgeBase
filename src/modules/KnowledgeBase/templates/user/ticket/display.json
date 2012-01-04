@@ -1,0 +1,3 @@
+{* purpose of this template: tickets display json view in user area *}
+{knowledgebaseTemplateHeaders contentType='application/json'}
+{$ticket->toJson()}

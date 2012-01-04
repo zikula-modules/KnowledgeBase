@@ -22,7 +22,9 @@ div.knowledgebaseRightBox h3 {
 div.knowledgebaseRightBox p.manageLink {
     margin-left: 18px;
 }
-
+.knowledgebaseColourPicker {
+    cursor: pointer;
+}
 
 /* validation */
 input.required, textarea.required {
@@ -61,22 +63,6 @@ input.validation-passed, textarea.validation-passed {
 
 
 
-
-
-
-/*
-div.linktabs {
-margin-bottom: 10px;
-}
-
-div.knowledgebaseRightBox {
-border: 1px solid #666;
-}
-
-div.knowledgebaseRightBox p.manageLink {
-margin-left: 18px;
-}
-*/
 div#kbleftside {
 width: 72%;
 float: left;
@@ -117,7 +103,7 @@ div.catblock:hover, div.kbcblock:hover, div.kbdetblock, div.kbthirdblock:hover {
 border: 1px dashed black;
 }
 
-/*div.pn-module-KnowledgeBase div#ratingsratecontent h3 {
+/*div.z-module-KnowledgeBase div#ratingsratecontent h3 {
 display: none;
 }*/
 

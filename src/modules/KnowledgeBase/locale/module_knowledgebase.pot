@@ -6,321 +6,686 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Zikula 1.2.x\n"
+"Project-Id-Version: Zikula component\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-13 18:33+0000\n"
+"POT-Creation-Date: 2012-01-04 22:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pnversion.php:24 pntemplates/KnowledgeBase_user_header.htm:7
+#: lib/KnowledgeBase/Form/Handler/User/Base/Edit.php:292
+#: lib/KnowledgeBase/Form/Handler/User/Base/Edit.php:321
+#: lib/KnowledgeBase/Controller/Base/User.php:194
+#: lib/KnowledgeBase/Api/User.php:154
+msgid "No such item."
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Handler/User/Base/Edit.php:570
+msgid "Done! Item created."
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Handler/User/Base/Edit.php:572
+msgid "Error! Creation attempt failed."
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Handler/User/Base/Edit.php:577
+msgid "Done! Item updated."
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Handler/User/Base/Edit.php:579
+msgid "Error! Update attempt failed."
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Handler/User/Base/Edit.php:584
+msgid "Done! Item deleted."
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Handler/User/Base/Edit.php:586
+msgid "Error! Deletion attempt failed."
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Handler/User/Ticket/Base/Edit.php:138
+msgid "Done! Ticket created."
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Handler/User/Ticket/Base/Edit.php:141
+msgid "Done! Ticket updated."
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Handler/User/Ticket/Base/Edit.php:144
+msgid "Done! Ticket deleted."
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Plugin/ColourInput.php:95
+msgid "Close"
+msgstr ""
+
+#: lib/KnowledgeBase/Form/Plugin/ColourInput.php:139
+msgid "Error! Invalid colour."
+msgstr ""
+
+#: lib/KnowledgeBase/Block/Base/ItemList.php:37
+msgid ""
+"Notice: This block will not be displayed until you activate the "
+"KnowledgeBase module."
+msgstr ""
+
+#: lib/KnowledgeBase/Block/Base/ItemList.php:41
+msgid "Item list"
+msgstr ""
+
+#: lib/KnowledgeBase/Block/Base/ItemList.php:42
+msgid "Show a list of KnowledgeBase items based on different criteria."
+msgstr ""
+
+#: lib/KnowledgeBase/Block/Base/ItemList.php:143
+#: lib/KnowledgeBase/ContentType/Base/ItemList.php:38
+msgid "KnowledgeBase items"
+msgstr ""
+
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:34
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:58
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:66
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:74
+#, php-format
+msgid "Error! Field value may only contain digits (%s)."
+msgstr ""
+
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:38
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:42
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:50
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:62
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:70
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:78
+#, php-format
+msgid "Error! Length of field value must not be higher than %2$s (%1$s)."
+msgstr ""
+
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:46
+#: lib/KnowledgeBase/Entity/Validator/Base/Ticket.php:54
+#, php-format
+msgid "Error! Field value must not be empty (%s)."
+msgstr ""
+
+#: lib/KnowledgeBase/Entity/Base/Ticket.php:582
+msgid "Details"
+msgstr ""
+
+#: lib/KnowledgeBase/Entity/Base/Ticket.php:592
+#: lib/KnowledgeBase/Entity/Base/Ticket.php:593
+msgid "Edit"
+msgstr ""
+
+#: lib/KnowledgeBase/Entity/Base/Ticket.php:598
+msgid "Reuse for new item"
+msgstr ""
+
+#: lib/KnowledgeBase/Entity/Base/Ticket.php:599
+msgid "Reuse"
+msgstr ""
+
+#: lib/KnowledgeBase/Entity/Base/Ticket.php:607
+#: lib/KnowledgeBase/Entity/Base/Ticket.php:608
+msgid "Back to overview"
+msgstr ""
+
+#: lib/KnowledgeBase/Installer.php:30
+msgid "creation of default categories failed"
+msgstr ""
+
+#: lib/KnowledgeBase/Controller/Base/User.php:191
+msgid "Error! Invalid identifier received."
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Search.php:84 lib/KnowledgeBase/Api/Search.php:112
+msgid "Error! Could not load items."
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Base/Admin.php:30
+msgid "Frontend"
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Base/Admin.php:31
+msgid "Switch to user area."
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Base/User.php:30
+msgid "Backend"
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Base/User.php:31
+msgid "Switch to administration area."
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Base/User.php:36
+#: templates/plugins/function.knowledgebaseSelectorObjectTypes.php:29
+#: templates/block/itemlist_modify.tpl:6
+msgid "Tickets"
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Base/User.php:37 templates/user/ticket/view.tpl:4
+msgid "Ticket list"
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Base/Mailz.php:31
+msgid "3 newest tickets"
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Base/Mailz.php:32
+msgid "A list of the three newest tickets."
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Base/Mailz.php:37
+msgid "3 random tickets"
+msgstr ""
+
+#: lib/KnowledgeBase/Api/Base/Mailz.php:38
+msgid "A list of three random tickets."
+msgstr ""
+
+#: lib/KnowledgeBase/Base/Version.php:25
 msgid "KnowledgeBase"
 msgstr ""
 
-#: pnversion.php:26
-msgid "KnowledgeBase module generated by ModuleStudio 0.4.10"
+#: lib/KnowledgeBase/Base/Version.php:27
+msgid ""
+"The knowledge base module provides a categorised archive for recurring "
+"questions and answers to improve community support."
 msgstr ""
 
-#: pnversion.php:28
+#. ! url version of name, should be in lowercase without space
+#: lib/KnowledgeBase/Base/Version.php:29
 msgid "knowledgebase"
 msgstr ""
 
-#: pntemplates/plugins/function.kbProcessListLevels.php:31
+#: lib/KnowledgeBase/Base/Version.php:65
+msgid "knowledgebase Tickets Display Hooks"
+msgstr ""
+
+#: lib/KnowledgeBase/Base/Version.php:82
+msgid "knowledgebase Tickets Filter Hooks"
+msgstr ""
+
+#: lib/KnowledgeBase/Base/Installer.php:31
+#: lib/KnowledgeBase/Base/Installer.php:104
+msgid "Doctrine Exception: "
+msgstr ""
+
+#: lib/KnowledgeBase/Base/Installer.php:33
+#, php-format
+msgid "An error was encountered while creating the tables for the %s module."
+msgstr ""
+
+#: lib/KnowledgeBase/Base/Installer.php:97
+#, php-format
+msgid ""
+"An error was encountered while removing stored object workflows for the %s "
+"module."
+msgstr ""
+
+#: lib/KnowledgeBase/Base/Installer.php:106
+#, php-format
+msgid "An error was encountered while dropping the tables for the %s module."
+msgstr ""
+
+#: lib/KnowledgeBase/ContentType/Base/ItemList.php:44
+msgid "Display KnowledgeBase items."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseSelectorTemplates.php:29
+#: templates/block/itemlist_modify.tpl:27
+msgid "Only item titles"
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseSelectorTemplates.php:30
+#: templates/block/itemlist_modify.tpl:28
+msgid "With description"
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:36
+msgid "This is a required field."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:37
+msgid "Please enter a valid number in this field."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:38
+msgid ""
+"Please use numbers only in this field. please avoid spaces or other "
+"characters such as dots or commas."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:39
+msgid "Please use letters only (a-z) in this field."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:40
+msgid ""
+"Please use only letters (a-z) or numbers (0-9) only in this field. No spaces "
+"or other characters are allowed."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:41
+msgid "Please enter a valid date."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:42
+msgid "Please enter a valid email address. For example yourname@example.com ."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:43
+msgid "Please enter a valid URL."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:44
+msgid ""
+"Please use this date format: dd/mm/yyyy. For example 17/03/2010 for the 17th "
+"of March, 2010."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:45
+msgid "Please enter a valid $ amount. For example $100.00 ."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:46
+msgid "Please make a selection."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:47
+msgid "Please select one of the above options."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:50
+msgid "This value must not contain spaces."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:51
+msgid "Please select a valid html colour code."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:52
+#: templates/plugins/function.knowledgebaseValidationError.php:54
+#: templates/plugins/function.knowledgebaseValidationError.php:56
+msgid "Please select a value in the past."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:53
+#: templates/plugins/function.knowledgebaseValidationError.php:55
+#: templates/plugins/function.knowledgebaseValidationError.php:57
+msgid "Please select a value in the future."
+msgstr ""
+
+#: templates/plugins/function.knowledgebaseValidationError.php:58
+msgid "This value is already assigned, but must be unique. Please change it."
+msgstr ""
+
+#: templates/plugins/function.kbbreadcrumb.php:30
+#: templates/plugins/function.kbbreadcrumb.php:33
+msgid "Knowledge Base"
+msgstr ""
+
+#: templates/plugins/function.kbProcessListLevels.php:29
 #, php-format
 msgid "%1$s: missing parameter '%2$s'"
 msgstr ""
 
-#: pntemplates/plugins/function.kbbreadcrumb.php:34
-#: pntemplates/plugins/function.kbbreadcrumb.php:37
-msgid "Knowledge Base"
+#: templates/knowledgebase_search_options.tpl:4
+msgid "Knowledge Base Items"
 msgstr ""
 
-#: pnsearchapi.php:103 pnsearchapi.php:131
-msgid "Error! Could not load items."
+#: templates/mailz/itemlist_Ticket_text.tpl:7
+#: templates/mailz/itemlist_Ticket_html.tpl:11
+#: templates/user/ticket/view.tpl:65
+msgid "No tickets found."
 msgstr ""
 
-#: pnuserapi.php:189
-msgid "No such item."
+#: templates/contenttype/itemlist_edit.tpl:4
+#: templates/block/itemlist_modify.tpl:4
+msgid "Object type"
 msgstr ""
 
-#: pnuserapi.php:208 pnuserapi.php:334
-msgid "Error! Could not do what you wanted. Please check your input."
+#: templates/contenttype/itemlist_edit.tpl:10
+#: templates/block/itemlist_modify.tpl:11
+msgid "Sorting"
 msgstr ""
 
-#: pninit.php:46
-msgid "creation of default categories failed"
+#: templates/contenttype/itemlist_edit.tpl:13
+#: templates/block/itemlist_modify.tpl:13
+msgid "Random"
 msgstr ""
 
-#: classes/FormHandler/KnowledgeBase_user_ticket_edithandler.class.php:101
-msgid "No such ticket found."
+#: templates/contenttype/itemlist_edit.tpl:15
+#: templates/block/itemlist_modify.tpl:14
+msgid "Newest"
 msgstr ""
 
-#: classes/FormHandler/KnowledgeBase_user_ticket_edithandler.class.php:200
-msgid "Error! Creation attempt failed."
+#: templates/contenttype/itemlist_edit.tpl:17
+#: templates/block/itemlist_modify.tpl:15
+msgid "Default"
 msgstr ""
 
-#: classes/FormHandler/KnowledgeBase_user_ticket_edithandler.class.php:203
-msgid "Done! Ticket created."
+#: templates/contenttype/itemlist_edit.tpl:22
+#: templates/block/itemlist_modify.tpl:20
+msgid "Amount"
 msgstr ""
 
-#: classes/FormHandler/KnowledgeBase_user_ticket_edithandler.class.php:228
-msgid "Error! Update attempt failed."
+#: templates/contenttype/itemlist_edit.tpl:27
+#: templates/block/itemlist_modify.tpl:25
+msgid "Template File"
 msgstr ""
 
-#: classes/FormHandler/KnowledgeBase_user_ticket_edithandler.class.php:231
-msgid "Done! Ticket updated."
+#: templates/contenttype/itemlist_edit.tpl:33
+#: templates/block/itemlist_modify.tpl:33
+msgid "Filter (expert option)"
 msgstr ""
 
-#: classes/FormHandler/KnowledgeBase_user_ticket_edithandler.class.php:263
-msgid "Error! Deletion attempt failed."
+#: templates/contenttype/itemlist_edit.tpl:35
+#: templates/block/itemlist_modify.tpl:35
+msgid "Syntax examples"
 msgstr ""
 
-#: classes/FormHandler/KnowledgeBase_user_ticket_edithandler.class.php:266
-msgid "Done! Ticket deleted."
+#: templates/contenttype/itemlist_edit.tpl:35
+#: templates/block/itemlist_modify.tpl:35
+msgid "or"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_main.htm:7
-msgid "Knowledgebase categories"
+#: templates/contenttype/itemlist_Ticket_display_description.tpl:9
+#: templates/contenttype/itemlist_Ticket_display.tpl:5
+msgid "Read more"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_main.htm:12
-#: pntemplates/KnowledgeBase_user_ticket_view.htm:13
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:8
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:101
-msgid "Create ticket"
+#: templates/contenttype/itemlist_Ticket_display_description.tpl:11
+msgid "No entries found."
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_main.htm:15
-#: pntemplates/KnowledgeBase_user_ticket_view.htm:20
-msgid "Create"
+#: templates/user/header.tpl:13
+msgid "Knowledge base"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_main.htm:23
-#: pntemplates/KnowledgeBase_user_main.htm:33
-#: pntemplates/KnowledgeBase_include_categoryTree.htm:34
+#: templates/user/include/categoryTree.tpl:28 templates/user/main.tpl:19
+#: templates/user/main.tpl:29
 #, php-format
 msgid "See all topics in '%s'"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_main.htm:28
-#: pntemplates/KnowledgeBase_include_centerblocks.htm:8
-#: pntemplates/KnowledgeBase_include_centerblocks.htm:19
-#: pntemplates/KnowledgeBase_user_ticket_view.htm:34
+#: templates/user/include/centerblocks.tpl:4
+msgid "Popular Knowledge Base Entries"
+msgstr ""
+
+#: templates/user/include/centerblocks.tpl:8
+#: templates/user/include/centerblocks.tpl:19 templates/user/main.tpl:24
+#: templates/user/ticket/view.tpl:50
 #, php-format
 msgid "Details of '%s'"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_main.htm:33
-msgid "more topics"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_main.htm:36
-msgid "No topics yet."
-msgstr ""
-
-#: pntemplates/KnowledgeBase_include_centerblocks.htm:4
-msgid "Popular Knowledge Base Entries"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_include_centerblocks.htm:15
+#: templates/user/include/centerblocks.tpl:15
 msgid "Latest Knowledge Base Entries"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_search.htm:5
-msgid "Knowledge Base Items"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:14
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:15
-#: pntemplates/KnowledgeBase_user_ticket_view.htm:31
-msgid "Edit"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:21
-msgid "Solution"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:29
-msgid "ID of this page"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:31
-msgid "Created on"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:33
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:58
-msgid "Views"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:41
-msgid "Hot or not"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:42
-msgid "likes"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:42
-msgid "dislikes"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:43
-msgid "Like it"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:43
-msgid "This answer was helpful"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:43
-msgid "Dislike it"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:43
-msgid "This answer was not helpful"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:48
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:49
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:50
-msgid "Back to overview"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_display.htm:49
-#: pntemplates/KnowledgeBase_user_ticket_view.htm:54
-msgid "Back"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_view.htm:8
-msgid "Ticket list"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_view.htm:46
-msgid "No tickets found."
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_view.htm:53
-#: pntemplates/KnowledgeBase_user_ticket_view.htm:54
-#: pntemplates/KnowledgeBase_user_ticket_view.htm:55
-msgid "Back to category list"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_include_rightblocks.htm:4
+#: templates/user/include/rightblocks.tpl:3
 msgid "All categories"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_include_rightblocks.htm:8
-#: pntemplates/KnowledgeBase_include_rightblocks.htm:13
+#: templates/user/include/rightblocks.tpl:7
+#: templates/user/include/rightblocks.tpl:12
 msgid "Search"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_include_rightblocks.htm:11
+#: templates/user/include/rightblocks.tpl:10
 msgid "Your search term"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:6
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:10
-msgid "Edit ticket"
+#: templates/user/assign.tpl:4
+msgid "Assign"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:27
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:33
-msgid "Content"
+#: templates/user/main.tpl:6
+msgid "Knowledgebase categories"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:29
-msgid "Subject"
+#: templates/user/main.tpl:11 templates/user/ticket/view.tpl:12
+#: templates/user/ticket/edit.tpl:9 templates/user/ticket/edit.tpl:122
+msgid "Create ticket"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:30
-msgid "Input the subject of the ticket"
+#: templates/user/main.tpl:29
+msgid "more topics"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:34
-msgid "Input the content of the ticket"
+#: templates/user/main.tpl:32
+msgid "No topics yet."
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:38
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:41
+#: templates/user/include_categories_edit.tpl:3
+#: templates/user/include_categories_display.tpl:3
+#: templates/user/ticket/view.rss:41
+msgid "Categories"
+msgstr ""
+
+#: templates/user/include_categories_edit.tpl:7
+#: templates/user/ticket/edit.tpl:38 templates/user/ticket/edit.tpl:41
 msgid "Category"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:49
-msgid "Choose the category"
+#: templates/user/ticket/view.tpl:24
+msgid "Back to paginated view"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:55
-msgid "Statistics"
+#: templates/user/ticket/view.tpl:30
+msgid "Show all entries"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:59
-msgid "Input the views of the ticket"
+#: templates/user/ticket/view.tpl:74 templates/user/ticket/view.tpl:75
+msgid "Back to category list"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:62
+#: templates/user/ticket/view.csv:3 templates/user/ticket/edit.tpl:26
+msgid "Subject"
+msgstr ""
+
+#: templates/user/ticket/view.csv:3 templates/user/ticket/edit.tpl:23
+#: templates/user/ticket/edit.tpl:32
+msgid "Content"
+msgstr ""
+
+#: templates/user/ticket/view.csv:3 templates/user/ticket/edit.tpl:62
+#: templates/user/ticket/display.tpl:24
+msgid "Views"
+msgstr ""
+
+#: templates/user/ticket/view.csv:3 templates/user/ticket/edit.tpl:67
 msgid "Rates up"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:63
-msgid "Input the rates up of the ticket"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:66
+#: templates/user/ticket/view.csv:3 templates/user/ticket/edit.tpl:72
 msgid "Rates down"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:67
-msgid "Input the rates down of the ticket"
+#: templates/user/ticket/include_displayItemListMany.tpl:10
+#: templates/user/ticket/include_displayItemListOne.tpl:7
+msgid "Open quick view window"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:71
-msgid "Meta data"
+#: templates/user/ticket/include_displayItemListMany.tpl:11
+#: templates/user/ticket/include_displayItemListOne.tpl:8
+msgid "Quick view"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:74
+#: templates/user/ticket/view.rss:11 templates/user/ticket/view.atom:4
+msgid "Latest tickets"
+msgstr ""
+
+#: templates/user/ticket/view.rss:12 templates/user/ticket/view.atom:5
+msgid "A direct feed showing the list of tickets"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:7 templates/user/ticket/edit.tpl:11
+msgid "Edit ticket"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:25
+msgid "This is the subject of this ticket, explaining the problem."
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:27
+msgid "Enter the subject of the ticket"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:31
+msgid ""
+"This content field describes the solution and/or instructions for the "
+"problem."
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:33
+msgid "Enter the content of the ticket"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:53
+msgid "Choose the category"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:59
+msgid "Statistics"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:63
+msgid "Enter the views of the ticket"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:68
+msgid "Enter the rates up of the ticket"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:73
+msgid "Enter the rates down of the ticket"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:93
+msgid "Hooks"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:105
+msgid "Return control"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:107
+msgid "Create another item after save"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:116
+msgid "Update ticket"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:118
+msgid "Really delete this ticket?"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:119
+msgid "Delete ticket"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:124
+msgid "OK"
+msgstr ""
+
+#: templates/user/ticket/edit.tpl:126
+msgid "Cancel"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:4
+msgid "Ticket"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:13
+msgid "Solution"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:20
+msgid "ID of this page"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:22
+msgid "Created on"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:37
+msgid "Hot or not"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:38
+msgid "likes"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:38
+msgid "dislikes"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:39
+msgid "Like it"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:39
+msgid "This answer was helpful"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:39
+msgid "Dislike it"
+msgstr ""
+
+#: templates/user/ticket/display.tpl:39
+msgid "This answer was not helpful"
+msgstr ""
+
+#: templates/user/include_standardfields_display.tpl:3
+#: templates/user/include_standardfields_edit.tpl:4
+msgid "Creation and update"
+msgstr ""
+
+#: templates/user/include_standardfields_display.tpl:6
+msgid "Creation"
+msgstr ""
+
+#: templates/user/include_standardfields_display.tpl:17
+#, php-format
+msgid "Created by %1$s on %2$s"
+msgstr ""
+
+#: templates/user/include_standardfields_display.tpl:20
+msgid "Last update"
+msgstr ""
+
+#: templates/user/include_standardfields_display.tpl:31
+#, php-format
+msgid "Updated by %1$s on %2$s"
+msgstr ""
+
+#: templates/user/include_standardfields_edit.tpl:8
 #, php-format
 msgid "Created by %s"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:75
+#: templates/user/include_standardfields_edit.tpl:9
 #, php-format
 msgid "Created on %s"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:77
+#: templates/user/include_standardfields_edit.tpl:13
 #, php-format
 msgid "Updated by %s"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:78
+#: templates/user/include_standardfields_edit.tpl:14
 #, php-format
 msgid "Updated on %s"
 msgstr ""
 
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:84
-msgid "Hooks"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:94
-msgid "Really delete this ticket?"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:98
-msgid "Update ticket"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:99
-msgid "Delete ticket"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:103
-msgid "OK"
-msgstr ""
-
-#: pntemplates/KnowledgeBase_user_ticket_edit.htm:105
-msgid "Cancel"
+#: templates/admin/main.tpl:3
+msgid "Welcome to the admin section of the Knowledge base module."
 msgstr ""

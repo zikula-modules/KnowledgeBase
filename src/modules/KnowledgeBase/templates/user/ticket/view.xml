@@ -1,9 +1,8 @@
 {* purpose of this template: tickets view xml view in user area *}
 {knowledgebaseTemplateHeaders contentType='text/xml'}<?xml version="1.0" encoding="{charset}" ?>
-{getbaseurl assign='baseurl'}
 <tickets>
 {foreach item='item' from=$items}
-    {include file='src/modules/KnowledgeBase/user/ticket/include.xml'}
+    {include file='user/ticket/include.xml'}
 {foreachelse}
     <noTicket />
 {/foreach}

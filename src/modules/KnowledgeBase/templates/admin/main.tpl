@@ -1,3 +1,4 @@
 {* purpose of this template: tickets main view in admin area *}
-
-{modfunc modname='KnowledgeBase' type='admin' func='view'}
+{include file='admin/header.tpl'}
+<p>{gt text='Welcome to the admin section of the Knowledge base module.'}</p>
+{include file='admin/footer.tpl'}

@@ -104,7 +104,7 @@ class KnowledgeBase_Entity_Repository_Ticket extends KnowledgeBase_Entity_Reposi
             //if (!empty($filter)) $filter .= ',';
             //$filter .= 'subject:like:%' . $searchterm . '%,content:like:%' . $searchterm . '%';
             if (!empty($filter)) $filter .= ' AND ';
-            $filter .= '(subject LIKE \'%' . DataUtil::formatForStore($searchterm) . '%\' OR content LIKE \'%' . DataUtil::formatForStore($searchterm) . '%\')';
+            $filter .= '(tbl.subject LIKE \'%' . DataUtil::formatForStore($searchterm) . '%\' OR tbl.content LIKE \'%' . DataUtil::formatForStore($searchterm) . '%\')';
         }
         if (!empty($filter)) {
             //$fu->setFilter($filter);
@@ -120,5 +120,30 @@ class KnowledgeBase_Entity_Repository_Ticket extends KnowledgeBase_Entity_Reposi
         $query = $qb->getQuery();
 
         return $query;
+    }
+
+    /**
+     * Helper method to add join selections.
+     *
+     * @return String Enhancement for select clause.
+     */
+    protected function addJoinsToSelection()
+    {
+         $selection = ', tblCategories, tblCategory';
+         return $selection;
+    }
+
+    /**
+     * Helper method to add joins to from clause.
+     *
+     * @param Doctrine\ORM\QueryBuilder $qb query builder instance used to create the query.
+     *
+     * @return String Enhancement for from clause.
+     */
+    protected function addJoinsToFrom(QueryBuilder $qb)
+    {
+        $qb->leftJoin('tbl.categories', 'tblCategories');
+        $qb->leftJoin('tblCategories.category', 'tblCategory');
+        return $qb;
     }
 }

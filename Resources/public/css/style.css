@@ -1,0 +1,68 @@
+/* view pages */
+div#z-maincontent.z-module-knowledgebase table tbody tr td {
+    vertical-align: top;
+}
+
+/* display pages */
+.guiteknowledgebasemodule-display.with-rightbox div.z-panel-content {
+    float: left;
+    width: 79%;
+}
+.guiteknowledgebasemodule-display div.guiteknowledgebasemodule-rightbox {
+    float: right;
+    margin: 0 1em;
+    padding: .5em;
+    width: 20%;
+    /*border: 1px solid #666;*/
+}
+
+.guiteknowledgebasemodule-display div.guiteknowledgebasemodule-rightbox h3 {
+    color: #333;
+    font-weight: 400;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+}
+
+.guiteknowledgebasemodule-display div.guiteknowledgebasemodule-rightbox p.managelink {
+    margin-left: 18px;
+}
+/* validation */
+div.form-group input.required, div.form-group textarea.required {
+    border: 1px solid #00a8e6;
+}
+div.form-group input.validation-failed, div.form-group textarea.validation-failed {
+    border: 1px solid #f30;
+    color: #f30;
+}
+div.form-group input.validation-passed, div.form-group textarea.validation-passed {
+    border: 1px solid #0c0;
+    color: #000;
+}
+
+.validation-advice {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #f90;
+    color: #fff;
+    font-weight: 700;
+}
+div.guiteknowledgebasemodule-view form.guiteknowledgebasemodule-quicknav {
+    margin: 10px 0;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+}
+
+div.guiteknowledgebasemodule-view form.guiteknowledgebasemodule-quicknav fieldset {
+    padding: 3px 10px;
+    margin-bottom: 0;
+}
+
+div.guiteknowledgebasemodule-view form.guiteknowledgebasemodule-quicknav fieldset h3 {
+    margin-top: 0;
+    display: none;
+}
+
+div.guiteknowledgebasemodule-view form.guiteknowledgebasemodule-quicknav fieldset #num {
+    width: 50px;
+    text-align: right;
+}

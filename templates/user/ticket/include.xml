@@ -1,9 +1,0 @@
-{* purpose of this template: tickets xml inclusion template in user area *}
-<ticket id="{$item.id}" createdon="{$item.createdDate|dateformat}" updatedon="{$item.updatedDate|dateformat}">
-    <id>{$item.id}</id>
-    <subject><![CDATA[{$item.subject}]]></subject>
-    <content><![CDATA[{$item.content}]]></content>
-    <views>{$item.views}</views>
-    <ratesUp>{$item.ratesUp}</ratesUp>
-    <ratesDown>{$item.ratesDown}</ratesDown>
-</ticket>

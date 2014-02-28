@@ -1,0 +1,92 @@
+application KnowledgeBase {
+	documentation
+	"The knowledge base module provides a categorised archive for recurring questions and answers to improve community support."
+	vendor Guite
+	author "Axel Guckelsberger"
+	email "info@guite.de"
+	url "https://guite.de"
+	prefix kbase
+	modelPath ""
+	generatorSettings {
+		settingsContainer Settings
+		generateAccountApi false
+		generateMailzApi false
+		generateModerationBlock false
+		generateDetailContentType false
+		generateNewsletterPlugin false
+		generateModerationPanel false
+		generatePendingContentSupport false
+		generateExternalControllerAndFinder false
+		generateScribitePlugins false
+		generateCsvTemplates false
+		generateXmlTemplates false
+		generateJsonTemplates false
+		generateKmlTemplates false
+	}
+	modelLayer {
+		modelContainer Model {
+			entities {
+				entity ticket leading categorisable {
+					nameMultiple tickets
+					displayPattern "#subject#"
+					fields {
+						string subject {
+							documentation "This is the subject of this ticket, explaining the problem."
+							defaultValue ""
+						},
+						text content {
+							documentation "This content field describes the solution and/or instructions for the problem."
+							defaultValue ""
+						},
+						integer ^views {
+							defaultValue "0"
+							mandatory false
+						},
+						integer ratesUp {
+							defaultValue "0"
+							mandatory false
+							length 4
+						},
+						integer ratesDown {
+							defaultValue "0"
+							mandatory false
+							length 4
+						}
+					}
+				}
+			}
+		}
+	}
+	controllerLayer {
+		controllerContainer Controller {
+			modelContext ( "KnowledgeBase.Model" )
+			processViews "KnowledgeBase.View"
+			controllers {
+				userController User {
+					actions {
+						mainAction Main,
+						viewAction View,
+						displayAction Display,
+						editAction Edit,
+						customAction Assign
+					}
+				},
+				ajaxController Ajax {
+					actions {
+						customAction Search
+					}
+				},
+				adminController Admin {
+					actions {
+						mainAction Main
+					}
+				}
+			}
+		}
+	}
+	viewLayer {
+		viewContainer View {
+			controller "KnowledgeBase.Controller"
+		}
+	}
+}

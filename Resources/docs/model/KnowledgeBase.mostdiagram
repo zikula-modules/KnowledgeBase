@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:modulestudio="http://modulestudio.de/modulestudio" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <notation:Diagram xmi:id="_tHsZsKBJEeOJaeZjViIbmA" type="Module" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_tJZC0KBJEeOJaeZjViIbmA" type="2001" fontName="monospaced" fontHeight="12" lineColor="4210752">
+      <children xmi:type="notation:DecorationNode" xmi:id="_tJZp4KBJEeOJaeZjViIbmA" type="5001"/>
+      <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_tJZC0aBJEeOJaeZjViIbmA" diagramLink="_6MUGkKBJEeOJaeZjViIbmA" hint="Model"/>
+      <element xmi:type="modulestudio:Models" href="KnowledgeBase.mostapp#//@models.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tJZC0qBJEeOJaeZjViIbmA" y="100"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_tJZp4aBJEeOJaeZjViIbmA" type="2002" fontName="monospaced" fontHeight="12" lineColor="4210752">
+      <children xmi:type="notation:DecorationNode" xmi:id="_tJZp5KBJEeOJaeZjViIbmA" type="5002"/>
+      <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_tJZp4qBJEeOJaeZjViIbmA" diagramLink="_4MSIgKBJEeOJaeZjViIbmA" hint="Controller"/>
+      <element xmi:type="modulestudio:Controllers" href="KnowledgeBase.mostapp#//@controllers.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tJZp46BJEeOJaeZjViIbmA" x="44"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_tJaQ8KBJEeOJaeZjViIbmA" type="2003" fontName="monospaced" fontHeight="12" lineColor="4210752">
+      <children xmi:type="notation:DecorationNode" xmi:id="_tJaQ8qBJEeOJaeZjViIbmA" type="5003"/>
+      <element xmi:type="modulestudio:Views" href="KnowledgeBase.mostapp#//@views.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tJaQ8aBJEeOJaeZjViIbmA" x="124" y="100"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_ubfj4KBJEeOJaeZjViIbmA" type="2004" fontName="monospaced" fontHeight="12" lineColor="4210752">
+      <children xmi:type="notation:DecorationNode" xmi:id="_ubfj4qBJEeOJaeZjViIbmA" type="5004"/>
+      <element xmi:type="modulestudio:SettingsContainer" href="KnowledgeBase.mostapp#//@generatorSettings.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ubfj4aBJEeOJaeZjViIbmA" x="156" y="196"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_tHsZsaBJEeOJaeZjViIbmA"/>
+    <element xmi:type="modulestudio:Application" href="KnowledgeBase.mostapp#/"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_4MSIgKBJEeOJaeZjViIbmA" type="Controller" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_4Od50KBJEeOJaeZjViIbmA" type="2202" fontColor="4210752" fontName="Lucida Grande" fontHeight="12" lineColor="0">
+      <children xmi:type="notation:DecorationNode" xmi:id="_4Oeg4KBJEeOJaeZjViIbmA" type="5211"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_4Oeg4aBJEeOJaeZjViIbmA" type="7202"/>
+      <element xmi:type="modulestudio:UserController" href="KnowledgeBase.mostapp#//@controllers.0/@controllers.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4Od50aBJEeOJaeZjViIbmA"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_4Oeg4qBJEeOJaeZjViIbmA" type="2203" fontColor="4210752" fontName="Lucida Grande" fontHeight="12" lineColor="0">
+      <children xmi:type="notation:DecorationNode" xmi:id="_4Oeg5KBJEeOJaeZjViIbmA" type="5212"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_4Oeg5aBJEeOJaeZjViIbmA" type="7203"/>
+      <element xmi:type="modulestudio:AjaxController" href="KnowledgeBase.mostapp#//@controllers.0/@controllers.1"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4Oeg46BJEeOJaeZjViIbmA" x="288" y="132"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_4OfH9KBJEeOJaeZjViIbmA" type="2201" fontColor="4210752" fontName="Lucida Grande" fontHeight="12" lineColor="0">
+      <children xmi:type="notation:DecorationNode" xmi:id="_4OfH9qBJEeOJaeZjViIbmA" type="5210"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_4OfH96BJEeOJaeZjViIbmA" type="7201"/>
+      <element xmi:type="modulestudio:AdminController" href="KnowledgeBase.mostapp#//@controllers.0/@controllers.2"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4OfH9aBJEeOJaeZjViIbmA" x="420" y="132"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_4MSIgaBJEeOJaeZjViIbmA"/>
+    <element xmi:type="modulestudio:Controllers" href="KnowledgeBase.mostapp#//@controllers.0"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_6MUGkKBJEeOJaeZjViIbmA" type="Model" measurementUnit="Pixel">
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_6MUGkaBJEeOJaeZjViIbmA"/>
+    <element xmi:type="modulestudio:Models" href="KnowledgeBase.mostapp#//@models.0"/>
+  </notation:Diagram>
+</xmi:XMI>

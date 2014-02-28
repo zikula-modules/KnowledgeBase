@@ -1,0 +1,28 @@
+{
+    "name": "guite/knowledgebase",
+    "description": "The knowledge base module provides a categorised archive for recurring questions and answers to improve community support.",
+    "version": "1.0.0",
+    "type": "zikula-module",
+    "license": "LGPL-3.0+",
+    "authors": [
+        {
+            "name": "Axel Guckelsberger",
+            "email": "info@guite.de",
+            "homepage": "https://guite.de",
+            "role": "owner"
+        }
+    ],
+    "autoload": {»
+        "psr-4": { "Guite\\KnowledgeBaseModule\\": "" }
+    },
+    "require": {
+        "php": ">5.3.3"
+    },
+    "suggest": {
+    },
+    "extra": {
+        "zikula": {
+            "class": "Guite\\KnowledgeBaseModule\\GuiteKnowledgeBaseModule"
+        }
+    }
+}

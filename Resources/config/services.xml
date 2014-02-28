@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+    
+        <parameter key="guiteknowledgebasemodule.core_listener.class">Guite\KnowledgeBaseModule\Listener\CoreListener</parameter>
+        <parameter key="guiteknowledgebasemodule.frontcontroller_listener.class">Guite\KnowledgeBaseModule\Listener\FrontControllerListener</parameter>
+        <parameter key="guiteknowledgebasemodule.installer_listener.class">Guite\KnowledgeBaseModule\Listener\InstallerListener</parameter>
+        <parameter key="guiteknowledgebasemodule.moduledispatch_listener.class">Guite\KnowledgeBaseModule\Listener\ModuleDispatchListener</parameter>
+        <parameter key="guiteknowledgebasemodule.mailer_listener.class">Guite\KnowledgeBaseModule\Listener\MailerListener</parameter>
+        <parameter key="guiteknowledgebasemodule.page_listener.class">Guite\KnowledgeBaseModule\Listener\PageListener</parameter>
+        <parameter key="guiteknowledgebasemodule.theme_listener.class">Guite\KnowledgeBaseModule\Listener\ThemeListener</parameter>
+        <parameter key="guiteknowledgebasemodule.view_listener.class">Guite\KnowledgeBaseModule\Listener\ViewListener</parameter>
+        <parameter key="guiteknowledgebasemodule.userlogin_listener.class">Guite\KnowledgeBaseModule\Listener\UserLoginListener</parameter>
+        <parameter key="guiteknowledgebasemodule.userlogout_listener.class">Guite\KnowledgeBaseModule\Listener\UserLogoutListener</parameter>
+        <parameter key="guiteknowledgebasemodule.user_listener.class">Guite\KnowledgeBaseModule\Listener\UserListener</parameter>
+        <parameter key="guiteknowledgebasemodule.userregistration_listener.class">Guite\KnowledgeBaseModule\Listener\UserRegistrationListener</parameter>
+        <parameter key="guiteknowledgebasemodule.users_listener.class">Guite\KnowledgeBaseModule\Listener\UsersListener</parameter>
+        <parameter key="guiteknowledgebasemodule.group_listener.class">Guite\KnowledgeBaseModule\Listener\GroupListener</parameter>
+        <parameter key="guiteknowledgebasemodule.thirdparty_listener.class">Guite\KnowledgeBaseModule\Listener\ThirdPartyListener</parameter>
+    </parameters>
+    <services>
+    
+        <!-- core related events -->
+        <service id="guiteknowledgebasemodule.core_listener" class="%guiteknowledgebasemodule.core_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- front controller -->
+        <service id="guiteknowledgebasemodule.frontcontroller_listener" class="%guiteknowledgebasemodule.frontcontroller_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- installer -->
+        <service id="guiteknowledgebasemodule.installer_listener" class="%guiteknowledgebasemodule.installer_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- module dispatching -->
+        <service id="guiteknowledgebasemodule.moduledispatch_listener" class="%guiteknowledgebasemodule.moduledispatch_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- mailer -->
+        <service id="guiteknowledgebasemodule.mailer_listener" class="%guiteknowledgebasemodule.mailer_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- page -->
+        <service id="guiteknowledgebasemodule.page_listener" class="%guiteknowledgebasemodule.page_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- theme -->
+        <service id="guiteknowledgebasemodule.theme_listener" class="%guiteknowledgebasemodule.theme_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- view -->
+        <service id="guiteknowledgebasemodule.view_listener" class="%guiteknowledgebasemodule.view_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- user login -->
+        <service id="guiteknowledgebasemodule.userlogin_listener" class="%guiteknowledgebasemodule.userlogin_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- user logout -->
+        <service id="guiteknowledgebasemodule.userlogout_listener" class="%guiteknowledgebasemodule.userlogout_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- user -->
+        <service id="guiteknowledgebasemodule.user_listener" class="%guiteknowledgebasemodule.user_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- registration -->
+        <service id="guiteknowledgebasemodule.userregistration_listener" class="%guiteknowledgebasemodule.userregistration_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- users module -->
+        <service id="guiteknowledgebasemodule.users_listener" class="%guiteknowledgebasemodule.users_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- group -->
+        <service id="guiteknowledgebasemodule.group_listener" class="%guiteknowledgebasemodule.group_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+        <!-- special purposes and 3rd party api support -->
+        <service id="guiteknowledgebasemodule.thirdparty_listener" class="%guiteknowledgebasemodule.thirdparty_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    
+    </services>
+</container>

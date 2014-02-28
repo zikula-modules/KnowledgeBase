@@ -20,5 +20,8 @@
  * whereby $namespace is the first part of the PEAR class name
  * and $path is the path to the containing folder.
  */
+// initialise doctrine extension listeners
+$helper = ServiceUtil::getService('doctrine_extensions');
+$helper->getListener('timestampable');
+$helper->getListener('standardfields');
 
-include_once 'Base/bootstrap.php';

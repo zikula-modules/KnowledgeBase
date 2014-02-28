@@ -5,8 +5,6 @@ CUSTOMISATIONS
 
 Knowledge Base - Manual additions and amendments
 
-CORE HACKS
-
 Changed files:
   * style/style.css
   * templates/user/footer.tpl

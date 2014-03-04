@@ -14,6 +14,7 @@ namespace Guite\KnowledgeBaseModule\Listener;
 
 use Guite\KnowledgeBaseModule\Listener\Base\InstallerListener as BaseInstallerListener;
 use Zikula\Core\Event\GenericEvent;
+use Zikula\Core\Event\ModuleStateEvent;
 
 /**
  * Event handler implementation class for module installer events.
@@ -26,9 +27,9 @@ class InstallerListener extends BaseInstallerListener
      * Called after a module has been successfully installed.
      * Receives `$modinfo` as args.
      *
-     * @param GenericEvent $event The event instance.
+     * @param ModuleStateEvent $event The event instance.
      */
-    public static function moduleInstalled(GenericEvent $event)
+    public static function moduleInstalled(ModuleStateEvent $event)
     {
         parent::moduleInstalled($event);
     }
@@ -39,9 +40,9 @@ class InstallerListener extends BaseInstallerListener
      * Called after a module has been successfully upgraded.
      * Receives `$modinfo` as args.
      *
-     * @param GenericEvent $event The event instance.
+     * @param ModuleStateEvent $event The event instance.
      */
-    public static function moduleUpgraded(GenericEvent $event)
+    public static function moduleUpgraded(ModuleStateEvent $event)
     {
         parent::moduleUpgraded($event);
     }
@@ -52,7 +53,7 @@ class InstallerListener extends BaseInstallerListener
      * Called after a module has been successfully enabled.
      * Receives `$modinfo` as args.
      */
-    public static function moduleEnabled(GenericEvent $event)
+    public static function moduleEnabled(ModuleStateEvent $event)
     {
         parent::moduleActivated($event);
     }
@@ -63,7 +64,7 @@ class InstallerListener extends BaseInstallerListener
      * Called after a module has been successfully disabled.
      * Receives `$modinfo` as args.
      */
-    public static function moduleDisabled(GenericEvent $event)
+    public static function moduleDisabled(ModuleStateEvent $event)
     {
         parent::moduleDeactivated($event);
     }
@@ -76,7 +77,7 @@ class InstallerListener extends BaseInstallerListener
      *
      * @param GenericEvent $event The event instance.
      */
-    public static function moduleRemoved(GenericEvent $event)
+    public static function moduleRemoved(ModuleStateEvent $event)
     {
         parent::moduleUninstalled($event);
     }

@@ -15,6 +15,7 @@ namespace Guite\KnowledgeBaseModule\Listener\Base;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Zikula\Core\CoreEvents;
 use Zikula\Core\Event\GenericEvent;
+use Zikula\Core\Event\ModuleStateEvent;
 
 /**
  * Event handler base class for module installer events.
@@ -27,9 +28,9 @@ class InstallerListener implements EventSubscriberInterface
      * Called after a module has been successfully installed.
      * Receives `$modinfo` as args.
      *
-     * @param GenericEvent $event The event instance.
+     * @param ModuleStateEvent $event The event instance.
      */
-    public static function moduleInstalled(GenericEvent $event)
+    public static function moduleInstalled(ModuleStateEvent $event)
     {
     }
     
@@ -39,9 +40,9 @@ class InstallerListener implements EventSubscriberInterface
      * Called after a module has been successfully upgraded.
      * Receives `$modinfo` as args.
      *
-     * @param GenericEvent $event The event instance.
+     * @param ModuleStateEvent $event The event instance.
      */
-    public static function moduleUpgraded(GenericEvent $event)
+    public static function moduleUpgraded(ModuleStateEvent $event)
     {
     }
     
@@ -51,7 +52,7 @@ class InstallerListener implements EventSubscriberInterface
      * Called after a module has been successfully enabled.
      * Receives `$modinfo` as args.
      */
-    public static function moduleEnabled(GenericEvent $event)
+    public static function moduleEnabled(ModuleStateEvent $event)
     {
     }
     
@@ -61,7 +62,7 @@ class InstallerListener implements EventSubscriberInterface
      * Called after a module has been successfully disabled.
      * Receives `$modinfo` as args.
      */
-    public static function moduleDisabled(GenericEvent $event)
+    public static function moduleDisabled(ModuleStateEvent $event)
     {
     }
     
@@ -73,7 +74,7 @@ class InstallerListener implements EventSubscriberInterface
      *
      * @param GenericEvent $event The event instance.
      */
-    public static function moduleRemoved(GenericEvent $event)
+    public static function moduleRemoved(ModuleStateEvent $event)
     {
     }
     

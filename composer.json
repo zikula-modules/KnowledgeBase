@@ -12,7 +12,7 @@
             "role": "owner"
         }
     ],
-    "autoload": {»
+    "autoload": {
         "psr-4": { "Guite\\KnowledgeBaseModule\\": "" }
     },
     "require": {

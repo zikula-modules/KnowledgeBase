@@ -16,6 +16,7 @@ use Guite\KnowledgeBaseModule\Util\ControllerUtil;
 use Guite\KnowledgeBaseModule\Util\ModelUtil;
 use Guite\KnowledgeBaseModule\Util\ViewUtil;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -61,6 +62,7 @@ class UserController extends Zikula_AbstractController
         if (!SecurityUtil::checkPermission($this->name . '::', '::', ACCESS_OVERVIEW)) {
             throw new AccessDeniedException();
         }
+
         return new RedirectResponse(System::normalizeUrl(ModUtil::url($this->name, 'user', 'view')));
     }
     

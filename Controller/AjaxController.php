@@ -14,6 +14,9 @@ namespace Guite\KnowledgeBaseModule\Controller;
 
 use Guite\KnowledgeBaseModule\Controller\Base\AjaxController as BaseAjaxController;
 
+use FormUtil;
+use SecurityUtil;
+
 /**
  * This is the Ajax controller class providing navigation and interaction functionality.
  */

@@ -17,6 +17,9 @@ use Guite\KnowledgeBaseModule\Controller\Base\UserController as BaseUserControll
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+use ModUtil;
+use SecurityUtil;
+
 /**
  * This is the User controller class providing navigation and interaction functionality.
  */

@@ -14,6 +14,13 @@ namespace Guite\KnowledgeBaseModule\Api;
 
 use Guite\KnowledgeBaseModule\Api\Base\UserApi as BaseUserApi;
 
+use CategoryRegistryUtil;
+use CategoryUtil;
+use DataUtil;
+use LogUtil;
+use ModUtil;
+use SecurityUtil;
+
 /**
  * This is the User api helper class.
  */
@@ -176,7 +183,7 @@ class UserApi extends BaseUserApi
                         }
 
                         // save current cat information because we have to check the parents first
-                        $resultTMP = DataUtil::formatForURL($cat['name']);
+                        $resultTmp = DataUtil::formatForURL($cat['name']);
 
                         // process parents
                         $categoryLevel = $cat['level'];
@@ -187,14 +194,14 @@ class UserApi extends BaseUserApi
                                 if ($catSub['id'] != $parentID) {
                                     continue;
                                 }
-                                $resultTMP = DataUtil::formatForURL($catSub['name']) . '_-_' . $resultTMP;
+                                $resultTmp = DataUtil::formatForURL($catSub['name']) . '_-_' . $resultTmp;
                                 $categoryLevel--;
                                 $parentID = $catSub['parent_id'];
                                 break;
                             }
                         }
 
-                        $groupFolder .= $resultTMP;
+                        $groupFolder .= $resultTmp;
                         break;
                     }
                 }

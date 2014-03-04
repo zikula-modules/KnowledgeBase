@@ -14,6 +14,8 @@ namespace Guite\KnowledgeBaseModule\Api;
 
 use Zikula_AbstractApi;
 
+use LogUtil;
+
 /**
  * Manual api class with custom additional methods.
  */

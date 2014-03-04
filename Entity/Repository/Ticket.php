@@ -13,6 +13,7 @@
 namespace Guite\KnowledgeBaseModule\Entity\Repository;
 
 use Guite\KnowledgeBaseModule\Entity\Repository\Base\Ticket as BaseTicket;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Repository class used to implement own convenience methods for performing certain DQL queries.
@@ -72,7 +73,7 @@ class Ticket extends BaseTicket
     /**
      * Helper method to add joins to from clause.
      *
-     * @param Doctrine\ORM\QueryBuilder $qb query builder instance used to create the query.
+     * @param QueryBuilder $qb query builder instance used to create the query.
      *
      * @return String Enhancement for from clause.
      */

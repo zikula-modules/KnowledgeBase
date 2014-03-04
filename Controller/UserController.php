@@ -14,6 +14,7 @@ namespace Guite\KnowledgeBaseModule\Controller;
 
 use Guite\KnowledgeBaseModule\Controller\Base\UserController as BaseUserController;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**

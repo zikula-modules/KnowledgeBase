@@ -66,3 +66,69 @@ div.guiteknowledgebasemodule-view form.guiteknowledgebasemodule-quicknav fieldse
     width: 50px;
     text-align: right;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* manual additions */
+
+div#kbleftside {
+width: 72%;
+float: left;
+margin-right: 1em;
+}
+div#kbrightside {
+width: 25%;
+float: left;
+}
+
+div.catblock, div.kbcblock, div.kbdetblock {
+padding: 1em;
+margin: .5em .5em;
+float: left;
+width: 44%;
+}
+div.catblock {
+border: 1px dashed silver;
+height: 70px;
+}
+div.kbcblock {
+border: 1px dashed gray;
+}
+div.kbdetblock {
+float: none;
+width: auto;
+border: 1px dashed gray;
+}
+div.kbthirdblock {
+padding: 1em;
+margin: .5em .5em;
+float: left;
+width: 28%;
+border: 1px dashed silver;
+height: 140px;
+}
+div.catblock:hover, div.kbcblock:hover, div.kbdetblock, div.kbthirdblock:hover {
+border: 1px dashed black;
+}
+
+/*div.z-module-knowledgebase div#ratingsratecontent h3 {
+display: none;
+}*/
+
+p#kbfn {
+margin-top: 18px;
+text-align: right;
+}
+

@@ -14,10 +14,30 @@ namespace Guite\KnowledgeBaseModule\Controller;
 
 use Guite\KnowledgeBaseModule\Controller\Base\UserController as BaseUserController;
 
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
 /**
  * This is the User controller class providing navigation and interaction functionality.
  */
 class UserController extends BaseUserController
 {
-    // feel free to add your own controller methods here
+    /**
+     * This method is the default function handling the user area called without defining arguments.
+     *
+     *
+     * @return mixed Output.
+     *
+     * @throws AccessDeniedException Thrown if the user doesn't have required permissions
+     */
+    public function indexAction(Request $request)
+    {
+        if (!SecurityUtil::checkPermission($this->name . '::', '::', ACCESS_OVERVIEW)) {
+            throw new AccessDeniedException();
+        }
+
+        $this->view->assign('categories', ModUtil::apiFunc($this->name, 'user', 'getCategories', array('full' => false)));
+
+        // fetch and return the appropriate template
+        return $this->view->fetch('User/index.tpl');
+    }
 }

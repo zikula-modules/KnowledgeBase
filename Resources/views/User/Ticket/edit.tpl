@@ -1,7 +1,7 @@
 {* purpose of this template: build the Form to edit an instance of ticket *}
 {include file='User/header.tpl'}
-{pageaddvar name='javascript' value='modules/Resources/public/js/GuiteKnowledgeBaseModule_editFunctions.js'}
-{pageaddvar name='javascript' value='modules/Resources/public/js/GuiteKnowledgeBaseModule_validation.js'}
+{pageaddvar name='javascript' value='modules/GuiteKnowledgeBaseModule/Resources/public/js/GuiteKnowledgeBaseModule_editFunctions.js'}
+{pageaddvar name='javascript' value='modules/GuiteKnowledgeBaseModule/Resources/public/js/GuiteKnowledgeBaseModule_validation.js'}
 
 {if $mode eq 'edit'}
     {gt text='Edit ticket' assign='templateTitle'}
@@ -38,7 +38,11 @@
             </div>
             {guiteknowledgebasemoduleValidationError id='content' class='required'}
         </div>
-        
+    </fieldset>
+{if $mode ne 'create'}
+    <fieldset>
+        <legend>{gt text='Statistics'}</legend>
+
         <div class="form-group">
             {formlabel for='views' __text='Views' cssClass=' col-lg-3 control-label'}
             <div class="col-lg-9">
@@ -63,6 +67,7 @@
             {guiteknowledgebasemoduleValidationError id='ratesDown' class='validate-digits'}
         </div>
     </fieldset>
+{/if}
     
     {include file='User/include_categories_edit.tpl' obj=$ticket groupName='ticketObj'}
     {if $mode ne 'create'}

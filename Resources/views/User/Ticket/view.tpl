@@ -3,12 +3,17 @@
 <div class="guiteknowledgebasemodule-ticket guiteknowledgebasemodule-view">
     {gt text='Ticket list' assign='templateTitle'}
     {pagesetvar name='title' value=$templateTitle}
+<div id="kbleftside">
     <h2>{$templateTitle}</h2>
 
     {if $canBeCreated}
         {checkpermissionblock component='GuiteKnowledgeBaseModule:Ticket:' instance='::' level='ACCESS_EDIT'}
             {gt text='Create ticket' assign='createTitle'}
+        {if isset($smarty.get.cat)}
+            <a href="{modurl modname='GuiteKnowledgeBaseModule' type='user' func='edit' ot='ticket' cat=$smarty.get.cat}" title="{$createTitle}" class="fa fa-plus">{$createTitle}</a>
+        {else}
             <a href="{modurl modname='GuiteKnowledgeBaseModule' type='user' func='edit' ot='ticket'}" title="{$createTitle}" class="fa fa-plus">{$createTitle}</a>
+        {/if}
         {/checkpermissionblock}
     {/if}
     {assign var='own' value=0}
@@ -16,6 +21,7 @@
         {assign var='own' value=1}
     {/if}
     {assign var='all' value=0}
+{*
     {if isset($showAllEntries) && $showAllEntries eq 1}
         {gt text='Back to paginated view' assign='linkTitle'}
         <a href="{modurl modname='GuiteKnowledgeBaseModule' type='user' func='view' ot='ticket'}" title="{$linkTitle}" class="fa fa-table">
@@ -26,7 +32,7 @@
         {gt text='Show all entries' assign='linkTitle'}
         <a href="{modurl modname='GuiteKnowledgeBaseModule' type='user' func='view' ot='ticket' all=1}" title="{$linkTitle}" class="fa fa-table">{$linkTitle}</a>
     {/if}
-
+*}
     {include file='User/Ticket/view_quickNav.tpl' all=$all own=$own workflowStateFilter=false}{* see template file for available options *}
 
     <table class="table table-striped table-bordered table-hover{* table-responsive*}">
@@ -104,15 +110,51 @@
     
         </tbody>
     </table>
-    
+
+<dl>
+    {foreach item='ticket' from=$items}
+    <dt>
+    {checkpermissionblock component='GuiteKnowledgeBaseModule::' instance='.*' level='ACCESS_EDIT'}
+        {if count($ticket._actions) gt 0}
+        {strip}
+            {foreach item='option' from=$ticket._actions}
+                <a href="{$option.url.type|guiteknowledgebasemoduleActionUrl:$option.url.func:$option.url.arguments}" title="{$option.linkTitle|safetext}"{if $option.icon eq 'zoom-in'} target="_blank"{/if} class="fa fa-{$option.icon}" data-linktext="{$option.linkText|safetext}"></a>
+            {/foreach}
+        {/strip}
+        {/if}
+    {/checkpermissionblock}
+        <a href="{modurl modname='GuiteKnowledgeBaseModule' type='user' func='display' ot='ticket' id=$ticket.id}" title="{gt text="Details of '%s'" tag1=$ticket.subject|replace:"\"":""}">
+            {$ticket.subject|notifyfilters:'guiteknowledgebasemodule.filter_hooks.tickets.filter'}
+        </a>
+    </dt>
+    <dd>{$ticket.content}</dd>
+{*    <dd>{gt text='Category'}: {include file='User/Include/display_category.tpl'}</dd>*}
+
+    {foreachelse}
+        <dt class="z-dataempty">{gt text='No tickets found.'}</dt>
+    {/foreach}
+</dl>
+
     {if !isset($showAllEntries) || $showAllEntries ne 1}
         {pager rowcount=$pager.numitems limit=$pager.itemsperpage display='page' modname='GuiteKnowledgeBaseModule' type='user' func='view' ot='ticket'}
     {/if}
 
-    
+    <p>
+        <a href="{modurl modname='GuiteKnowledgeBaseModule' type='user' func='index'}" title="{gt text='Back to category list'}" class="fa fa-reply">
+            {gt text='Back to category list'}
+        </a>
+    </p>
+
     {notifydisplayhooks eventname='guiteknowledgebasemodule.ui_hooks.tickets.display_view' urlobject=$currentUrlObject assign='hooks'}
     {foreach key='providerArea' item='hook' from=$hooks}
         {$hook}
     {/foreach}
+
+</div>
+<div id="kbrightside">
+    {include file='User/Include/rightblocks.tpl'}
+</div>
+<br style="clear: left" />
+
 </div>
 {include file='User/footer.tpl'}

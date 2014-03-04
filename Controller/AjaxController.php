@@ -19,5 +19,52 @@ use Guite\KnowledgeBaseModule\Controller\Base\AjaxController as BaseAjaxControll
  */
 class AjaxController extends BaseAjaxController
 {
-    // feel free to add your own controller methods here
+    /**
+     * Perform a "like this" operation increasing the ratesup field of corresponding ticket.
+     *
+     * @author       Axel Guckelsberger
+     * @params       TODO
+     * @return       Render output
+     */
+    public function like($args)
+    {
+        // DEBUG: permission check aspect starts
+        $this->throwForbiddenUnless(SecurityUtil::checkPermission('GuiteKnowledgeBaseModule::', '::', ACCESS_OVERVIEW));
+        // DEBUG: permission check aspect ends
+
+        $id = (int) FormUtil::getPassedValue('id', 0, 'POST', FILTER_VALIDATE_INT);
+        if ($id > 0) {
+            $entityClass = 'GuiteKnowledgeBaseModule:TicketEntity';
+            $repository = $this->entityManager->getRepository($entityClass);
+
+            $repository->incrementRatesUp($id);
+        }
+
+        return true;
+    }
+
+
+    /**
+     * Perform a "dislike this" operation increasing the ratesdown field of corresponding ticket.
+     *
+     * @author       Axel Guckelsberger
+     * @params       TODO
+     * @return       Render output
+     */
+    public function dislike($args)
+    {
+        // DEBUG: permission check aspect starts
+        $this->throwForbiddenUnless(SecurityUtil::checkPermission('GuiteKnowledgeBaseModule::', '::', ACCESS_OVERVIEW));
+        // DEBUG: permission check aspect ends
+
+        $id = (int) FormUtil::getPassedValue('id', 0, 'POST', FILTER_VALIDATE_INT);
+        if ($id > 0) {
+            $entityClass = 'GuiteKnowledgeBaseModule:TicketEntity';
+            $repository = $this->entityManager->getRepository($entityClass);
+
+            $repository->incrementRatesDown($id);
+        }
+
+        return true;
+    }
 }

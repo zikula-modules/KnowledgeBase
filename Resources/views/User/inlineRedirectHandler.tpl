@@ -8,7 +8,7 @@
         <script type="text/javascript" src="{$baseurl}javascript/helpers/Zikula.js"></script>
         <script type="text/javascript" src="{$baseurl}javascript/livepipe/livepipe.combined.min.js"></script>
         <script type="text/javascript" src="{$baseurl}javascript/helpers/Zikula.UI.js"></script>
-        <script type="text/javascript" src="{$baseurl}modules/Resources/public/js//GuiteKnowledgeBaseModule_editFunctions.js"></script>
+        <script type="text/javascript" src="{$baseurl}modules/GuiteKnowledgeBaseModule/Resources/public/js//GuiteKnowledgeBaseModule_editFunctions.js"></script>
     </head>
     <body>
         <script type="text/javascript">

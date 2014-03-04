@@ -5,10 +5,14 @@
 {pageaddvar name='javascript' value='livepipe'}
 {pageaddvar name='javascript' value='zikula.ui'}
 {pageaddvar name='javascript' value='zikula.imageviewer'}
-{pageaddvar name='javascript' value='modules/Resources/public/js/GuiteKnowledgeBaseModule.js'}
+{pageaddvar name='javascript' value='modules/GuiteKnowledgeBaseModule/Resources/public/js/GuiteKnowledgeBaseModule.js'}
+{pageaddvar name='javascript' value='modules/GuiteKnowledgeBaseModule/Resources/public/js/GuiteKnowledgeBaseModule_frontend.js'}
 
 {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
     <h2 class="userheader">{gt text='Knowledge base' comment='This is the title of the header template'}</h2>
-    {modulelinks modname='GuiteKnowledgeBaseModule' type='user'}
+    {*modulelinks modname='GuiteKnowledgeBaseModule' type='user'*}
+    <div class="z-menu">
+        [&nbsp;{kbbreadcrumb}&nbsp;]
+    </div>
 {/if}
 {insert name='getstatusmsg'}

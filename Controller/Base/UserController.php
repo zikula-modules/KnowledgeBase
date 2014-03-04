@@ -276,6 +276,11 @@ class UserController extends Zikula_AbstractController
         unset($idValues);
         
         $entity->initWorkflow();
+
+        // HACK - manual code START
+        // increase amount of views
+        ModUtil::apiFunc($this->name, 'manual', 'incrementViews', array('id' => $id));
+        // HACK - manual code END
         
         // build ModUrl instance for display hooks; also create identifier for permission check
         $currentUrlArgs = array('ot' => $objectType);

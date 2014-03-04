@@ -21,5 +21,66 @@ use Guite\KnowledgeBaseModule\Entity\Repository\Base\Ticket as BaseTicket;
  */
 class Ticket extends BaseTicket
 {
-    // feel free to add your own methods here, like for example reusable DQL queries
+    public function incrementViews($id = 0)
+    {
+        if ($id == 0 || !is_numeric($id)) {
+            return false;
+        }
+
+        $query = $this->getEntityManager()
+                 ->createQuery('UPDATE KnowledgeBase_Entity_Ticket SET views = views + 1 WHERE id = ?1');
+        $query->setParameter(1, $id);
+        $query->execute();
+    }
+
+    public function incrementRatesUp($id = 0)
+    {
+        if ($id == 0 || !is_numeric($id)) {
+            return false;
+        }
+
+        $query = $this->getEntityManager()
+                 ->createQuery('UPDATE KnowledgeBase_Entity_Ticket SET ratesUp = ratesUp + 1 WHERE id = ?1');
+        $query->setParameter(1, $id);
+        $query->execute();
+    }
+
+    public function incrementRatesDown($id = 0)
+    {
+        if ($id == 0 || !is_numeric($id)) {
+            return false;
+        }
+
+        $query = $this->getEntityManager()
+                 ->createQuery('UPDATE KnowledgeBase_Entity_Ticket SET ratesDown = ratesDown + 1 WHERE id = ?1');
+        $query->setParameter(1, $id);
+        $query->execute();
+    }
+
+    /**
+     * Helper method to add join selections.
+     *
+     * @return String Enhancement for select clause.
+     */
+    protected function addJoinsToSelection()
+    {
+         $selection = ', tblCategories, tblCategory';
+
+         return $selection;
+    }
+
+    /**
+     * Helper method to add joins to from clause.
+     *
+     * @param Doctrine\ORM\QueryBuilder $qb query builder instance used to create the query.
+     *
+     * @return String Enhancement for from clause.
+     */
+    protected function addJoinsToFrom(QueryBuilder $qb)
+    {
+        $qb->leftJoin('tbl.categories', 'tblCategories');
+        $qb->leftJoin('tblCategories.category', 'tblCategory');
+
+        return $qb;
+    }
 }

@@ -223,7 +223,7 @@ class WorkflowUtil extends Zikula_AbstractBase
         }
     
         $entity['__WORKFLOW__'] = array(
-            'module'        => 'KnowledgeBase',
+            'module'        => 'GuiteKnowledgeBaseModule',
             'id'            => $workflow->getId(),
             'state'         => $workflow->getState(),
             'obj_table'     => $workflow->getObjTable(),

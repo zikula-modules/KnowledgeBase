@@ -530,7 +530,7 @@ class Ticket extends EntityRepository
     {
         /* commented out to allow default filters also for other calls, like content types and mailz
         $currentFunc = FormUtil::getPassedValue('func', 'index', 'GETPOST');
-        if (!in_array($currentFunc, array('main', 'view', 'finder'))) {
+        if (!in_array($currentFunc, array('index', 'view', 'finder'))) {
             return $qb;
         }*/
     

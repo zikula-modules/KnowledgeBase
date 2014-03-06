@@ -20,13 +20,13 @@
  */
 function smarty_function_kbbreadcrumb($params, &$view)
 {
-    $currentFunc = FormUtil::getPassedValue('func', 'main', 'GET');
+    $currentFunc = FormUtil::getPassedValue('func', 'index', 'GET');
 
     $separator = ' &raquo; ';
 
     $result = '<ol class="breadcrumb">' . "\n";
-    if ($currentFunc != 'main') {
-        $result = '<li><a href="' . DataUtil::formatForDisplay(ModUtil::url('GuiteKnowledgeBaseModule', 'user', 'main')) . '" title="' . $view->__('Knowledge Base') . '">' . $view->__('Knowledge Base') . '</a></li>';
+    if ($currentFunc != 'index') {
+        $result = '<li><a href="' . DataUtil::formatForDisplay(ModUtil::url('GuiteKnowledgeBaseModule', 'user', 'index')) . '" title="' . $view->__('Knowledge Base') . '">' . $view->__('Knowledge Base') . '</a></li>';
     } else {
         $result = $view->__('Knowledge Base');
     }

@@ -212,7 +212,7 @@ class UserApi extends Zikula_AbstractApi
         }
     
         // define the available user functions
-        $funcs = array('main', 'view', 'display', 'edit', 'assign');
+        $funcs = array('index', 'view', 'display', 'edit', 'assign');
     
         // return if function url scheme is not being customised
         $customFuncs = array('view', 'display');

@@ -103,7 +103,7 @@ class ModuleDispatchListener extends BaseModuleDispatchListener
         parent::customClassName($event);
     
         // Format data like so:
-        // $event->data[] = array('url' => ModUtil::url('GuiteKnowledgeBaseModule', 'user', 'main'), 'text' => __('Link Text'));
+        // $event->data[] = array('url' => ModUtil::url('GuiteKnowledgeBaseModule', 'user', 'index'), 'text' => __('Link Text'));
     }
     
     /**

@@ -280,12 +280,12 @@ class UserApi extends BaseUserApi
         }
 
         // define the available user functions
-        $funcs = array('main', 'view', 'display', 'edit');
+        $funcs = array('index', 'view', 'display', 'edit');
 
         // set the correct function name based on our input
         if (empty($args['vars'][2])) {
-            // no func and no vars = main
-            System::queryStringSetVar('func', 'main');
+            // no func and no vars = index
+            System::queryStringSetVar('func', 'index');
             return true;
         } elseif (in_array($args['vars'][2], $funcs)) {
             return false;

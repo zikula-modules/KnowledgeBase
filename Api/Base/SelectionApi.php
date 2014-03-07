@@ -33,7 +33,7 @@ class SelectionApi extends Zikula_AbstractApi
     public function getIdFields(array $args = array())
     {
         $objectType = $this->determineObjectType($args, 'getIdFields');
-        $entityClass = 'Guite\\KnowledgeBaseModule\\Entity\\' . ucfirst($objectType) . 'Entity';
+        $entityClass = 'GuiteKnowledgeBaseModule:' . ucfirst($objectType) . 'Entity';
     
         $meta = $this->entityManager->getClassMetadata($entityClass);
         if ($this->hasCompositeKeys($objectType)) {

@@ -224,7 +224,7 @@ class EditHandler extends Zikula_Form_AbstractHandler
     
         $this->permissionComponent = $this->name . ':' . $this->objectTypeCapital . ':';
     
-        $entityClass = 'KnowledgeBase:' . ucwords($this->objectType) . 'Entity';
+        $entityClass = 'GuiteKnowledgeBaseModule:' . ucwords($this->objectType) . 'Entity';
         $this->idFields = ModUtil::apiFunc($this->name, 'selection', 'getIdFields', array('ot' => $this->objectType));
     
         // retrieve identifier of the object we wish to view

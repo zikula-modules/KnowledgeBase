@@ -115,9 +115,8 @@ class WorkflowUtil extends Zikula_AbstractBase
         $objectType = $entity['_objectType'];
     
         $this->normaliseWorkflowData($entity);
-    die('TEST: ' . print_r($entity['__WORKFLOW__']));
+
         $idcolumn = $entity['__WORKFLOW__']['obj_idcolumn'];
-        die('TEST: ' . print_r($entity['__WORKFLOW__']));
         $wfActions = Zikula_Workflow_Util::getActionsForObject($entity, $objectType, $idcolumn, $this->name);
     
         // as we use the workflows for multiple object types we must maybe filter out some actions

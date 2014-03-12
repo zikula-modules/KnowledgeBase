@@ -273,15 +273,16 @@ class UserController extends Zikula_AbstractController
         if ($entity === null) {
             throw new NotFoundHttpException($this->__('No such item.'));
         }
+
+        // HACK - manual code START
+        // increase amount of views
+        ModUtil::apiFunc($this->name, 'manual', 'incrementViews', array('id' => $idValues['id']));
+        // HACK - manual code END
+
         unset($idValues);
         
         $entity->initWorkflow();
 
-        // HACK - manual code START
-        // increase amount of views
-        ModUtil::apiFunc($this->name, 'manual', 'incrementViews', array('id' => $id));
-        // HACK - manual code END
-        
         // build ModUrl instance for display hooks; also create identifier for permission check
         $currentUrlArgs = array('ot' => $objectType);
         $instanceId = '';

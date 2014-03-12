@@ -1016,7 +1016,7 @@ abstract class AbstractTicketEntity extends Zikula_EntityAccess
     public function getTitleFromDisplayPattern()
     {
         $serviceManager = ServiceUtil::getManager();
-        $listHelper = new Guite\KnowledgeBaseModule\Util\ListEntriesUtil($serviceManager, ModUtil::getModule('GuiteKnowledgeBaseModule'));
+        $listHelper = new \Guite\KnowledgeBaseModule\Util\ListEntriesUtil($serviceManager, ModUtil::getModule('GuiteKnowledgeBaseModule'));
     
         $formattedTitle = ''
                 . $this->getSubject();

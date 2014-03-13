@@ -34,7 +34,7 @@ class ManualApi extends Zikula_AbstractApi
             return LogUtil::registerArgsError();
         }
 
-        $entityClass = 'GuiteKnowledgeBaseModule:' . ucwords($objectType) . 'Entity';
+        $entityClass = 'GuiteKnowledgeBaseModule:TicketEntity';
         $repository = $this->entityManager->getRepository($entityClass);
 
         $repository->incrementViews($args['id']);

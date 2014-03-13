@@ -19,7 +19,7 @@ use LogUtil;
 /**
  * Manual api class with custom additional methods.
  */
-class KnowledgeBase_Api_Manual extends Zikula_AbstractApi
+class ManualApi extends Zikula_AbstractApi
 {
     /**
      * Select a single entity.

@@ -37,30 +37,31 @@ class UserApi extends BaseUserApi
         $baseCatPath = $this->getVar('baseCatTicketCategoryMain');
         $baseCat = CategoryRegistryUtil::getRegisteredModuleCategory($this->name, 'kbase_ticket', 'TicketCategoryMain');
         $categories = CategoryUtil::getSubCategories($baseCat, $full);
-        if (is_array($categories)) {
-            foreach ($categories as $k => $cat) {
-                $categories[$k]['name'] = $cat['name'];
-                $categories[$k]['nameStripped'] = str_replace('"', '\'', DataUtil::formatForDisplay($cat['name']));
-                if (!isset($args['skipurlbuilding'])) {
-                    $categories[$k]['viewurl'] = ModUtil::url($this->name, 'user', 'view', array('cat' => $cat['id']));
-                    $categories[$k]['viewurlFormatted'] = DataUtil::formatForDisplay($categories[$k]['viewurl']);
-                }
 
-                $relPath = str_replace($baseCatPath . '/', '', $cat['path']);
-                $relPathParts = explode('/', $relPath);
-                $categories[$k]['level'] = count($relPathParts);
-
-                if (!isset($args['skipticketassignment'])) {
-                    list($objectData, $objcount) = $this->getTickets(array('category' => $cat['id'], 'term' => ''));
-                    $categories[$k]['tickets'] = $objectData;
-                    $categories[$k]['ticketcount'] = $objcount;
-                }
-            }
-
-            return $categories;
-        } else {
+        if (!is_array($categories)) {
             return array();
         }
+
+        foreach ($categories as $k => $cat) {
+            $categories[$k]['name'] = $cat['name'];
+            $categories[$k]['nameStripped'] = str_replace('"', '\'', DataUtil::formatForDisplay($cat['name']));
+            if (!isset($args['skipurlbuilding'])) {
+                $categories[$k]['viewurl'] = ModUtil::url($this->name, 'user', 'view', array('cat' => $cat['id']));
+                $categories[$k]['viewurlFormatted'] = DataUtil::formatForDisplay($categories[$k]['viewurl']);
+            }
+
+            $relPath = str_replace($baseCatPath . '/', '', $cat['path']);
+            $relPathParts = explode('/', $relPath);
+            $categories[$k]['level'] = count($relPathParts);
+
+            if (!isset($args['skipticketassignment'])) {
+                list($objectData, $objcount) = $this->getTickets(array('category' => $cat['id'], 'searchterm' => ''));
+                $categories[$k]['tickets'] = $objectData;
+                $categories[$k]['ticketcount'] = $objcount;
+            }
+        }
+
+        return $categories;
     }
 
     /**

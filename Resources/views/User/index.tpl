@@ -21,7 +21,7 @@
             <ul>
             {foreach name='catTicketLoop' item='ticket' from=$category.tickets}
             {if $smarty.foreach.catTicketLoop.iteration lt 3}{* display only the first 2 *}
-                <li><a href="{$ticket.detailurlFormatted}" title="{gt text="Details of '%s'" tag1=$ticket.subjectStripped}">{$ticket.subject}</a></li>
+                <li><a href="{modurl modname='GuiteKnowledgeBaseModule' type='user' func='display' ot='ticket' id=$ticket.id}" title="{gt text="Details of '%s'" tag1=$ticket.subjectStripped}">{$ticket.subject}</a></li>
             {/if}
             {/foreach}
             </ul>

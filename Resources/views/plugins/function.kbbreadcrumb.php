@@ -41,11 +41,10 @@ function smarty_function_kbbreadcrumb($params, &$view)
     $currentCat = 0;
     if ($currentFunc == 'view') {
         $currentCat = FormUtil::getPassedValue('cat', 0, 'GET');
-    }
-    elseif ($currentFunc == 'display') {
+    } elseif ($currentFunc == 'display') {
         $entity = ModUtil::apiFunc('GuiteKnowledgeBaseModule', 'selection', 'getEntity', array('ot' => 'ticket', 'id' => $ticketID));
-        if (is_object($entity) && isset($entity['Categories'])) {
-            $currentCat = $entity['Categories']['TicketCategoryMain']['id'];
+        if (is_object($entity) && isset($entity['categories'])) {
+            $currentCat = $entity['categories']['TicketCategoryMain']['id'];
         }
     }
 
@@ -74,8 +73,12 @@ function smarty_function_kbbreadcrumb($params, &$view)
                     if ($catSub['id'] != $parentID) {
                         continue;
                     }
+
                     $catName = $catSub['name'];
-                    if (isset($catSub['display_name'][$lang])) $catName = $catSub['display_name'][$lang];
+                    if (isset($catSub['display_name'][$lang])) {
+                        $catName = $catSub['display_name'][$lang];
+                    }
+
                     $resultTmp = $separator . '<li><a href="' . $catSub['viewurlFormatted'] . '">' . $catName . '</a></li>' . $resultTmp;
                     $categoryLevel--;
                     $parentID = $catSub['parent_id'];
@@ -91,7 +94,7 @@ function smarty_function_kbbreadcrumb($params, &$view)
     if ($currentFunc == 'display') {
         if (is_object($entity)) {
             $result .= $separator;
-            $result .= '<li><a href="' . $entity['detailurlFormatted'] . '">' . $entity['subject'] . '</a></li>';
+            $result .= '<li><a href="' . ModUtil::url('GuiteKnowledgeBaseModule', 'user', 'display', array('ot' => 'ticket', 'id' => $entity['id'])) . '">' . $entity['subject'] . '</a></li>';
         }
     }
 

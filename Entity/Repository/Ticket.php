@@ -29,7 +29,7 @@ class Ticket extends BaseTicket
         }
 
         $query = $this->getEntityManager()
-                 ->createQuery('UPDATE KnowledgeBase_Entity_Ticket SET views = views + 1 WHERE id = ?1');
+                 ->createQuery('UPDATE Guite\KnowledgeBaseModule\Entity\TicketEntity SET views = views + 1 WHERE id = ?1');
         $query->setParameter(1, $id);
         $query->execute();
     }
@@ -41,7 +41,7 @@ class Ticket extends BaseTicket
         }
 
         $query = $this->getEntityManager()
-                 ->createQuery('UPDATE KnowledgeBase_Entity_Ticket SET ratesUp = ratesUp + 1 WHERE id = ?1');
+                 ->createQuery('UPDATE Guite\KnowledgeBaseModule\Entity\TicketEntity SET ratesUp = ratesUp + 1 WHERE id = ?1');
         $query->setParameter(1, $id);
         $query->execute();
     }
@@ -53,7 +53,7 @@ class Ticket extends BaseTicket
         }
 
         $query = $this->getEntityManager()
-                 ->createQuery('UPDATE KnowledgeBase_Entity_Ticket SET ratesDown = ratesDown + 1 WHERE id = ?1');
+                 ->createQuery('UPDATE Guite\KnowledgeBaseModule\Entity\TicketEntity SET ratesDown = ratesDown + 1 WHERE id = ?1');
         $query->setParameter(1, $id);
         $query->execute();
     }

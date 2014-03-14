@@ -11,8 +11,6 @@
 {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
     <h2 class="userheader">{gt text='Knowledge base' comment='This is the title of the header template'}</h2>
     {*modulelinks modname='GuiteKnowledgeBaseModule' type='user'*}
-    <div class="z-menu">
-        [&nbsp;{kbbreadcrumb}&nbsp;]
-    </div>
+    {kbbreadcrumb}
 {/if}
 {insert name='getstatusmsg'}

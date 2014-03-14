@@ -18,23 +18,22 @@
  *
  * @return string Output of the plugin.
  */
-function smarty_function_kbbreadcrumb($params, &$view)
+function smarty_function_kbbreadcrumb($params, $view)
 {
     $currentFunc = FormUtil::getPassedValue('func', 'index', 'GET');
 
-    $separator = ' &raquo; ';
-
     $result = '<ol class="breadcrumb">' . "\n";
     if ($currentFunc != 'index') {
-        $result = '<li><a href="' . DataUtil::formatForDisplay(ModUtil::url('GuiteKnowledgeBaseModule', 'user', 'index')) . '" title="' . $view->__('Knowledge Base') . '">' . $view->__('Knowledge Base') . '</a></li>';
+        $result .= '<li><a href="' . DataUtil::formatForDisplay(ModUtil::url('GuiteKnowledgeBaseModule', 'user', 'index')) . '" title="' . $view->__('Knowledge Base') . '">' . $view->__('Knowledge Base') . '</a></li>';
     } else {
-        $result = $view->__('Knowledge Base');
+        $result .= '<li>' . $view->__('Knowledge Base') . '</li>';
     }
 
     $ticketID = (int) FormUtil::getPassedValue('id', 0, 'GET');
     $objectData = null;
 
     if ($currentFunc != 'view' && ($currentFunc != 'display' || $ticketID == 0)) {
+        $result .= '</ol>' . "\n";
         return $result;
     }
 
@@ -51,13 +50,13 @@ function smarty_function_kbbreadcrumb($params, &$view)
     if ($currentCat > 0) {
         $cats = ModUtil::apiFunc('GuiteKnowledgeBaseModule', 'user', 'getCategories', array('full' => true));
         $lang = ZLanguage::getLanguageCode();
+        $resultTmp = '';
         foreach ($cats as $cat) {
             if ($cat['id'] != $currentCat) {
                 continue;
             }
 
             // save current cat information because we have to check the parents first
-            $resultTmp = $separator;
             $catName = $cat['name'];
             if (isset($cat['display_name'][$lang])) {
                 $catName = $cat['display_name'][$lang];
@@ -79,7 +78,7 @@ function smarty_function_kbbreadcrumb($params, &$view)
                         $catName = $catSub['display_name'][$lang];
                     }
 
-                    $resultTmp = $separator . '<li><a href="' . $catSub['viewurlFormatted'] . '">' . $catName . '</a></li>' . $resultTmp;
+                    $resultTmp = '<li><a href="' . $catSub['viewurlFormatted'] . '">' . $catName . '</a></li>' . $resultTmp;
                     $categoryLevel--;
                     $parentID = $catSub['parent_id'];
                     break;
@@ -93,12 +92,11 @@ function smarty_function_kbbreadcrumb($params, &$view)
 
     if ($currentFunc == 'display') {
         if (is_object($entity)) {
-            $result .= $separator;
             $result .= '<li><a href="' . ModUtil::url('GuiteKnowledgeBaseModule', 'user', 'display', array('ot' => 'ticket', 'id' => $entity['id'])) . '">' . $entity['subject'] . '</a></li>';
         }
     }
 
-    $result .= '</ul>' . "\n";
+    $result .= '</ol>' . "\n";
 
     return $result;
 }

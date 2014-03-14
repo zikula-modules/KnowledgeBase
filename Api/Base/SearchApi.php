@@ -143,20 +143,14 @@ class SearchApi extends Zikula_AbstractApi
                 $description = ($descriptionField != '') ? $entity[$descriptionField] : '';
                 $created = (isset($entity['createdDate'])) ? $entity['createdDate']->format('Y-m-d H:i:s') : '';
     
-                $searchItemData = array(
-                    'title'   => $title,
-                    'text'    => $description,
-                    'extra'   => serialize($urlArgs),
-                    'created' => $created,
-                    'module'  => $this->name,
-                    'session' => $sessionId
-                );
-    
                 $searchItem = new SearchResultEntity();
-                foreach ($searchItemData as $k => $v) {
-                    $fieldName = ($k == 'session') ? 'sesid' : $k;
-                    $searchItem[$fieldName] = $v;
-                }
+                $searchItem->setTitle($title);
+                $searchItem->setText($description);
+                $searchItem->setModule($this->name);
+                $searchItem->setExtra(serialize($urlArgs));
+                $searchItem->setCreated($created);
+                $searchItem->setSesid($sessionId);
+
                 try {
                     $this->entityManager->persist($searchItem);
                     $this->entityManager->flush();

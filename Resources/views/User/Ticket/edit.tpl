@@ -141,7 +141,7 @@
         } else {
             // hide form buttons to prevent double submits by accident
             formButtons.each(function (btn) {
-                btn.addClassName('hide');
+                btn.addClassName('hidden');
             });
         }
 

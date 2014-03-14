@@ -89,7 +89,7 @@
                     {foreach item='option' from=$ticket._actions}
                         <a href="{$option.url.type|guiteknowledgebasemoduleActionUrl:$option.url.func:$option.url.arguments}" title="{$option.linkTitle|safetext}"{if $option.icon eq 'zoom-in'} target="_blank"{/if} class="fa fa-{$option.icon}" data-linktext="{$option.linkText|safetext}"></a>
                     {/foreach}
-                    {icon id="itemActions`$ticket.id`Trigger" type='options' size='extrasmall' __alt='Actions' class='cursor-pointer hide'}
+                    {icon id="itemActions`$ticket.id`Trigger" type='options' size='extrasmall' __alt='Actions' class='cursor-pointer hidden'}
                     <script type="text/javascript">
                     /* <![CDATA[ */
                         document.observe('dom:loaded', function() {

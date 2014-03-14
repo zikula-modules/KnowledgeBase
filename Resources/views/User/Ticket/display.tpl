@@ -7,7 +7,7 @@
 {if !isset($smarty.get.theme) || $smarty.get.theme ne 'Printer'}
 <div id="kbleftside">
 {/if}
-    <h2>{$templateTitle|notifyfilters:'guiteknowledgebasemodule.filter_hooks.tickets.filter'}{icon id='itemActionsTrigger' type='options' size='extrasmall' __alt='Actions' class='cursor-pointer hide'}</h2>
+    <h2>{$templateTitle|notifyfilters:'guiteknowledgebasemodule.filter_hooks.tickets.filter'}{icon id='itemActionsTrigger' type='options' size='extrasmall' __alt='Actions' class='cursor-pointer hidden'}</h2>
 
     <div class="kbdetblock">
         <h3>{gt text='Solution'}</h3>

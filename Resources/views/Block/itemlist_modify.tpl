@@ -64,7 +64,7 @@
     </div>
 </div>
 
-<div id="customTemplateArea" class="form-group hide">
+<div id="customTemplateArea" class="form-group hidden">
     <label for="guiteKnowledgeBaseModuleCustomTemplate" class="col-lg-3 control-label">{gt text='Custom template'}:</label>
     <div class="col-lg-9">
         <input type="text" id="guiteKnowledgeBaseModuleCustomTemplate" name="customtemplate" size="40" maxlength="80" value="{$customTemplate|default:''}" class="form-control" />
@@ -89,9 +89,9 @@
 /* <![CDATA[ */
     function kbaseToggleCustomTemplate() {
         if ($F('guiteKnowledgeBaseModuleTemplate') == 'custom') {
-            $('customTemplateArea').removeClassName('hide');
+            $('customTemplateArea').removeClassName('hidden');
         } else {
-            $('customTemplateArea').addClassName('hide');
+            $('customTemplateArea').addClassName('hidden');
         }
     }
 

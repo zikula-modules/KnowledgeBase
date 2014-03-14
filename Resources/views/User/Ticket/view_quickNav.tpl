@@ -105,7 +105,7 @@
         kbaseInitQuickNavigation('ticket', 'user');
         {{if isset($searchFilter) && $searchFilter eq false}}
             {{* we can hide the submit button if we have no quick search field *}}
-            $('quicknavSubmit').addClassName('hide');
+            $('quicknavSubmit').addClassName('hidden');
         {{/if}}
     });
 /* ]]> */

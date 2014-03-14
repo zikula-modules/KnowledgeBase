@@ -12,7 +12,7 @@
     {$item->getTitleFromDisplayPattern()}
 {if !$nolink}
     </a>
-    <a id="ticketItem{$item.id}Display" href="{modurl modname='GuiteKnowledgeBaseModule' type='user' func='display' ot='ticket' id=$item.id theme='Printer' forcelongurl=true}" title="{gt text='Open quick view window'}" class="fa fa-search-plus hide"></a>
+    <a id="ticketItem{$item.id}Display" href="{modurl modname='GuiteKnowledgeBaseModule' type='user' func='display' ot='ticket' id=$item.id theme='Printer' forcelongurl=true}" title="{gt text='Open quick view window'}" class="fa fa-search-plus hidden"></a>
 {/if}
 {/strip}
 </h4>

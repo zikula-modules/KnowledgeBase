@@ -32,7 +32,7 @@ function kbaseInitItemActions(objectType, func, containerId)
         // save css class before hiding (#428)
         var elemClass = elem.readAttribute('class');
         // hide it
-        elem.addClassName('hide');
+        elem.addClassName('hidden');
         // determine the link text
         var linkText = '';
         if (func === 'display') {
@@ -61,7 +61,7 @@ function kbaseInitItemActions(objectType, func, containerId)
             }
         });
     });
-    $(triggerId).removeClassName('hide');
+    $(triggerId).removeClassName('hidden');
 }
 
 function kbaseCapitaliseFirstLetter(string)

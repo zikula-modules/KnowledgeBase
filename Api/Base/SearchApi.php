@@ -141,7 +141,7 @@ class SearchApi extends Zikula_AbstractApi
     
                 $title = $entity->getTitleFromDisplayPattern();
                 $description = ($descriptionField != '') ? $entity[$descriptionField] : '';
-                $created = (isset($entity['createdDate'])) ? $entity['createdDate']->format('Y-m-d H:i:s') : '';
+                $created = (isset($entity['createdDate'])) ? $entity['createdDate'] : null;
     
                 $searchItem = new SearchResultEntity();
                 $searchItem->setTitle($title);

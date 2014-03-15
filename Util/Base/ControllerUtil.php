@@ -24,14 +24,14 @@ class ControllerUtil extends Zikula_AbstractBase
     /**
      * Returns an array of all allowed object types in GuiteKnowledgeBaseModule.
      *
-     * @param string $context Usage context (allowed values: controllerAction, api, actionHandler, block, contentType, util).
+     * @param string $context Usage context (allowed values: controllerAction, api, helper, actionHandler, block, contentType, util).
      * @param array  $args    Additional arguments.
      *
      * @return array List of allowed object types.
      */
     public function getObjectTypes($context = '', $args = array())
     {
-        if (!in_array($context, array('controllerAction', 'api', 'actionHandler', 'block', 'contentType', 'util'))) {
+        if (!in_array($context, array('controllerAction', 'api', 'helper', 'actionHandler', 'block', 'contentType', 'util'))) {
             $context = 'controllerAction';
         }
     
@@ -44,14 +44,14 @@ class ControllerUtil extends Zikula_AbstractBase
     /**
      * Returns the default object type in GuiteKnowledgeBaseModule.
      *
-     * @param string $context Usage context (allowed values: controllerAction, api, actionHandler, block, contentType, util).
+     * @param string $context Usage context (allowed values: controllerAction, api, helper, actionHandler, block, contentType, util).
      * @param array  $args    Additional arguments.
      *
      * @return string The name of the default object type.
      */
     public function getDefaultObjectType($context = '', $args = array())
     {
-        if (!in_array($context, array('controllerAction', 'api', 'actionHandler', 'block', 'contentType', 'util'))) {
+        if (!in_array($context, array('controllerAction', 'api', 'helper', 'actionHandler', 'block', 'contentType', 'util'))) {
             $context = 'controllerAction';
         }
     

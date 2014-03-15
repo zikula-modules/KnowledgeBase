@@ -16,6 +16,7 @@ use Guite\KnowledgeBaseModule\Util\ControllerUtil;
 
 use ModUtil;
 use SecurityUtil;
+use ServiceUtil;
 use ZLanguage;
 
 use Zikula\Core\ModUrl;

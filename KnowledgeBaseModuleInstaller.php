@@ -17,6 +17,7 @@ use Guite\KnowledgeBaseModule\Base\KnowledgeBaseModuleInstaller as BaseKnowledge
 use Zikula\Module\CategoriesModule\Entity\CategoryEntity;
 use Zikula\Module\CategoriesModule\Entity\CategoryRegistryEntity;
 use LogUtil;
+use CategoryUtil;
 
 /**
  * Installer implementation class.

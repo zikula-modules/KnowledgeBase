@@ -226,7 +226,7 @@ class KnowledgeBaseModuleInstaller extends Zikula_AbstractInstaller
                 continue;
             }
     
-            $newTableName = str_replace($oldPrefix, $newPrefix, $tableName)
+            $newTableName = str_replace($oldPrefix, $newPrefix, $tableName);
     
             $conn->executeQuery("RENAME TABLE $dbName.$tableName
                                  TO $dbName.$newTableName;

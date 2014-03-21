@@ -16,6 +16,7 @@ use Guite\KnowledgeBaseModule\Base\KnowledgeBaseModuleInstaller as BaseKnowledge
 
 use Zikula\Module\CategoriesModule\Entity\CategoryEntity;
 use Zikula\Module\CategoriesModule\Entity\CategoryRegistryEntity;
+use LogUtil;
 
 /**
  * Installer implementation class.
@@ -33,7 +34,7 @@ class KnowledgeBaseModuleInstaller extends BaseKnowledgeBaseModuleInstaller
 
         // create the default categories for KnowledgeBase
         if (!$this->createDefaultCategories()) {
-            return LogUtil::registerError(__('creation of default categories failed', $dom));
+            return LogUtil::registerError($this->__('creation of default categories failed'));
         }
 
         return true;
@@ -51,7 +52,7 @@ class KnowledgeBaseModuleInstaller extends BaseKnowledgeBaseModuleInstaller
         $dql = 'SELECT c
                 FROM Zikula\Module\CategoriesModule\Entity\CategoryEntity c
                 ORDER BY id DESC';
-        $query = $em->createQuery($dql);
+        $query = $this->entityManager->createQuery($dql);
         $query->setFirstResult(0)
               ->setMaxResults(1);
         $categories = $query->getResult();

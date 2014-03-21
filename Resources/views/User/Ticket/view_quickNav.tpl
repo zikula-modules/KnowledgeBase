@@ -12,10 +12,10 @@
         <input type="hidden" name="own" value="{$own|default:0}" />
         {gt text='All' assign='lblDefault'}
         {if !isset($categoryFilter) || $categoryFilter eq true}
+            {nocache}
             {modapifunc modname='GuiteKnowledgeBaseModule' type='category' func='getAllProperties' ot=$objectType assign='properties'}
             {if $properties ne null && is_array($properties)}
                 {gt text='All' assign='lblDefault'}
-                {nocache}
                 {foreach key='propertyName' item='propertyId' from=$properties}
                     {modapifunc modname='GuiteKnowledgeBaseModule' type='category' func='hasMultipleSelection' ot=$objectType registry=$propertyName assign='hasMultiSelection'}
                     {gt text='Category' assign='categoryLabel'}
@@ -34,8 +34,8 @@
                         {selector_category name="`$categorySelectorName``$propertyName`" field='id' selectedValue=$catIdList.$propertyName categoryRegistryModule='GuiteKnowledgeBaseModule' categoryRegistryTable=$objectType categoryRegistryProperty=$propertyName defaultText=$lblDefault editLink=false multipleSize=$categorySelectorSize cssClass='form-control input-sm'}
                     </div>
                 {/foreach}
-                {/nocache}
             {/if}
+            {/nocache}
         {/if}
         {if !isset($workflowStateFilter) || $workflowStateFilter eq true}
             <div class="form-group">

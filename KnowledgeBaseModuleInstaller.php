@@ -51,7 +51,7 @@ class KnowledgeBaseModuleInstaller extends BaseKnowledgeBaseModuleInstaller
         // determine last category
         $dql = 'SELECT c
                 FROM Zikula\Module\CategoriesModule\Entity\CategoryEntity c
-                ORDER BY id DESC';
+                ORDER BY c.id DESC';
         $query = $this->entityManager->createQuery($dql);
         $query->setFirstResult(0)
               ->setMaxResults(1);

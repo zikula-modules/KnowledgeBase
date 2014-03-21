@@ -371,7 +371,7 @@ class KnowledgeBaseModuleInstaller extends Zikula_AbstractInstaller
      */
     protected function createDefaultData($categoryRegistryIdsPerEntity)
     {
-        $entityClass = 'GuiteKnowledgeBaseModule:TicketEntity';
+        $entityClass = 'Guite\KnowledgeBaseModule\Entity\TicketEntity';
         $this->entityManager->getRepository($entityClass)->truncateTable();
     }
 }

@@ -190,7 +190,8 @@ class KnowledgeBaseModuleInstaller extends BaseKnowledgeBaseModuleInstaller
 
         $this->entityManager->persist($category);
 
-        $destArray[] = $category;
+        // must flush here so later CategoryUtil functions can find the entity in the DB
+        $this->entityManager->flush();
 
         return $category;
     }

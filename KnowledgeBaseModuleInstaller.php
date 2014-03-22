@@ -68,10 +68,8 @@ class KnowledgeBaseModuleInstaller extends BaseKnowledgeBaseModuleInstaller
 
         $nextCatID = $lastCat['id'] + 1;
 
-        $objArray = array();
-
-        $parentList = array();
-        $rootCat = array();
+        $rootCat = $this->entityManager->find('ZikulaCategoriesModule:CategoryEntity', 1); // 1 == __SYSTEM__
+        $parentList = array($rootCat);
         $parentLvlOne = array();
         $parentLvlTwo = array();
 
@@ -80,58 +78,58 @@ class KnowledgeBaseModuleInstaller extends BaseKnowledgeBaseModuleInstaller
                           'de' => 'Knowledge Base');
         $catDescriptions = array('en' => 'Main category for the Knowledge Base',
                                  'de' => 'Hauptkategorie für die Knowledge Base');
-        $rootCat = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, $objArray);
+        $rootCat = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, 0);
 
         $parentList = array($rootCat);                  // reset to level one
         $catNames = array('en' => 'Ticket Categories',
                           'de' => 'Ticket-Kategorien');
         $catDescriptions = array('en' => 'Available topics for tickets',
                                  'de' => 'Verfügbare Themen für Tickets');
-        $parentLvlOne = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, $objArray);
+        $parentLvlOne = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, 0);
 
         $parentList = array($rootCat, $parentLvlOne);   // reset to level two
         {
             $catNames = array('en' => 'Installation',
                               'de' => 'Installation');
-            $catDescriptions = array('eng' => 'Installation of Zikula',
-                                     'deu' => 'Installation von Zikula');
-            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, $objArray);
+            $catDescriptions = array('en' => 'Installation of Zikula',
+                                     'de' => 'Installation von Zikula');
+            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions);
 
             $catNames = array('en' => 'Configuration',
                               'de' => 'Konfiguration');
-            $catDescriptions = array('eng' => 'Configure Zikula and basic settings',
-                                     'deu' => 'Zikula konfigurieren und Grundeinstellungen');
-            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, $objArray);
+            $catDescriptions = array('en' => 'Configure Zikula and basic settings',
+                                     'de' => 'Zikula konfigurieren und Grundeinstellungen');
+            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions);
 
             $catNames = array('en' => 'Modules',
                               'de' => 'Module');
-            $catDescriptions = array('eng' => 'Setup, manage and use modules',
-                                     'deu' => 'Module einrichten, verwalten und verwenden');
-            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, $objArray);
+            $catDescriptions = array('en' => 'Setup, manage and use modules',
+                                     'de' => 'Module einrichten, verwalten und verwenden');
+            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions);
 
             $catNames = array('en' => 'Themes',
                               'de' => 'Themes');
-            $catDescriptions = array('eng' => 'Design your layout in Zikula',
-                                     'deu' => 'Realisiere Dein Design mit Zikula');
-            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, $objArray);
+            $catDescriptions = array('en' => 'Design your layout in Zikula',
+                                     'de' => 'Realisiere Dein Design mit Zikula');
+            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions);
 
             $catNames = array('en' => 'Customisation',
                               'de' => 'Anpassung');
-            $catDescriptions = array('eng' => 'Your individual Zikula',
-                                     'deu' => 'Individualisierung von Zikula');
-            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, $objArray);
+            $catDescriptions = array('en' => 'Your individual Zikula',
+                                     'de' => 'Individualisierung von Zikula');
+            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions);
 
             $catNames = array('en' => 'Development',
                               'de' => 'Entwicklung');
-            $catDescriptions = array('eng' => 'Development of and for Zikula',
-                                     'deu' => 'Entwicklung von und für Zikula');
-            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, $objArray);
+            $catDescriptions = array('en' => 'Development of and for Zikula',
+                                     'de' => 'Entwicklung von und für Zikula');
+            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions);
 
             $catNames = array('en' => 'Tools and Services',
                               'de' => 'Nützliche Werkzeuge');
-            $catDescriptions = array('eng' => 'CoZi, extension database and further tools',
-                                     'deu' => 'CoZi, Extension-Datenbank und andere Tools');
-            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions, $objArray);
+            $catDescriptions = array('en' => 'AppStore and further tools',
+                                     'de' => 'AppStore und andere Tools');
+            $parentLvlTwo = $this->createSingleCategory($nextCatID++, $parentList, $catNames, $catDescriptions);
         }
 
 
@@ -141,7 +139,7 @@ class KnowledgeBaseModuleInstaller extends BaseKnowledgeBaseModuleInstaller
 
         // define category registration mappings to ticket table
         $mappingRootCats = array(
-            array('prop' => 'TicketCategoryMain', 'rootPath' => '/__SYSTEM__/Knowledge Base/Ticket Categories')
+            array('prop' => 'TicketCategoryMain', 'rootPath' => '/__SYSTEM__/KnowledgeBase/TicketCategories')
         );
 
         foreach ($mappingRootCats as $mappingRoot) {
@@ -163,18 +161,17 @@ class KnowledgeBaseModuleInstaller extends BaseKnowledgeBaseModuleInstaller
         return true;
     }
 
-    private function createSingleCategory($catID, $parentArray, $catNames, $catDescriptions, &$destArray)
+    private function createSingleCategory($catID, $parentArray, $catNames, $catDescriptions, $isLeaf = 1)
     {
-        $path = '/__SYSTEM__/Knowledge Base';
-        $ipath = '';
+        $path = '/__SYSTEM__';
+        $ipath = '/1';
         $numParents = count($parentArray);
         if ($numParents > 0) {
-            foreach($parentArray as $parentCat) {
-                $path .= '/' . $parentCat['name'];
-                $ipath = '/' . $parentCat['id'];
-            }
+            $path = $parentArray[$numParents -1]->getPath();
+            $ipath = $parentArray[$numParents -1]->getIPath();
         }
 
+        $path .= '/' . str_replace(' ', '', ucwords($catNames['en']));
         $ipath .= '/' . $catID;
 
         $category = new CategoryEntity();
@@ -183,8 +180,9 @@ class KnowledgeBaseModuleInstaller extends BaseKnowledgeBaseModuleInstaller
             $category->setParent($parentArray[$numParents-1]);
         }
         $category->setName($catNames['en']);
-        $category->setDisplay_name(serialize($catNames));
-        $category->setDisplay_desc(serialize($catDescriptions));
+        $category->setDisplay_name($catNames);
+        $category->setDisplay_desc($catDescriptions);
+        $category->setIs_leaf($isLeaf);
         $category->setPath($path);
         $category->setIPath($ipath);
 
